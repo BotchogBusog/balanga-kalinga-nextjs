@@ -7,6 +7,7 @@ export default function AiChatClient({ cid: initialCid, userName, initialMessage
   const [messages, setMessages] = useState(initialMessages);
   const [input, setInput] = useState("");
   const [sending, setSending] = useState(false);
+  const [liveMode, setLiveMode] = useState(null);
   const boxRef = useRef(null);
   const firstName = (userName || "there").split(" ")[0];
 
@@ -23,6 +24,7 @@ export default function AiChatClient({ cid: initialCid, userName, initialMessage
       const data = await res.json();
       if (data.error) setMessages((m) => [...m, { role: "assistant", content: data.error }]);
       else {
+        setLiveMode(data.live === true);
         setMessages((m) => [...m, { role: "assistant", content: data.reply }]);
         if (data.conversation_id && data.conversation_id !== cid) {
           setCid(data.conversation_id);
@@ -71,6 +73,7 @@ export default function AiChatClient({ cid: initialCid, userName, initialMessage
           <button onClick={sendMessage} className="btn btn-primary" style={{ height: 42, alignSelf: "flex-end" }} disabled={sending}>{sending ? "..." : "Send"}</button>
         </div>
         <div className="muted" style={{ fontSize: 11, padding: "6px 12px", textAlign: "center" }}>Kalinga AI is supportive, not a licensed professional. If you feel unsafe, call NCMH 1553 or 911 right away.</div>
+        {liveMode !== null && <div style={{ fontSize: 11, padding: "0 12px 8px", textAlign: "center", color: liveMode ? "#0a7a2e" : "#8a5a00" }}>{liveMode ? "● Live Gemini AI" : "● Offline fallback response"}</div>}
       </div>
     </div>
   );
