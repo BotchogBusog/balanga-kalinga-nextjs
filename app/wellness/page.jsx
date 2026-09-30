@@ -101,7 +101,7 @@ export default async function WellnessPage({ searchParams }) {
           <h2>Answer each question honestly</h2>
           <form action={submitCheck}>
             {QUESTIONS.map((q, i) => (
-              <div key={i} style={{ marginBottom: 14, padding: 12, border: "1px solid #e5e7eb", borderRadius: 10, background: "#fcfcfd" }}>
+              <div key={i} style={{ marginBottom: 14, padding: 12, border: "1px solid #d8e0e8", borderRadius: 4, background: "#fff" }}>
                 <div style={{ fontWeight: 600, fontSize: 14, marginBottom: 8 }}>{i + 1}. {q.text} <span className="muted" style={{ fontWeight: 400 }}>({q.area})</span></div>
                 <div className="option-group">
                   {OPTIONS.map((opt) => (
