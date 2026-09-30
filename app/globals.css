@@ -14,6 +14,9 @@ a:hover { text-decoration: underline; }
 .nav a:hover { text-decoration: none; color: var(--blue-dark); background: #f5f8fb; }
 .nav a.active { color: var(--blue-dark); border-bottom-color: var(--blue); font-weight: 600; background: transparent; border-radius: 0; }
 .container { max-width: 1120px; margin: 0 auto; padding: 28px 24px 44px; min-height: calc(100vh - 140px); }
+.hero { max-width: 760px; padding: 20px 0 18px; }
+.hero p { max-width: 680px; margin-top: 10px; color: #536171; font-size: 15px; }
+.hero-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
 .page-heading { border-bottom: 1px solid var(--line); padding-bottom: 16px; margin-bottom: 18px; }
 h1 { margin: 0; color: var(--navy); font-size: 25px; line-height: 1.25; letter-spacing: -.3px; }
 h2 { margin: 0 0 10px; color: var(--navy); font-size: 17px; line-height: 1.3; }

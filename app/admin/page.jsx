@@ -1,4 +1,4 @@
-// Port of admin.php (dark staff theme, aggregated trends only — never AI chats)
+// Port of admin.php. Staff see aggregated trends only — never AI chats.
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { query } from "../../lib/db";
@@ -43,7 +43,7 @@ export default async function AdminPage({ searchParams }) {
   return (
     <>
       <h1 style={{ fontSize: 22 }}>Admin Dashboard</h1>
-      <p className="muted">Separate staff area. Student AI chats are never shown here - only aggregated trends.</p>
+       <p className="muted">Staff view for student support activity. Individual Kalinga AI chats are never shown here; only aggregated trends are available.</p>
       {searchParams?.saved && <div className="notice notice-success" style={{ marginTop: 10 }}>{searchParams.saved}</div>}
       <div className="grid grid-3" style={{ marginTop: 14 }}>
         <div className="card stat" style={{ background: "#0f1f3a", color: "#fff", borderColor: "#0f1f3a" }}>
@@ -56,7 +56,7 @@ export default async function AdminPage({ searchParams }) {
       </div>
       <div className="grid grid-2" style={{ marginTop: 12 }}>
         <div className="card stat"><div className="label">Wellness checks total</div><div className="value" style={{ fontSize: 18 }}>{Number(assessmentsCount)}</div></div>
-        <div className="card" style={{ background: "#eef4ff", borderColor: "#c7d7f7" }}><strong style={{ fontSize: 13 }}>Staff note</strong><p className="muted" style={{ fontSize: 12, marginTop: 4 }}>This dashboard is separate from the student experience. Students use the light theme; staff use this dark administration theme.</p></div>
+        <div className="card" style={{ background: "#f7fafc", borderColor: "#d5e0ea" }}><strong style={{ fontSize: 13 }}>Staff note</strong><p className="muted" style={{ fontSize: 12, marginTop: 4 }}>Use this page to review appointment requests, counselor availability, and anonymous wellness trends.</p></div>
       </div>
       <div className="grid grid-2" style={{ marginTop: 14 }}>
         <div className="card">
