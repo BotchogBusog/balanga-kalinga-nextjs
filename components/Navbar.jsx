@@ -26,8 +26,8 @@ export default function Navbar({ user }) {
               </>
             ) : (
               <>
-                <Link className={active("/dashboard")} href="/dashboard">Dashboard</Link>
-                <Link className={active("/wellness")} href="/wellness">Wellness</Link>
+                <Link className={active("/dashboard")} href="/dashboard">Home</Link>
+                <Link className={active("/wellness")} href="/wellness">Wellness check</Link>
                 <Link className={active("/ai-chat")} href="/ai-chat">Kalinga AI</Link>
                 <Link className={active("/counseling")} href="/counseling">Counseling</Link>
                 <Link href="/profile" className={active("/profile")} style={{ fontWeight: 600 }}>{firstName}</Link>

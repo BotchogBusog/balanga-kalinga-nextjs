@@ -20,7 +20,7 @@ export default async function RootLayout({ children }) {
         <Navbar user={user} />
         <main className="container">{children}</main>
         <footer className="footer">
-          <div>Balanga Kalinga - A student wellness companion. AI is supportive, not a replacement for a licensed professional.</div>
+          <div>Balanga Kalinga · Student Development and Wellness Services</div>
           <div style={{ marginTop: 6 }}>Crisis: NCMH 1553 | Hopeline 0917-558-4673 | Emergency 911</div>
         </footer>
       </body>
