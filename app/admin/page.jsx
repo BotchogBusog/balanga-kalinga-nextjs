@@ -46,10 +46,10 @@ export default async function AdminPage({ searchParams }) {
        <p className="muted">Staff view for student support activity. Individual Kalinga AI chats are never shown here; only aggregated trends are available.</p>
       {searchParams?.saved && <div className="notice notice-success" style={{ marginTop: 10 }}>{searchParams.saved}</div>}
       <div className="grid grid-3" style={{ marginTop: 14 }}>
-         <div className="card stat">
-           <div className="label">Students</div>
-           <div className="value">{Number(usersCount)}</div>
-           <div className="muted" style={{ fontSize: 12 }}>Registered accounts</div>
+        <div className="card stat" style={{ background: "#0f1f3a", color: "#fff", borderColor: "#0f1f3a" }}>
+          <div className="label" style={{ color: "#b0bdd4" }}>Students</div>
+          <div className="value" style={{ color: "#fff" }}>{Number(usersCount)}</div>
+          <div className="muted" style={{ color: "#b0bdd4", fontSize: 12 }}>Registered accounts</div>
         </div>
         <div className="card stat"><div className="label">Pending appointments</div><div className="value">{Number(pendingCount)} / {Number(totalAppts)}</div><div className="muted" style={{ fontSize: 12 }}>Needs review</div></div>
         <div className="card stat"><div className="label">Available counselors</div><div className="value">{Number(counselorsAvail)}</div><div className="muted" style={{ fontSize: 12 }}>On duty</div></div>
