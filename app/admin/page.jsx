@@ -112,7 +112,7 @@ export default async function AdminPage({ searchParams }) {
               <tr key={u.id}>
                 <td>{u.name}</td><td>{u.email}</td><td>{u.student_id}</td><td>{u.course}</td>
                 <td>{new Date(u.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</td>
-                <td><a href={`/admin?delete_user=${u.id}`} onClick={(e) => undefined} style={{ fontSize: 12, color: "#b42318" }}>Remove</a></td>
+                <td><a href={`/admin?delete_user=${u.id}`} style={{ fontSize: 12, color: "#b42318" }}>Remove</a></td>
               </tr>
             ))}
           </tbody></table>

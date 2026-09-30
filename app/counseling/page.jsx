@@ -84,7 +84,7 @@ export default async function CounselingPage({ searchParams }) {
                 <span style={{ fontSize: 13 }}>{String(a.requested_date).slice(0, 10)} at {a.requested_time} - {a.method}</span>
                 <span className={`badge ${statusBadge(a.status)}`} style={{ marginLeft: 6, fontSize: 11 }}>{a.status}</span>
                 {a.notes && <p className="muted" style={{ fontSize: 13, marginTop: 4 }}>{a.notes}</p>}
-                {a.status === "pending" && <div style={{ marginTop: 6 }}><a href={`/counseling?cancel=${a.id}`} onClick={(e) => undefined} style={{ fontSize: 12, color: "#b42318" }}>Cancel request</a></div>}
+                 {a.status === "pending" && <div style={{ marginTop: 6 }}><a href={`/counseling?cancel=${a.id}`} style={{ fontSize: 12, color: "#b42318" }}>Cancel request</a></div>}
               </div>
             )) : <p className="muted">No appointments yet. Request one on the left.</p>}
           </div>
