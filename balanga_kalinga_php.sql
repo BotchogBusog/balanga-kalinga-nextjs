@@ -41,6 +41,19 @@ CREATE TABLE self_care_activities (
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE safety_plans (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  user_id int(11) NOT NULL,
+  warning_signs text NOT NULL,
+  coping_steps text NOT NULL,
+  trusted_contacts text NOT NULL,
+  professional_contacts text NOT NULL,
+  updated_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY user_id (user_id),
+  CONSTRAINT safety_plans_ibfk_1 FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 CREATE TABLE wellness_assessments (
   id int(11) NOT NULL AUTO_INCREMENT,
   user_id int(11) NOT NULL,

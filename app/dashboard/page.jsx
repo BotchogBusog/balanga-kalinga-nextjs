@@ -103,7 +103,7 @@ export default async function DashboardPage({ searchParams }) {
           <div className="eyebrow">Other support</div>
           <h2 style={{ marginTop: 5 }}>Kalinga AI</h2>
           <p className="muted">Use Kalinga AI for supportive information about stress, sleep, emotions, and coping. It is not a counselor or emergency service.</p>
-          <a href="/ai-chat" className="btn btn-secondary btn-small" style={{ marginTop: 12 }}>Open Kalinga AI</a>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 12 }}><a href="/ai-chat" className="btn btn-secondary btn-small">Open Kalinga AI</a><a href="/self-care" className="btn btn-secondary btn-small">Self-care activities</a><a href="/safety-plan" className="btn btn-secondary btn-small">Safety plan</a></div>
         </section>
       </div>
     </>
