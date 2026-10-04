@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="920" viewBox="0 0 1400 920" role="img" aria-labelledby="title desc">
+  <title id="title">Balanga Kalinga system use-case diagram</title>
+  <desc id="desc">Use cases for students, counselors, administrators, Kalinga AI, and the database.</desc>
+  <defs>
+    <style>
+      .title { font: 700 28px Arial, sans-serif; fill: #183b63; }
+      .subtitle { font: 14px Arial, sans-serif; fill: #657383; }
+      .actor { font: 600 15px Arial, sans-serif; fill: #253342; text-anchor: middle; }
+      .use { font: 14px Arial, sans-serif; fill: #253342; text-anchor: middle; }
+      .small { font: 12px Arial, sans-serif; fill: #657383; text-anchor: middle; }
+      .boundary { fill: #f8fafc; stroke: #9eb0c1; stroke-width: 2; }
+      .case { fill: #fff; stroke: #2463a6; stroke-width: 1.5; }
+      .line { stroke: #52677c; stroke-width: 1.5; fill: none; }
+      .include { stroke: #8194a7; stroke-width: 1.2; stroke-dasharray: 6 5; fill: none; }
+    </style>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#52677c"/></marker>
+  </defs>
+  <rect width="1400" height="920" fill="#f4f6f8"/>
+  <text x="700" y="46" class="title" text-anchor="middle">Balanga Kalinga — System Use Cases</text>
+  <text x="700" y="72" class="subtitle" text-anchor="middle">Student wellness, counseling, self-care, and staff support portal</text>
+
+  <!-- Actors -->
+  <g transform="translate(92 188)"><circle cx="0" cy="0" r="18" fill="#fff" stroke="#183b63" stroke-width="2"/><path d="M0 18v48 M-28 38h56 M0 66l-22 32 M0 66l22 32" class="line"/><text y="128" class="actor">Student</text></g>
+  <g transform="translate(92 520)"><circle cx="0" cy="0" r="18" fill="#fff" stroke="#183b63" stroke-width="2"/><path d="M0 18v48 M-28 38h56 M0 66l-22 32 M0 66l22 32" class="line"/><text y="128" class="actor">Counselor / Staff</text></g>
+  <g transform="translate(1308 270)"><circle cx="0" cy="0" r="18" fill="#fff" stroke="#183b63" stroke-width="2"/><path d="M0 18v48 M-28 38h56 M0 66l-22 32 M0 66l22 32" class="line"/><text y="128" class="actor">Administrator</text></g>
+  <g transform="translate(1308 625)"><rect x="-30" y="-24" width="60" height="48" rx="5" fill="#fff" stroke="#183b63" stroke-width="2"/><path d="M-18 -9h36 M-18 3h36 M-18 15h22" class="line"/><text y="58" class="actor">Kalinga AI</text></g>
+
+  <!-- System boundary -->
+  <rect x="235" y="110" width="930" height="735" rx="5" class="boundary"/>
+  <text x="260" y="142" class="actor" text-anchor="start">Balanga Kalinga Student Wellness System</text>
+
+  <!-- Use cases -->
+  <g><ellipse cx="430" cy="205" rx="130" ry="32" class="case"/><text x="430" y="201" class="use">Register / sign in</text><text x="430" y="218" class="small">Manage student account</text></g>
+  <g><ellipse cx="700" cy="205" rx="140" ry="32" class="case"/><text x="700" y="201" class="use">Complete wellness check</text><text x="700" y="218" class="small">Risk classification and summary</text></g>
+  <g><ellipse cx="980" cy="205" rx="125" ry="32" class="case"/><text x="980" y="201" class="use">View wellness history</text><text x="980" y="218" class="small">Mood and assessment records</text></g>
+  <g><ellipse cx="430" cy="355" rx="130" ry="32" class="case"/><text x="430" y="351" class="use">Record daily mood</text><text x="430" y="368" class="small">Optional note</text></g>
+  <g><ellipse cx="700" cy="355" rx="130" ry="32" class="case"/><text x="700" y="351" class="use">Use self-care activities</text><text x="700" y="368" class="small">Record completed activity</text></g>
+  <g><ellipse cx="980" cy="355" rx="130" ry="32" class="case"/><text x="980" y="351" class="use">Create safety plan</text><text x="980" y="368" class="small">Private support contacts</text></g>
+  <g><ellipse cx="430" cy="505" rx="130" ry="32" class="case"/><text x="430" y="501" class="use">Chat with Kalinga AI</text><text x="430" y="518" class="small">Mental-health topics only</text></g>
+  <g><ellipse cx="700" cy="505" rx="130" ry="32" class="case"/><text x="700" y="501" class="use">Request counseling</text><text x="700" y="518" class="small">Choose counselor and schedule</text></g>
+  <g><ellipse cx="980" cy="505" rx="130" ry="32" class="case"/><text x="980" y="501" class="use">View support contacts</text><text x="980" y="518" class="small">Campus and emergency help</text></g>
+  <g><ellipse cx="565" cy="675" rx="145" ry="32" class="case"/><text x="565" y="671" class="use">Review appointment status</text><text x="565" y="688" class="small">Pending, approved, or declined</text></g>
+  <g><ellipse cx="850" cy="675" rx="155" ry="32" class="case"/><text x="850" y="671" class="use">Manage appointments</text><text x="850" y="688" class="small">Counselor and administrator actions</text></g>
+  <g><ellipse cx="700" cy="790" rx="165" ry="32" class="case"/><text x="700" y="786" class="use">View aggregated trends</text><text x="700" y="803" class="small">Staff dashboard; no AI chat content</text></g>
+
+  <!-- Actor associations -->
+  <path d="M110 188 L300 205 M110 188 L560 205 M110 188 L850 205 M110 188 L300 355 M110 188 L570 355 M110 188 L850 355 M110 188 L300 505 M110 188 L570 505 M110 188 L850 505 M110 188 L420 675 M110 188 L685 675" class="line"/>
+  <path d="M110 520 L300 505 M110 520 L570 505 M110 520 L850 505 M110 520 L420 675 M110 520 L700 675" class="line"/>
+  <path d="M1290 270 L1110 505 M1290 270 L1000 675 M1290 270 L865 790" class="line"/>
+  <path d="M1290 625 L1110 505 M1290 625 L865 790" class="line"/>
+
+  <!-- Relationships -->
+  <path d="M700 237 L700 315" class="include" marker-end="url(#arrow)"/><text x="725" y="280" class="small">includes</text>
+  <path d="M830 505 L900 505" class="include" marker-end="url(#arrow)"/><text x="865" y="492" class="small">uses</text>
+  <path d="M700 537 L700 642" class="include" marker-end="url(#arrow)"/><text x="730" y="595" class="small">updates</text>
+
+  <text x="700" y="885" class="subtitle" text-anchor="middle">Authentication and records are handled through the application database; AI is supportive and not a replacement for professional care.</text>
+</svg>
