@@ -1,54 +1,52 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="860" viewBox="0 0 1400 860" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
   <title id="title">Balanga Kalinga use-case diagram</title>
-  <desc id="desc">Use cases for students, counselors, and administrators in the Balanga Kalinga student wellness system.</desc>
+  <desc id="desc">A UML use-case diagram for Students, Admin, and Guidance Counselor.</desc>
   <defs>
     <style>
-      .title { font: 700 28px Arial, sans-serif; fill: #183b63; }
-      .subtitle { font: 14px Arial, sans-serif; fill: #657383; }
-      .actor { font: 600 15px Arial, sans-serif; fill: #253342; text-anchor: middle; }
-      .use { font: 14px Arial, sans-serif; fill: #253342; text-anchor: middle; }
-      .small { font: 12px Arial, sans-serif; fill: #657383; text-anchor: middle; }
-      .boundary { fill: #f8fafc; stroke: #9eb0c1; stroke-width: 2; }
-      .case { fill: #fff; stroke: #2463a6; stroke-width: 1.5; }
-      .line { stroke: #52677c; stroke-width: 1.5; fill: none; }
-      .include { stroke: #8194a7; stroke-width: 1.2; stroke-dasharray: 6 5; fill: none; }
+      .page { fill: #fff; }
+      .boundary { fill: #fff; stroke: #333; stroke-width: 2; }
+      .heading { fill: #f1d85b; stroke: #333; stroke-width: 2; }
+      .heading-text { font: 700 17px Arial, sans-serif; fill: #111; text-anchor: middle; }
+      .usecase { fill: #efaaaa; stroke: #333; stroke-width: 1.7; }
+      .use-text { font: 14px Arial, sans-serif; fill: #111; text-anchor: middle; }
+      .actor-text { font: 600 16px Arial, sans-serif; fill: #111; text-anchor: middle; }
+      .line { fill: none; stroke: #333; stroke-width: 1.4; }
     </style>
-    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#52677c"/></marker>
   </defs>
-  <rect width="1400" height="860" fill="#f4f6f8"/>
-  <text x="700" y="44" class="title" text-anchor="middle">Balanga Kalinga — System Use Cases</text>
-  <text x="700" y="70" class="subtitle" text-anchor="middle">Student wellness, counseling, self-care, and staff support portal</text>
+  <rect class="page" width="1200" height="900"/>
+
+  <!-- System boundary and name -->
+  <rect x="355" y="110" width="490" height="670" class="boundary"/>
+  <rect x="315" y="55" width="570" height="72" rx="2" class="heading"/>
+  <text x="600" y="82" class="heading-text">Balanga Kalinga: Web-Based Student Wellness</text>
+  <text x="600" y="104" class="heading-text">Assessment and Counseling Management System</text>
 
   <!-- Actors -->
-  <g transform="translate(92 190)"><circle cx="0" cy="0" r="18" fill="#fff" stroke="#183b63" stroke-width="2"/><path d="M0 18v48 M-28 38h56 M0 66l-22 32 M0 66l22 32" class="line"/><text y="128" class="actor">Student</text></g>
-  <g transform="translate(92 520)"><circle cx="0" cy="0" r="18" fill="#fff" stroke="#183b63" stroke-width="2"/><path d="M0 18v48 M-28 38h56 M0 66l-22 32 M0 66l22 32" class="line"/><text y="128" class="actor">Counselor / Staff</text></g>
-  <g transform="translate(1308 300)"><circle cx="0" cy="0" r="18" fill="#fff" stroke="#183b63" stroke-width="2"/><path d="M0 18v48 M-28 38h56 M0 66l-22 32 M0 66l22 32" class="line"/><text y="128" class="actor">Administrator</text></g>
-
-  <!-- System boundary -->
-  <rect x="235" y="105" width="930" height="690" rx="5" class="boundary"/>
-  <text x="260" y="137" class="actor" text-anchor="start">Balanga Kalinga Student Wellness System</text>
+  <g transform="translate(130 250)">
+    <circle cx="0" cy="0" r="16" fill="#111"/><path d="M0 18v54 M-29 39h58 M0 72l-25 35 M0 72l25 35" stroke="#111" stroke-width="5" fill="none"/>
+    <text x="0" y="140" class="actor-text">Students</text>
+  </g>
+  <g transform="translate(130 605)">
+    <circle cx="0" cy="0" r="16" fill="#111"/><path d="M0 18v54 M-29 39h58 M0 72l-25 35 M0 72l25 35" stroke="#111" stroke-width="5" fill="none"/>
+    <text x="0" y="140" class="actor-text">Admin</text>
+  </g>
+  <g transform="translate(1070 330)">
+    <circle cx="0" cy="0" r="16" fill="#111"/><path d="M0 18v54 M-29 39h58 M0 72l-25 35 M0 72l25 35" stroke="#111" stroke-width="5" fill="none"/>
+    <text x="0" y="140" class="actor-text">Guidance Counselor</text>
+  </g>
 
   <!-- Use cases -->
-  <g><ellipse cx="430" cy="205" rx="135" ry="32" class="case"/><text x="430" y="201" class="use">Register / sign in</text><text x="430" y="218" class="small">Manage student account</text></g>
-  <g><ellipse cx="700" cy="205" rx="145" ry="32" class="case"/><text x="700" y="201" class="use">Complete wellness check</text><text x="700" y="218" class="small">Risk classification and summary</text></g>
-  <g><ellipse cx="980" cy="205" rx="130" ry="32" class="case"/><text x="980" y="201" class="use">View wellness history</text><text x="980" y="218" class="small">Mood and assessment records</text></g>
-  <g><ellipse cx="430" cy="355" rx="130" ry="32" class="case"/><text x="430" y="351" class="use">Record daily mood</text><text x="430" y="368" class="small">Optional personal note</text></g>
-  <g><ellipse cx="700" cy="355" rx="140" ry="32" class="case"/><text x="700" y="351" class="use">Use self-care activities</text><text x="700" y="368" class="small">Record completed activity</text></g>
-  <g><ellipse cx="980" cy="355" rx="130" ry="32" class="case"/><text x="980" y="351" class="use">Create safety plan</text><text x="980" y="368" class="small">Private support contacts</text></g>
-  <g><ellipse cx="430" cy="505" rx="135" ry="32" class="case"/><text x="430" y="501" class="use">Request counseling</text><text x="430" y="518" class="small">Choose counselor and schedule</text></g>
-  <g><ellipse cx="700" cy="505" rx="145" ry="32" class="case"/><text x="700" y="501" class="use">View support contacts</text><text x="700" y="518" class="small">Campus and emergency help</text></g>
-  <g><ellipse cx="980" cy="505" rx="145" ry="32" class="case"/><text x="980" y="501" class="use">Review appointment status</text><text x="980" y="518" class="small">Pending, approved, or declined</text></g>
-  <g><ellipse cx="565" cy="660" rx="145" ry="32" class="case"/><text x="565" y="656" class="use">Manage appointments</text><text x="565" y="673" class="small">Counselor and administrator actions</text></g>
-  <g><ellipse cx="850" cy="660" rx="155" ry="32" class="case"/><text x="850" y="656" class="use">View aggregated trends</text><text x="850" y="673" class="small">Staff dashboard only</text></g>
+  <g><ellipse cx="600" cy="205" rx="145" ry="38" class="usecase"/><text x="600" y="201" class="use-text">Student Profile</text><text x="600" y="218" class="use-text">Management</text></g>
+  <g><ellipse cx="600" cy="300" rx="145" ry="38" class="usecase"/><text x="600" y="296" class="use-text">Wellness Check and</text><text x="600" y="313" class="use-text">Mental Health Screening</text></g>
+  <g><ellipse cx="600" cy="395" rx="145" ry="38" class="usecase"/><text x="600" y="391" class="use-text">Review Student</text><text x="600" y="408" class="use-text">Wellness Records</text></g>
+  <g><ellipse cx="600" cy="490" rx="145" ry="38" class="usecase"/><text x="600" y="486" class="use-text">Counseling Appointment</text><text x="600" y="503" class="use-text">Management</text></g>
+  <g><ellipse cx="600" cy="585" rx="145" ry="38" class="usecase"/><text x="600" y="581" class="use-text">Self-Care Activities and</text><text x="600" y="598" class="use-text">Personal Safety Plan</text></g>
+  <g><ellipse cx="600" cy="680" rx="145" ry="38" class="usecase"/><text x="600" y="676" class="use-text">Generate Wellness</text><text x="600" y="693" class="use-text">Reports and Trends</text></g>
 
-  <!-- Actor associations -->
-  <path d="M110 190 L295 205 M110 190 L555 205 M110 190 L850 205 M110 190 L300 355 M110 190 L560 355 M110 190 L850 355 M110 190 L295 505 M110 190 L560 505 M110 190 L850 505 M110 190 L420 660" class="line"/>
-  <path d="M110 520 L295 505 M110 520 L420 660 M110 520 L700 660" class="line"/>
-  <path d="M1290 300 L1110 505 M1290 300 L1005 660" class="line"/>
-
-  <!-- Relationships -->
-  <path d="M700 237 L700 315" class="include" marker-end="url(#arrow)"/><text x="730" y="280" class="small">includes</text>
-  <path d="M700 537 L700 627" class="include" marker-end="url(#arrow)"/><text x="730" y="585" class="small">updates</text>
-
-  <text x="700" y="830" class="subtitle" text-anchor="middle">The system stores student wellness records, appointments, self-care activity logs, and private safety plans.</text>
+  <!-- Student associations -->
+  <path d="M165 250 L455 205 M165 250 L455 300 M165 250 L455 490 M165 250 L455 585" class="line"/>
+  <!-- Admin associations -->
+  <path d="M165 605 L455 205 M165 605 L455 395 M165 605 L455 490 M165 605 L455 680" class="line"/>
+  <!-- Counselor associations -->
+  <path d="M1035 330 L745 300 M1035 330 L745 395 M1035 330 L745 490 M1035 330 L745 585 M1035 330 L745 680" class="line"/>
 </svg>
