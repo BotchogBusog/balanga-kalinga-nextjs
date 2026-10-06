@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1380" viewBox="0 0 2200 1380" role="img" aria-labelledby="title desc">
+  <title id="title">Balanga Kalinga complete entity relationship diagram</title>
+  <desc id="desc">Complete print-friendly ERD showing all database tables and clean non-crossing relationship lines.</desc>
+  <style>
+    .bg{fill:#fff}.title{font:bold 30px Arial,sans-serif;fill:#111;text-anchor:middle}.sub{font:16px Arial,sans-serif;fill:#555;text-anchor:middle}.box{stroke:#222;stroke-width:1.5}.head{stroke:#222;stroke-width:1.5}.name{font:bold 16px Arial,sans-serif;fill:#111;text-anchor:middle}.field{font:14px 'Courier New',monospace;fill:#111}.pk{font-weight:bold}.rel{stroke:#222;stroke-width:1.7;fill:none}.dash{stroke:#777;stroke-width:1.4;stroke-dasharray:6 5;fill:none}.card{font:bold 13px Arial,sans-serif;fill:#222}.note{font:14px Arial,sans-serif;fill:#444}
+  </style>
+  <rect class="bg" width="2200" height="1380"/>
+  <text x="1100" y="50" class="title">Balanga Kalinga — Complete Entity Relationship Diagram</text>
+  <text x="1100" y="78" class="sub">All current database tables · designed with orthogonal, non-crossing relationship lines</text>
+
+  <!-- Central users table -->
+  <g transform="translate(915 125)"><rect width="370" height="220" fill="#dcecd2" class="box"/><rect width="370" height="40" fill="#c4ddb5" class="head"/><text x="185" y="26" class="name">users</text><text x="16" y="68" class="field pk">PK  id</text><text x="16" y="94" class="field">name</text><text x="16" y="120" class="field">email, student_id</text><text x="16" y="146" class="field">password_hash</text><text x="16" y="172" class="field">role, course</text><text x="16" y="198" class="field">year_level, school</text></g>
+
+  <!-- One trunk for all user-owned tables -->
+  <path d="M1100 345 V410 M140 410 H2040" class="rel"/><text x="1115" y="390" class="card">1</text>
+
+  <!-- User-owned tables row -->
+  <g transform="translate(25 500)"><rect width="250" height="204" fill="#f8d2b1" class="box"/><rect width="250" height="40" fill="#edbd92" class="head"/><text x="125" y="26" class="name">wellness_assessments</text><text x="14" y="66" class="field pk">PK  id</text><text x="14" y="92" class="field pk">FK  user_id</text><text x="14" y="118" class="field">answers</text><text x="14" y="144" class="field">overall_level</text><text x="14" y="170" class="field">summary</text><text x="14" y="196" class="field">created_at</text></g>
+  <g transform="translate(325 500)"><rect width="250" height="178" fill="#f8d2b1" class="box"/><rect width="250" height="40" fill="#edbd92" class="head"/><text x="125" y="26" class="name">moods</text><text x="14" y="66" class="field pk">PK  id</text><text x="14" y="92" class="field pk">FK  user_id</text><text x="14" y="118" class="field">mood, note</text><text x="14" y="144" class="field">created_at</text></g>
+  <g transform="translate(625 500)"><rect width="250" height="178" fill="#f8d2b1" class="box"/><rect width="250" height="40" fill="#edbd92" class="head"/><text x="125" y="26" class="name">journal_entries</text><text x="14" y="66" class="field pk">PK  id</text><text x="14" y="92" class="field pk">FK  user_id</text><text x="14" y="118" class="field">title, content</text><text x="14" y="144" class="field">mood, created_at</text></g>
+  <g transform="translate(925 500)"><rect width="250" height="178" fill="#f8d2b1" class="box"/><rect width="250" height="40" fill="#edbd92" class="head"/><text x="125" y="26" class="name">safety_plans</text><text x="14" y="66" class="field pk">PK  id</text><text x="14" y="92" class="field pk">FK  user_id (UNIQUE)</text><text x="14" y="118" class="field">warning_signs</text><text x="14" y="144" class="field">coping_steps, contacts</text></g>
+  <g transform="translate(1225 500)"><rect width="250" height="204" fill="#f8d2b1" class="box"/><rect width="250" height="40" fill="#edbd92" class="head"/><text x="125" y="26" class="name">appointments</text><text x="14" y="66" class="field pk">PK  id</text><text x="14" y="92" class="field pk">FK  user_id</text><text x="14" y="118" class="field pk">FK  counselor_id</text><text x="14" y="144" class="field">requested_date, time</text><text x="14" y="170" class="field">method, status</text><text x="14" y="196" class="field">notes</text></g>
+  <g transform="translate(1525 500)"><rect width="250" height="178" fill="#f8d2b1" class="box"/><rect width="250" height="40" fill="#edbd92" class="head"/><text x="125" y="26" class="name">ai_conversations</text><text x="14" y="66" class="field pk">PK  id</text><text x="14" y="92" class="field pk">FK  user_id</text><text x="14" y="118" class="field">title</text><text x="14" y="144" class="field">created_at</text></g>
+  <g transform="translate(1825 500)"><rect width="250" height="178" fill="#f8d2b1" class="box"/><rect width="250" height="40" fill="#edbd92" class="head"/><text x="125" y="26" class="name">activity_logs</text><text x="14" y="66" class="field pk">PK  id</text><text x="14" y="92" class="field pk">FK  user_id</text><text x="14" y="118" class="field pk">FK  activity_id</text><text x="14" y="144" class="field">created_at</text></g>
+
+  <!-- Vertical branches only, one for each child -->
+  <path d="M150 410 V500 M450 410 V500 M750 410 V500 M1050 410 V500 M1350 410 V500 M1650 410 V500 M1950 410 V500" class="rel"/>
+  <text x="164" y="480" class="card">M</text><text x="464" y="480" class="card">M</text><text x="764" y="480" class="card">M</text><text x="1064" y="480" class="card">1</text><text x="1364" y="480" class="card">M</text><text x="1664" y="480" class="card">M</text><text x="1964" y="480" class="card">M</text>
+
+  <!-- Supporting tables -->
+  <g transform="translate(1225 885)"><rect width="250" height="178" fill="#d9d8ef" class="box"/><rect width="250" height="40" fill="#c4c2e1" class="head"/><text x="125" y="26" class="name">counselors</text><text x="14" y="66" class="field pk">PK  id</text><text x="14" y="92" class="field">name</text><text x="14" y="118" class="field">specialization</text><text x="14" y="144" class="field">schedule, availability</text></g>
+  <g transform="translate(1525 885)"><rect width="250" height="152" fill="#d9d8ef" class="box"/><rect width="250" height="40" fill="#c4c2e1" class="head"/><text x="125" y="26" class="name">ai_messages</text><text x="14" y="66" class="field pk">PK  id</text><text x="14" y="92" class="field pk">FK  conversation_id</text><text x="14" y="118" class="field">role, content</text><text x="14" y="144" class="field">created_at</text></g>
+  <g transform="translate(1825 885)"><rect width="250" height="152" fill="#d9d8ef" class="box"/><rect width="250" height="40" fill="#c4c2e1" class="head"/><text x="125" y="26" class="name">self_care_activities</text><text x="14" y="66" class="field pk">PK  id</text><text x="14" y="92" class="field">category, title</text><text x="14" y="118" class="field">instructions</text><text x="14" y="144" class="field">duration_min</text></g>
+  <g transform="translate(70 890)"><rect width="330" height="178" fill="#e7e7e7" class="box"/><rect width="330" height="40" fill="#d4d4d4" class="head"/><text x="165" y="26" class="name">emergency_resources</text><text x="14" y="66" class="field pk">PK  id</text><text x="14" y="92" class="field">name</text><text x="14" y="118" class="field">phone</text><text x="14" y="144" class="field">description, category</text></g>
+
+  <!-- Support-table vertical links only -->
+  <path d="M1350 704 V885 M1650 678 V885 M1950 678 V885" class="rel"/>
+  <text x="1364" y="805" class="card">1</text><text x="1664" y="790" class="card">M</text><text x="1964" y="790" class="card">1</text>
+  <!-- emergency_resources is standalone because it has no foreign-key relationship. -->
+  <text x="70" y="1100" class="note">emergency_resources is a standalone support directory (no foreign key relationship).</text>
+
+  <text x="65" y="1150" class="note">Legend: PK = Primary Key · FK = Foreign Key · 1 = one record · M = many records · dashed line = support reference, not a foreign key.</text>
+  <text x="65" y="1180" class="note">Print recommendation: Landscape orientation, A3 paper or larger, at 100% scale. All text uses high contrast for readability.</text>
+</svg>
