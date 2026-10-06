@@ -1,61 +1,89 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1700" viewBox="0 0 2400 1700" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
   <title id="title">Balanga Kalinga Entity Relationship Diagram</title>
-  <desc id="desc">Print-friendly database entity relationship diagram for the Balanga Kalinga student wellness and counseling system.</desc>
-  <defs>
-    <style>
-      .page { fill: #fff; }
-      .title { font: 700 34px Arial, sans-serif; fill: #111; text-anchor: middle; }
-      .subtitle { font: 18px Arial, sans-serif; fill: #444; text-anchor: middle; }
-      .tbl { fill: #fff; stroke: #222; stroke-width: 2; }
-      .head { fill: #dbeaf7; stroke: #222; stroke-width: 2; }
-      .name { font: 700 19px Arial, sans-serif; fill: #111; text-anchor: middle; }
-      .field { font: 16px 'Courier New', monospace; fill: #111; }
-      .pk { font-weight: 700; }
-      .note { font: 15px Arial, sans-serif; fill: #444; }
-      .rel { stroke: #202020; stroke-width: 2; fill: none; }
-      .card { font: 700 18px Arial, sans-serif; fill: #111; }
-    </style>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#202020"/></marker>
-  </defs>
-  <rect class="page" width="2400" height="1700"/>
-  <text x="1200" y="55" class="title">Balanga Kalinga — Entity Relationship Diagram</text>
-  <text x="1200" y="84" class="subtitle">Student wellness assessment, counseling, self-care, safety planning, and support resources</text>
+  <desc id="desc">A compact print-friendly ERD with orthogonal relationship lines.</desc>
+  <style>
+    .bg { fill: #fff; }
+    .title { font: bold 28px Arial, sans-serif; fill: #202020; text-anchor: middle; }
+    .sub { font: 15px Arial, sans-serif; fill: #555; text-anchor: middle; }
+    .table { stroke: #333; stroke-width: 1.4; }
+    .head { stroke: #333; stroke-width: 1.4; }
+    .name { font: bold 16px Arial, sans-serif; fill: #151515; text-anchor: middle; }
+    .field { font: 14px 'Courier New', monospace; fill: #171717; }
+    .pk { font-weight: bold; }
+    .line { fill: none; stroke: #333; stroke-width: 1.6; }
+    .label { font: bold 12px Arial, sans-serif; fill: #333; }
+    .legend { font: 13px Arial, sans-serif; fill: #444; }
+  </style>
+  <rect class="bg" width="1600" height="1100"/>
+  <text x="800" y="45" class="title">Balanga Kalinga — Entity Relationship Diagram</text>
+  <text x="800" y="72" class="sub">Student wellness assessment and counseling management system</text>
 
-  <!-- users -->
-  <g transform="translate(80 155)"><rect width="420" height="295" class="tbl"/><rect width="420" height="42" class="head"/><text x="210" y="27" class="name">users</text><text x="20" y="72" class="field pk">PK  id</text><text x="20" y="102" class="field">name</text><text x="20" y="132" class="field">email (UNIQUE)</text><text x="20" y="162" class="field">student_id (UNIQUE)</text><text x="20" y="192" class="field">password_hash</text><text x="20" y="222" class="field">role, course, year_level</text><text x="20" y="252" class="field">school, created_at</text></g>
-  <!-- wellness -->
-  <g transform="translate(660 140)"><rect width="420" height="275" class="tbl"/><rect width="420" height="42" class="head"/><text x="210" y="27" class="name">wellness_assessments</text><text x="20" y="72" class="field pk">PK  id</text><text x="20" y="102" class="field">FK  user_id → users.id</text><text x="20" y="132" class="field">answers</text><text x="20" y="162" class="field">overall_level</text><text x="20" y="192" class="field">summary</text><text x="20" y="222" class="field">suggested_actions, created_at</text></g>
-  <!-- moods -->
-  <g transform="translate(1240 140)"><rect width="390" height="220" class="tbl"/><rect width="390" height="42" class="head"/><text x="195" y="27" class="name">moods</text><text x="20" y="72" class="field pk">PK  id</text><text x="20" y="102" class="field">FK  user_id → users.id</text><text x="20" y="132" class="field">mood</text><text x="20" y="162" class="field">note, created_at</text></g>
-  <!-- safety -->
-  <g transform="translate(1790 130)"><rect width="500" height="285" class="tbl"/><rect width="500" height="42" class="head"/><text x="250" y="27" class="name">safety_plans</text><text x="20" y="72" class="field pk">PK  id</text><text x="20" y="102" class="field">FK  user_id → users.id (UNIQUE)</text><text x="20" y="132" class="field">warning_signs</text><text x="20" y="162" class="field">coping_steps</text><text x="20" y="192" class="field">trusted_contacts</text><text x="20" y="222" class="field">professional_contacts, updated_at</text></g>
+  <!-- USERS -->
+  <g transform="translate(130 155)">
+    <rect width="310" height="238" fill="#dcecd2" class="table"/><rect width="310" height="36" fill="#c4ddb5" class="head"/>
+    <text x="155" y="24" class="name">users</text>
+    <text x="16" y="62" class="field pk">PK  id</text><text x="16" y="88" class="field">name</text><text x="16" y="114" class="field">email</text><text x="16" y="140" class="field">student_id</text><text x="16" y="166" class="field">password_hash</text><text x="16" y="192" class="field">role</text><text x="16" y="218" class="field">course, year_level</text>
+  </g>
+  <!-- COUNSELORS -->
+  <g transform="translate(620 155)">
+    <rect width="310" height="212" fill="#dcecd2" class="table"/><rect width="310" height="36" fill="#c4ddb5" class="head"/>
+    <text x="155" y="24" class="name">counselors</text>
+    <text x="16" y="62" class="field pk">PK  id</text><text x="16" y="88" class="field">name</text><text x="16" y="114" class="field">specialization</text><text x="16" y="140" class="field">schedule</text><text x="16" y="166" class="field">email, phone</text><text x="16" y="192" class="field">is_available</text>
+  </g>
+  <!-- EMERGENCY -->
+  <g transform="translate(1120 155)">
+    <rect width="310" height="185" fill="#dcecd2" class="table"/><rect width="310" height="36" fill="#c4ddb5" class="head"/>
+    <text x="155" y="24" class="name">emergency_resources</text>
+    <text x="16" y="62" class="field pk">PK  id</text><text x="16" y="88" class="field">name</text><text x="16" y="114" class="field">phone</text><text x="16" y="140" class="field">description</text><text x="16" y="166" class="field">category</text>
+  </g>
 
-  <!-- counselors -->
-  <g transform="translate(80 660)"><rect width="420" height="275" class="tbl"/><rect width="420" height="42" class="head"/><text x="210" y="27" class="name">counselors</text><text x="20" y="72" class="field pk">PK  id</text><text x="20" y="102" class="field">name</text><text x="20" y="132" class="field">specialization</text><text x="20" y="162" class="field">description, schedule</text><text x="20" y="192" class="field">email, phone</text><text x="20" y="222" class="field">is_available</text></g>
-  <!-- appointments -->
-  <g transform="translate(660 620)"><rect width="470" height="340" class="tbl"/><rect width="470" height="42" class="head"/><text x="235" y="27" class="name">appointments</text><text x="20" y="72" class="field pk">PK  id</text><text x="20" y="102" class="field">FK  user_id → users.id</text><text x="20" y="132" class="field">FK  counselor_id → counselors.id</text><text x="20" y="162" class="field">requested_date</text><text x="20" y="192" class="field">requested_time</text><text x="20" y="222" class="field">method</text><text x="20" y="252" class="field">notes</text><text x="20" y="282" class="field">status, created_at</text></g>
-  <!-- resources -->
-  <g transform="translate(1790 670)"><rect width="420" height="245" class="tbl"/><rect width="420" height="42" class="head"/><text x="210" y="27" class="name">emergency_resources</text><text x="20" y="72" class="field pk">PK  id</text><text x="20" y="102" class="field">name</text><text x="20" y="132" class="field">phone</text><text x="20" y="162" class="field">description</text><text x="20" y="192" class="field">category</text></g>
+  <!-- WELLNESS -->
+  <g transform="translate(130 535)">
+    <rect width="350" height="238" fill="#f8d2b1" class="table"/><rect width="350" height="36" fill="#edbd92" class="head"/>
+    <text x="175" y="24" class="name">wellness_assessments</text>
+    <text x="16" y="62" class="field pk">PK  id</text><text x="16" y="88" class="field pk">FK  user_id</text><text x="16" y="114" class="field">answers</text><text x="16" y="140" class="field">overall_level</text><text x="16" y="166" class="field">summary</text><text x="16" y="192" class="field">suggested_actions</text><text x="16" y="218" class="field">created_at</text>
+  </g>
+  <!-- MOODS -->
+  <g transform="translate(625 535)">
+    <rect width="310" height="185" fill="#f8d2b1" class="table"/><rect width="310" height="36" fill="#edbd92" class="head"/>
+    <text x="155" y="24" class="name">moods</text>
+    <text x="16" y="62" class="field pk">PK  id</text><text x="16" y="88" class="field pk">FK  user_id</text><text x="16" y="114" class="field">mood</text><text x="16" y="140" class="field">note</text><text x="16" y="166" class="field">created_at</text>
+  </g>
+  <!-- APPOINTMENTS -->
+  <g transform="translate(1115 500)">
+    <rect width="350" height="265" fill="#f8d2b1" class="table"/><rect width="350" height="36" fill="#edbd92" class="head"/>
+    <text x="175" y="24" class="name">appointments</text>
+    <text x="16" y="62" class="field pk">PK  id</text><text x="16" y="88" class="field pk">FK  user_id</text><text x="16" y="114" class="field pk">FK  counselor_id</text><text x="16" y="140" class="field">requested_date</text><text x="16" y="166" class="field">requested_time</text><text x="16" y="192" class="field">method, notes</text><text x="16" y="218" class="field">status</text><text x="16" y="244" class="field">created_at</text>
+  </g>
 
-  <!-- self care -->
-  <g transform="translate(80 1150)"><rect width="440" height="275" class="tbl"/><rect width="440" height="42" class="head"/><text x="220" y="27" class="name">self_care_activities</text><text x="20" y="72" class="field pk">PK  id</text><text x="20" y="102" class="field">category</text><text x="20" y="132" class="field">title</text><text x="20" y="162" class="field">description</text><text x="20" y="192" class="field">instructions</text><text x="20" y="222" class="field">duration_min</text></g>
-  <!-- logs -->
-  <g transform="translate(680 1180)"><rect width="430" height="220" class="tbl"/><rect width="430" height="42" class="head"/><text x="215" y="27" class="name">activity_logs</text><text x="20" y="72" class="field pk">PK  id</text><text x="20" y="102" class="field">FK  user_id → users.id</text><text x="20" y="132" class="field">FK  activity_id → self_care_activities.id</text><text x="20" y="162" class="field">created_at</text></g>
-  <!-- journal -->
-  <g transform="translate(1290 1160)"><rect width="420" height="255" class="tbl"/><rect width="420" height="42" class="head"/><text x="210" y="27" class="name">journal_entries</text><text x="20" y="72" class="field pk">PK  id</text><text x="20" y="102" class="field">FK  user_id → users.id</text><text x="20" y="132" class="field">title</text><text x="20" y="162" class="field">content</text><text x="20" y="192" class="field">mood, created_at</text></g>
+  <!-- SAFETY -->
+  <g transform="translate(130 885)">
+    <rect width="350" height="185" fill="#d9d8ef" class="table"/><rect width="350" height="36" fill="#c4c2e1" class="head"/>
+    <text x="175" y="24" class="name">safety_plans</text>
+    <text x="16" y="62" class="field pk">PK  id</text><text x="16" y="88" class="field pk">FK  user_id (UNIQUE)</text><text x="16" y="114" class="field">warning_signs</text><text x="16" y="140" class="field">coping_steps</text><text x="16" y="166" class="field">trusted_contacts</text>
+  </g>
+  <!-- ACTIVITIES -->
+  <g transform="translate(625 855)">
+    <rect width="310" height="185" fill="#d9d8ef" class="table"/><rect width="310" height="36" fill="#c4c2e1" class="head"/>
+    <text x="155" y="24" class="name">self_care_activities</text>
+    <text x="16" y="62" class="field pk">PK  id</text><text x="16" y="88" class="field">category</text><text x="16" y="114" class="field">title</text><text x="16" y="140" class="field">instructions</text><text x="16" y="166" class="field">duration_min</text>
+  </g>
+  <!-- ACTIVITY LOG -->
+  <g transform="translate(1115 855)">
+    <rect width="350" height="160" fill="#d9d8ef" class="table"/><rect width="350" height="36" fill="#c4c2e1" class="head"/>
+    <text x="175" y="24" class="name">activity_logs</text>
+    <text x="16" y="62" class="field pk">PK  id</text><text x="16" y="88" class="field pk">FK  user_id</text><text x="16" y="114" class="field pk">FK  activity_id</text><text x="16" y="140" class="field">created_at</text>
+  </g>
 
-  <!-- Relationships: labels denote one-to-many -->
-  <path d="M500 250 L660 250" class="rel" marker-end="url(#arrow)"/><text x="575" y="238" class="card">1 : M</text>
-  <path d="M500 300 L1240 250" class="rel" marker-end="url(#arrow)"/><text x="860" y="264" class="card">1 : M</text>
-  <path d="M500 210 L1790 220" class="rel" marker-end="url(#arrow)"/><text x="1140" y="200" class="card">1 : 1</text>
-  <path d="M290 450 L290 660" class="rel" marker-end="url(#arrow)"/><text x="305" y="555" class="card">1 : M</text>
-  <path d="M500 380 L660 720" class="rel" marker-end="url(#arrow)"/><text x="545" y="545" class="card">1 : M</text>
-  <path d="M500 800 L660 800" class="rel" marker-end="url(#arrow)"/><text x="565" y="785" class="card">1 : M</text>
-  <path d="M290 450 L290 1150" class="rel" marker-end="url(#arrow)"/><text x="305" y="1020" class="card">1 : M</text>
-  <path d="M500 410 L680 1260" class="rel" marker-end="url(#arrow)"/><text x="575" y="900" class="card">1 : M</text>
-  <path d="M520 1280 L680 1280" class="rel" marker-end="url(#arrow)"/><text x="585" y="1265" class="card">1 : M</text>
-  <path d="M500 425 L1290 1285" class="rel" marker-end="url(#arrow)"/><text x="960" y="945" class="card">1 : M</text>
+  <!-- Orthogonal relationship lines: no arrows -->
+  <path d="M440 255 H520 V654 H480" class="line"/><text x="505" y="645" class="label">1</text><text x="465" y="645" class="label">M</text>
+  <path d="M440 285 H575 V628 H625" class="line"/><text x="540" y="618" class="label">1</text><text x="600" y="618" class="label">M</text>
+  <path d="M440 320 H520 V627 H1115" class="line"/><text x="505" y="612" class="label">1</text><text x="1085" y="612" class="label">M</text>
+  <path d="M775 367 V450 H1290 V500" class="line"/><text x="790" y="440" class="label">1</text><text x="1303" y="485" class="label">M</text>
+  <path d="M440 365 H545 V978 H1115" class="line"/><text x="530" y="965" class="label">1</text><text x="1085" y="965" class="label">M</text>
+  <path d="M440 350 H500 V978 H480" class="line"/><text x="485" y="455" class="label">1</text><text x="468" y="965" class="label">1</text>
+  <path d="M935 948 H1030 V978 H1115" class="line"/><text x="1010" y="965" class="label">1</text><text x="1085" y="965" class="label">M</text>
 
-  <text x="80" y="1555" class="note">Legend: PK = Primary Key · FK = Foreign Key · 1 : M = One-to-Many · 1 : 1 = One-to-One</text>
-  <text x="80" y="1585" class="note">Print recommendation: Landscape orientation, A3 paper, 100% scale. The diagram uses black text and high-contrast borders for printing.</text>
+  <rect x="80" y="1080" width="1440" height="1" fill="#aaa"/>
+  <text x="90" y="1095" class="legend">Legend: PK = Primary Key · FK = Foreign Key · Relationship lines use right-angle connectors · 1 = one record · M = many records</text>
 </svg>
