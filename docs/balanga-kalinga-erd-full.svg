@@ -2,7 +2,7 @@
   <title id="title">Balanga Kalinga complete entity relationship diagram</title>
   <desc id="desc">Complete print-friendly ERD showing all database tables and clean non-crossing relationship lines.</desc>
   <style>
-    .bg{fill:#fff}.title{font:bold 30px Arial,sans-serif;fill:#111;text-anchor:middle}.sub{font:16px Arial,sans-serif;fill:#555;text-anchor:middle}.box{stroke:#222;stroke-width:1.5}.head{stroke:#222;stroke-width:1.5}.name{font:bold 16px Arial,sans-serif;fill:#111;text-anchor:middle}.field{font:14px 'Courier New',monospace;fill:#111}.pk{font-weight:bold}.rel{stroke:#222;stroke-width:1.7;fill:none}.dash{stroke:#777;stroke-width:1.4;stroke-dasharray:6 5;fill:none}.card{font:bold 13px Arial,sans-serif;fill:#222}.note{font:14px Arial,sans-serif;fill:#444}
+    .bg{fill:#fff}.title{font:bold 36px Arial,sans-serif;fill:#111;text-anchor:middle}.sub{font:19px Arial,sans-serif;fill:#555;text-anchor:middle}.box{stroke:#222;stroke-width:1.8}.head{stroke:#222;stroke-width:1.8}.name{font:bold 19px Arial,sans-serif;fill:#111;text-anchor:middle}.field{font:16px 'Courier New',monospace;fill:#111}.pk{font-weight:bold}.rel{stroke:#222;stroke-width:2;fill:none}.dash{stroke:#777;stroke-width:1.6;stroke-dasharray:6 5;fill:none}.card{font:bold 16px Arial,sans-serif;fill:#222}.note{font:16px Arial,sans-serif;fill:#444}
   </style>
   <rect class="bg" width="2200" height="1380"/>
   <text x="1100" y="50" class="title">Balanga Kalinga — Complete Entity Relationship Diagram</text>
@@ -40,5 +40,5 @@
   <text x="70" y="1100" class="note">emergency_resources is a standalone support directory (no foreign key relationship).</text>
 
   <text x="65" y="1150" class="note">Legend: PK = Primary Key · FK = Foreign Key · 1 = one record · M = many records · dashed line = support reference, not a foreign key.</text>
-  <text x="65" y="1180" class="note">Print recommendation: Landscape orientation, A3 paper or larger, at 100% scale. All text uses high contrast for readability.</text>
+  <text x="65" y="1180" class="note">Print recommendation: Landscape orientation, A3 paper or larger, at 100% scale. All text uses high contrast and enlarged labels for readability.</text>
 </svg>
