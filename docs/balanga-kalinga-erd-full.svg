@@ -2,7 +2,7 @@
   <title id="title">Balanga Kalinga complete entity relationship diagram</title>
   <desc id="desc">Complete print-friendly ERD showing all database tables and clean non-crossing relationship lines.</desc>
   <style>
-    .bg{fill:#fff}.title{font:bold 36px Arial,sans-serif;fill:#111;text-anchor:middle}.sub{font:19px Arial,sans-serif;fill:#555;text-anchor:middle}.box{stroke:#222;stroke-width:1.8}.head{stroke:#222;stroke-width:1.8}.name{font:bold 19px Arial,sans-serif;fill:#111;text-anchor:middle}.field{font:16px 'Courier New',monospace;fill:#111}.pk{font-weight:bold}.rel{stroke:#222;stroke-width:2;fill:none}.dash{stroke:#777;stroke-width:1.6;stroke-dasharray:6 5;fill:none}.card{font:bold 16px Arial,sans-serif;fill:#222}.note{font:16px Arial,sans-serif;fill:#444}
+    .bg{fill:#fff}.title{font:bold 38px Arial,sans-serif;fill:#111;text-anchor:middle}.sub{font:20px Arial,sans-serif;fill:#555;text-anchor:middle}.box{stroke:#222;stroke-width:2}.head{stroke:#222;stroke-width:2}.name{font:bold 20px Arial,sans-serif;fill:#111;text-anchor:middle}.field{font:18px 'Courier New',monospace;fill:#111}.pk{font-weight:bold}.rel{stroke:#222;stroke-width:2.2;fill:none}.dash{stroke:#777;stroke-width:1.8;stroke-dasharray:6 5;fill:none}.card{font:bold 18px Arial,sans-serif;fill:#222}.note{font:18px Arial,sans-serif;fill:#444}
   </style>
   <rect class="bg" width="2200" height="1380"/>
 
