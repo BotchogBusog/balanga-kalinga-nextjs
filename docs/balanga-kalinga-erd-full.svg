@@ -5,8 +5,6 @@
     .bg{fill:#fff}.title{font:bold 36px Arial,sans-serif;fill:#111;text-anchor:middle}.sub{font:19px Arial,sans-serif;fill:#555;text-anchor:middle}.box{stroke:#222;stroke-width:1.8}.head{stroke:#222;stroke-width:1.8}.name{font:bold 19px Arial,sans-serif;fill:#111;text-anchor:middle}.field{font:16px 'Courier New',monospace;fill:#111}.pk{font-weight:bold}.rel{stroke:#222;stroke-width:2;fill:none}.dash{stroke:#777;stroke-width:1.6;stroke-dasharray:6 5;fill:none}.card{font:bold 16px Arial,sans-serif;fill:#222}.note{font:16px Arial,sans-serif;fill:#444}
   </style>
   <rect class="bg" width="2200" height="1380"/>
-  <text x="1100" y="50" class="title">Balanga Kalinga — Complete Entity Relationship Diagram</text>
-  <text x="1100" y="78" class="sub">All current database tables · designed with orthogonal, non-crossing relationship lines</text>
 
   <!-- Central users table -->
   <g transform="translate(915 125)"><rect width="370" height="220" fill="#dcecd2" class="box"/><rect width="370" height="40" fill="#c4ddb5" class="head"/><text x="185" y="26" class="name">users</text><text x="16" y="68" class="field pk">PK  id</text><text x="16" y="94" class="field">name</text><text x="16" y="120" class="field">email, student_id</text><text x="16" y="146" class="field">password_hash</text><text x="16" y="172" class="field">role, course</text><text x="16" y="198" class="field">year_level, school</text></g>
@@ -36,9 +34,4 @@
   <!-- Support-table vertical links only -->
   <path d="M1350 704 V885 M1650 678 V885 M1950 678 V885" class="rel"/>
   <text x="1364" y="805" class="card">1</text><text x="1664" y="790" class="card">M</text><text x="1964" y="790" class="card">1</text>
-  <!-- emergency_resources is standalone because it has no foreign-key relationship. -->
-  <text x="70" y="1100" class="note">emergency_resources is a standalone support directory (no foreign key relationship).</text>
-
-  <text x="65" y="1150" class="note">Legend: PK = Primary Key · FK = Foreign Key · 1 = one record · M = many records · dashed line = support reference, not a foreign key.</text>
-  <text x="65" y="1180" class="note">Print recommendation: Landscape orientation, A3 paper or larger, at 100% scale. All text uses high contrast and enlarged labels for readability.</text>
 </svg>
