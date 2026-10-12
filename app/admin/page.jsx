@@ -42,13 +42,51 @@ export default async function AdminPage({ searchParams }) {
 
   return (
     <>
-       <h1 style={{ fontSize: 22 }}>Admin Dashboard</h1>
-       <p className="muted">Staff view for student support activity. Individual Kalinga AI chats are never shown here; only aggregated trends are available.</p>
-       {searchParams?.saved && <div className="notice notice-success" style={{ marginTop: 10 }}>{searchParams.saved}</div>}
-      <div className="card" style={{ marginTop: 14 }} id="appointments">
-        <h2>Appointments (latest 20)</h2>
-        {appointments.length ? (
-          <div style={{ overflowX: "auto" }}>
+      <div className="admin-workspace">
+        <main className="admin-overview">
+          <div className="admin-page-heading">
+            <div className="eyebrow">Staff workspace</div>
+            <h1>Admin Dashboard</h1>
+            <p className="muted">Review student support activity, counselor availability, and anonymous wellness trends.</p>
+          </div>
+          {searchParams?.saved && <div className="notice notice-success">{searchParams.saved}</div>}
+          <div className="grid grid-3">
+            <div className="card stat admin-stat-primary">
+              <div className="label">Students</div><div className="value">{Number(usersCount)}</div><div className="muted">Registered accounts</div>
+            </div>
+            <div className="card stat"><div className="label">Pending appointments</div><div className="value">{Number(pendingCount)}</div><div className="muted">of {Number(totalAppts)} total requests</div></div>
+            <div className="card stat"><div className="label">Available counselors</div><div className="value">{Number(counselorsAvail)}</div><div className="muted">Currently on duty</div></div>
+          </div>
+          <div className="card admin-checks">
+            <div className="label">Wellness checks total</div>
+            <div className="value">{Number(assessmentsCount)}</div>
+          </div>
+          <div className="grid grid-2">
+            <div className="card">
+              <h2>Wellness levels</h2>
+              {levels.length ? levels.map((l, i) => (
+                <div key={i} className="status-row"><span>{l.overall_level}</span><strong>{Number(l.c)}</strong></div>
+              )) : <p className="muted">No data yet.</p>}
+              <h2 style={{ marginTop: 18 }}>Mood counts</h2>
+              {moods.length ? moods.map((m, i) => (
+                <div key={i} className="status-row"><span>{m.mood}</span><strong>{Number(m.c)}</strong></div>
+              )) : <p className="muted">No moods yet.</p>}
+            </div>
+            <div className="card" id="counselors">
+              <h2>Counselors</h2>
+              {counselors.map((c) => (
+                <div key={c.id} className="status-row">
+                  <div><strong>{c.name}</strong><span className="muted">{c.specialization} · {c.is_available ? "Available" : "Unavailable"}</span></div>
+                  <a href={`/admin?toggle_counselor=${c.id}`} className="btn btn-secondary btn-small">{c.is_available ? "Set unavailable" : "Set available"}</a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </main>
+        <aside className="admin-records" aria-label="Latest student records">
+          <section className="card admin-record-card" id="appointments">
+            <div className="admin-record-heading"><div><div className="eyebrow">Records</div><h2>Appointments</h2></div><span className="badge badge-blue">Latest 20</span></div>
+            {appointments.length ? <div className="admin-table-scroll">
             <table><tbody>
               <tr><th>Student</th><th>Counselor</th><th>Date / Time</th><th>Method</th><th>Status</th><th>Action</th></tr>
               {appointments.map((a) => (
@@ -62,12 +100,11 @@ export default async function AdminPage({ searchParams }) {
                 </tr>
               ))}
             </tbody></table>
-          </div>
-        ) : <p className="muted">No appointments yet.</p>}
-      </div>
-      <div className="card" style={{ marginTop: 14 }} id="students">
-        <h2>Students (latest 20)</h2>
-        <div style={{ overflowX: "auto" }}>
+            </div> : <p className="muted">No appointments yet.</p>}
+          </section>
+          <section className="card admin-record-card" id="students">
+            <div className="admin-record-heading"><div><div className="eyebrow">Directory</div><h2>Students</h2></div><span className="badge badge-blue">Latest 20</span></div>
+            <div className="admin-table-scroll">
           <table><tbody>
             <tr><th>Name</th><th>Email</th><th>ID</th><th>Course</th><th>Joined</th><th></th></tr>
             {students.map((u) => (
@@ -78,45 +115,9 @@ export default async function AdminPage({ searchParams }) {
               </tr>
             ))}
           </tbody></table>
-        </div>
-      </div>
-      <div className="grid grid-3" style={{ marginTop: 14 }}>
-        <div className="card stat" style={{ background: "#0f1f3a", color: "#fff", borderColor: "#0f1f3a" }}>
-          <div className="label" style={{ color: "#b0bdd4" }}>Students</div>
-          <div className="value" style={{ color: "#fff" }}>{Number(usersCount)}</div>
-          <div className="muted" style={{ color: "#b0bdd4", fontSize: 12 }}>Registered accounts</div>
-        </div>
-        <div className="card stat"><div className="label">Pending appointments</div><div className="value">{Number(pendingCount)} / {Number(totalAppts)}</div><div className="muted" style={{ fontSize: 12 }}>Needs review</div></div>
-        <div className="card stat"><div className="label">Available counselors</div><div className="value">{Number(counselorsAvail)}</div><div className="muted" style={{ fontSize: 12 }}>On duty</div></div>
-      </div>
-      <div className="grid grid-2" style={{ marginTop: 12 }}>
-        <div className="card stat"><div className="label">Wellness checks total</div><div className="value" style={{ fontSize: 18 }}>{Number(assessmentsCount)}</div></div>
-        <div className="card" style={{ background: "#f7fafc", borderColor: "#d5e0ea" }}><strong style={{ fontSize: 13 }}>Staff note</strong><p className="muted" style={{ fontSize: 12, marginTop: 4 }}>Use this page to review appointment requests, counselor availability, and anonymous wellness trends.</p></div>
-      </div>
-      <div className="grid grid-2" style={{ marginTop: 14 }}>
-        <div className="card">
-          <h2>Wellness levels (aggregated)</h2>
-          {levels.length ? levels.map((l, i) => (
-            <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "6px 0", borderBottom: "1px solid #f2f4f7", fontSize: 13 }}>
-              <span>{l.overall_level}</span><strong>{Number(l.c)}</strong>
             </div>
-          )) : <p className="muted">No data yet.</p>}
-          <h2 style={{ marginTop: 14 }}>Mood counts</h2>
-          {moods.length ? moods.map((m, i) => (
-            <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "6px 0", borderBottom: "1px solid #f2f4f7", fontSize: 13 }}>
-              <span>{m.mood}</span><strong>{Number(m.c)}</strong>
-            </div>
-          )) : <p className="muted">No moods yet.</p>}
-        </div>
-        <div className="card" id="counselors">
-          <h2>Counselors</h2>
-          {counselors.map((c) => (
-            <div key={c.id} style={{ padding: "8px 0", borderBottom: "1px solid #f2f4f7", display: "flex", justifyContent: "space-between", gap: 10 }}>
-              <div><strong style={{ fontSize: 13 }}>{c.name}</strong><br /><span className="muted" style={{ fontSize: 12 }}>{c.specialization} - {c.is_available ? "Available" : "Unavailable"}</span></div>
-              <a href={`/admin?toggle_counselor=${c.id}`} className="btn btn-secondary btn-small" style={{ height: "fit-content" }}>{c.is_available ? "Set unavailable" : "Set available"}</a>
-            </div>
-          ))}
-        </div>
+          </section>
+        </aside>
       </div>
       <p className="muted" style={{ marginTop: 12, fontSize: 12 }}>Admin area - separate login via /admin-login. Student login at /login.</p>
     </>
