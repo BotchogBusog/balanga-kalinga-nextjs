@@ -42,9 +42,44 @@ export default async function AdminPage({ searchParams }) {
 
   return (
     <>
-      <h1 style={{ fontSize: 22 }}>Admin Dashboard</h1>
+       <h1 style={{ fontSize: 22 }}>Admin Dashboard</h1>
        <p className="muted">Staff view for student support activity. Individual Kalinga AI chats are never shown here; only aggregated trends are available.</p>
-      {searchParams?.saved && <div className="notice notice-success" style={{ marginTop: 10 }}>{searchParams.saved}</div>}
+       {searchParams?.saved && <div className="notice notice-success" style={{ marginTop: 10 }}>{searchParams.saved}</div>}
+      <div className="card" style={{ marginTop: 14 }} id="appointments">
+        <h2>Appointments (latest 20)</h2>
+        {appointments.length ? (
+          <div style={{ overflowX: "auto" }}>
+            <table><tbody>
+              <tr><th>Student</th><th>Counselor</th><th>Date / Time</th><th>Method</th><th>Status</th><th>Action</th></tr>
+              {appointments.map((a) => (
+                <tr key={a.id}>
+                  <td>{a.student_name}<br /><span className="muted" style={{ fontSize: 12 }}>{a.email}</span></td>
+                  <td>{a.counselor_name}</td>
+                  <td>{String(a.requested_date).slice(0, 10)} {a.requested_time}</td>
+                  <td>{a.method}</td>
+                  <td><span className={`badge ${a.status === "approved" ? "badge-green" : a.status === "pending" ? "badge-yellow" : "badge-red"}`}>{a.status}</span></td>
+                  <td>{a.status === "pending" ? (<><a href={`/admin?approve=${a.id}`} className="btn btn-primary btn-small">Approve</a> <a href={`/admin?decline=${a.id}`} className="btn btn-secondary btn-small">Decline</a></>) : <span className="muted" style={{ fontSize: 12 }}>No action</span>}</td>
+                </tr>
+              ))}
+            </tbody></table>
+          </div>
+        ) : <p className="muted">No appointments yet.</p>}
+      </div>
+      <div className="card" style={{ marginTop: 14 }} id="students">
+        <h2>Students (latest 20)</h2>
+        <div style={{ overflowX: "auto" }}>
+          <table><tbody>
+            <tr><th>Name</th><th>Email</th><th>ID</th><th>Course</th><th>Joined</th><th></th></tr>
+            {students.map((u) => (
+              <tr key={u.id}>
+                <td>{u.name}</td><td>{u.email}</td><td>{u.student_id}</td><td>{u.course}</td>
+                <td>{new Date(u.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</td>
+                <td><a href={`/admin?delete_user=${u.id}`} style={{ fontSize: 12, color: "#b42318" }}>Remove</a></td>
+              </tr>
+            ))}
+          </tbody></table>
+        </div>
+      </div>
       <div className="grid grid-3" style={{ marginTop: 14 }}>
         <div className="card stat" style={{ background: "#0f1f3a", color: "#fff", borderColor: "#0f1f3a" }}>
           <div className="label" style={{ color: "#b0bdd4" }}>Students</div>
@@ -81,41 +116,6 @@ export default async function AdminPage({ searchParams }) {
               <a href={`/admin?toggle_counselor=${c.id}`} className="btn btn-secondary btn-small" style={{ height: "fit-content" }}>{c.is_available ? "Set unavailable" : "Set available"}</a>
             </div>
           ))}
-        </div>
-      </div>
-      <div className="card" style={{ marginTop: 14 }} id="appointments">
-        <h2>Appointments (latest 20)</h2>
-        {appointments.length ? (
-          <div style={{ overflowX: "auto" }}>
-            <table><tbody>
-              <tr><th>Student</th><th>Counselor</th><th>Date / Time</th><th>Method</th><th>Status</th><th>Action</th></tr>
-              {appointments.map((a) => (
-                <tr key={a.id}>
-                  <td>{a.student_name}<br /><span className="muted" style={{ fontSize: 12 }}>{a.email}</span></td>
-                  <td>{a.counselor_name}</td>
-                  <td>{String(a.requested_date).slice(0, 10)} {a.requested_time}</td>
-                  <td>{a.method}</td>
-                  <td><span className={`badge ${a.status === "approved" ? "badge-green" : a.status === "pending" ? "badge-yellow" : "badge-red"}`}>{a.status}</span></td>
-                  <td>{a.status === "pending" ? (<><a href={`/admin?approve=${a.id}`} className="btn btn-primary btn-small">Approve</a> <a href={`/admin?decline=${a.id}`} className="btn btn-secondary btn-small">Decline</a></>) : <span className="muted" style={{ fontSize: 12 }}>No action</span>}</td>
-                </tr>
-              ))}
-            </tbody></table>
-          </div>
-        ) : <p className="muted">No appointments yet.</p>}
-      </div>
-      <div className="card" style={{ marginTop: 14 }} id="students">
-        <h2>Students (latest 20)</h2>
-        <div style={{ overflowX: "auto" }}>
-          <table><tbody>
-            <tr><th>Name</th><th>Email</th><th>ID</th><th>Course</th><th>Joined</th><th></th></tr>
-            {students.map((u) => (
-              <tr key={u.id}>
-                <td>{u.name}</td><td>{u.email}</td><td>{u.student_id}</td><td>{u.course}</td>
-                <td>{new Date(u.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</td>
-                <td><a href={`/admin?delete_user=${u.id}`} style={{ fontSize: 12, color: "#b42318" }}>Remove</a></td>
-              </tr>
-            ))}
-          </tbody></table>
         </div>
       </div>
       <p className="muted" style={{ marginTop: 12, fontSize: 12 }}>Admin area - separate login via /admin-login. Student login at /login.</p>
