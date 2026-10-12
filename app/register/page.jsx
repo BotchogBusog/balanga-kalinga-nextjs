@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { query } from "../../lib/db";
 import { currentUser, hashPassword, setSessionCookie } from "../../lib/auth";
 import { isLetterField, isStudentId } from "../../lib/validation";
+import { sendRegistrationEmail } from "../../lib/email";
 
 export default async function RegisterPage({ searchParams }) {
   const me = await currentUser().catch(() => null);
@@ -31,6 +32,11 @@ export default async function RegisterPage({ searchParams }) {
     if (existing.length) fail("Email or student ID already exists.");
     const hash = await hashPassword(password);
     const res = await query("INSERT INTO users (name,email,student_id,password_hash,role,course,year_level,school) VALUES (?,?,?,?,?,?,?,?)", [name, email, student_id || null, hash, "student", course, year, school]);
+    try {
+      await sendRegistrationEmail({ name, email });
+    } catch (error) {
+      console.error("[Email] registration confirmation failed", { message: error?.message });
+    }
     await setSessionCookie(res.insertId);
     redirect("/dashboard");
   }
