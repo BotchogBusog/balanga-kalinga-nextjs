@@ -103,6 +103,7 @@ CREATE TABLE appointments (
   UNIQUE KEY transaction_ref (transaction_ref),
   KEY user_id (user_id),
   KEY counselor_id (counselor_id),
+  KEY appointments_counselor_slot_idx (counselor_id, requested_date, requested_time, status),
   CONSTRAINT appointments_ibfk_1 FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
   CONSTRAINT appointments_ibfk_2 FOREIGN KEY (counselor_id) REFERENCES counselors (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

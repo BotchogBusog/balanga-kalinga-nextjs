@@ -29,6 +29,13 @@ export default async function CounselingPage({ searchParams }) {
     const notes = (formData.get("notes") || "").toString().trim();
     const transactionRef = `BK-${new Date().toISOString().slice(0, 10).replaceAll("-", "")}-${crypto.randomUUID().slice(0, 8).toUpperCase()}`;
     if (!counselor_id || !date || !time) red("/counseling?error=" + encodeURIComponent("Please fill in date and time."));
+    const occupied = await q(
+      "SELECT id FROM appointments WHERE counselor_id=? AND requested_date=? AND requested_time=? AND status IN ('pending','approved') LIMIT 1",
+      [counselor_id, date, time]
+    );
+    if (occupied.length) {
+      red("/counseling?error=" + encodeURIComponent("This counselor is unavailable at that date and time. Please choose another time slot."));
+    }
     await q("INSERT INTO appointments (transaction_ref,user_id,counselor_id,requested_date,requested_time,method,notes,status) VALUES (?,?,?,?,?,?,?,?)",
       [transactionRef, uid, counselor_id, date, time, method, notes, "pending"]);
     const { revalidatePath: rev } = await import("next/cache");
@@ -49,7 +56,7 @@ export default async function CounselingPage({ searchParams }) {
   return (
     <>
       <h1>Counseling</h1>
-      <p className="muted">Request a time with a counselor. They will confirm your appointment. Your notes are private between you and the counselor.</p>
+       <p className="muted">Request a time with a counselor. Occupied appointment slots cannot be booked. Your notes are private between you and the counselor.</p>
       {searchParams?.error && <div className="notice notice-error" style={{ marginTop: 10 }}>{searchParams.error}</div>}
        {searchParams?.saved && <div className="notice notice-success" style={{ marginTop: 10 }}>{searchParams.saved === "requested" ? "Appointment request submitted. Your transaction reference is shown below." : "Appointment transaction updated."}</div>}
       <div className="grid grid-2" style={{ marginTop: 16 }}>
