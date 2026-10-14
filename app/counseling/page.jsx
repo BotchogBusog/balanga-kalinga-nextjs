@@ -7,7 +7,8 @@ import { requireStudent } from "../../lib/auth";
 function statusBadge(status) {
   if (status === "approved") return "badge-green";
   if (status === "pending") return "badge-yellow";
-  if (status === "cancelled") return "badge-red";
+  if (["cancelled", "declined"].includes(status)) return "badge-red";
+  if (status === "completed") return "badge-blue";
   return "badge-blue";
 }
 
@@ -26,12 +27,13 @@ export default async function CounselingPage({ searchParams }) {
     const time = (formData.get("requested_time") || "").toString();
     const method = (formData.get("method") || "In-person").toString();
     const notes = (formData.get("notes") || "").toString().trim();
+    const transactionRef = `BK-${new Date().toISOString().slice(0, 10).replaceAll("-", "")}-${crypto.randomUUID().slice(0, 8).toUpperCase()}`;
     if (!counselor_id || !date || !time) red("/counseling?error=" + encodeURIComponent("Please fill in date and time."));
-    await q("INSERT INTO appointments (user_id,counselor_id,requested_date,requested_time,method,notes,status) VALUES (?,?,?,?,?,?,?)",
-      [uid, counselor_id, date, time, method, notes, "pending"]);
+    await q("INSERT INTO appointments (transaction_ref,user_id,counselor_id,requested_date,requested_time,method,notes,status) VALUES (?,?,?,?,?,?,?,?)",
+      [transactionRef, uid, counselor_id, date, time, method, notes, "pending"]);
     const { revalidatePath: rev } = await import("next/cache");
     rev("/counseling");
-    red("/counseling?saved=1");
+    red("/counseling?saved=requested");
   }
 
   if (searchParams?.cancel) {
@@ -49,7 +51,7 @@ export default async function CounselingPage({ searchParams }) {
       <h1>Counseling</h1>
       <p className="muted">Request a time with a counselor. They will confirm your appointment. Your notes are private between you and the counselor.</p>
       {searchParams?.error && <div className="notice notice-error" style={{ marginTop: 10 }}>{searchParams.error}</div>}
-      {searchParams?.saved && <div className="notice notice-success" style={{ marginTop: 10 }}>Appointment updated.</div>}
+       {searchParams?.saved && <div className="notice notice-success" style={{ marginTop: 10 }}>{searchParams.saved === "requested" ? "Appointment request submitted. Your transaction reference is shown below." : "Appointment transaction updated."}</div>}
       <div className="grid grid-2" style={{ marginTop: 16 }}>
         <div>
           <h2>Available counselors</h2>
@@ -69,7 +71,7 @@ export default async function CounselingPage({ searchParams }) {
                   </div>
                   <div className="form-group"><label>Method</label><select name="method" defaultValue="In-person"><option>In-person</option><option>Video call</option><option>Phone</option></select></div>
                   <div className="form-group"><label>Notes (optional)</label><textarea name="notes" placeholder="What would you like to talk about?" /></div>
-                  <button type="submit" className="btn btn-primary btn-small">Request appointment</button>
+                  <button type="submit" className="btn btn-primary btn-small">Submit appointment request</button>
                 </form>
               </details>
             </div>
@@ -77,9 +79,10 @@ export default async function CounselingPage({ searchParams }) {
         </div>
         <div>
           <div className="card">
-            <h2>Your appointments</h2>
+            <h2>Appointment transaction history</h2>
             {appointments.length ? appointments.map((a) => (
               <div key={a.id} style={{ padding: "10px 0", borderBottom: "1px solid #eef2f7" }}>
+                <div className="eyebrow" style={{ marginBottom: 4 }}>Reference: {a.transaction_ref || `BK-${a.id}`}</div>
                 <strong style={{ fontSize: 14 }}>{a.counselor_name}</strong> <span className="muted" style={{ fontSize: 12 }}>- {a.specialization}</span><br />
                 <span style={{ fontSize: 13 }}>{String(a.requested_date).slice(0, 10)} at {a.requested_time} - {a.method}</span>
                 <span className={`badge ${statusBadge(a.status)}`} style={{ marginLeft: 6, fontSize: 11 }}>{a.status}</span>
@@ -92,7 +95,8 @@ export default async function CounselingPage({ searchParams }) {
             <h3>What to expect</h3>
             <ul style={{ marginLeft: 18, fontSize: 13, color: "#475467", lineHeight: 1.8 }}>
               <li>Counselor reviews your request (usually within a day)</li>
-              <li>You will see the status update to approved</li>
+               <li>Track the request with your transaction reference number</li>
+               <li>Status can be pending, approved, declined, completed, or cancelled</li>
               <li>Meet at the agreed time and place</li>
               <li>You can cancel a pending request any time</li>
             </ul>

@@ -21,6 +21,13 @@ function levelLabel(level) {
   return level;
 }
 
+function appointmentBadge(status) {
+  if (status === "approved") return "badge-green";
+  if (status === "pending") return "badge-yellow";
+  if (["declined", "cancelled"].includes(status)) return "badge-red";
+  return "badge-blue";
+}
+
 export default async function DashboardPage({ searchParams }) {
   const user = await requireStudent();
   const uid = user.id;
@@ -89,7 +96,7 @@ export default async function DashboardPage({ searchParams }) {
         <section className="card">
           <div className="eyebrow">Counseling</div>
           <h2 style={{ marginTop: 5 }}>Appointments</h2>
-          {appts.length ? <div className="status-row"><div><strong>{appts[0].counselor_name}</strong><span className="muted">{String(appts[0].requested_date).slice(0, 10)} at {appts[0].requested_time}</span></div><span className={`badge ${appts[0].status === "approved" ? "badge-green" : appts[0].status === "pending" ? "badge-yellow" : "badge-red"}`}>{appts[0].status}</span></div> : <p className="muted">No appointment scheduled.</p>}
+          {appts.length ? <div className="status-row"><div><strong>{appts[0].counselor_name}</strong><span className="muted">{String(appts[0].requested_date).slice(0, 10)} at {appts[0].requested_time}</span></div><span className={`badge ${appointmentBadge(appts[0].status)}`}>{appts[0].status}</span></div> : <p className="muted">No appointment scheduled.</p>}
           <a href="/counseling" className="btn btn-secondary btn-small" style={{ marginTop: 12 }}>{appts.length ? "View counseling" : "Book counseling"}</a>
         </section>
       </div>

@@ -90,6 +90,7 @@ CREATE TABLE ai_messages (
 
 CREATE TABLE appointments (
   id int(11) NOT NULL AUTO_INCREMENT,
+  transaction_ref varchar(50) NOT NULL,
   user_id int(11) NOT NULL,
   counselor_id int(11) NOT NULL,
   requested_date date NOT NULL,
@@ -99,6 +100,7 @@ CREATE TABLE appointments (
   status varchar(30) DEFAULT 'pending',
   created_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
+  UNIQUE KEY transaction_ref (transaction_ref),
   KEY user_id (user_id),
   KEY counselor_id (counselor_id),
   CONSTRAINT appointments_ibfk_1 FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,

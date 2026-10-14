@@ -7,15 +7,11 @@ import { requireAdmin } from "../../lib/auth";
 export default async function AdminPage({ searchParams }) {
   const user = await requireAdmin();
 
-  if (searchParams?.approve) {
-    await query("UPDATE appointments SET status='approved' WHERE id=?", [Number(searchParams.approve)]);
+  const transactionStatuses = ["pending", "approved", "declined", "completed", "cancelled"];
+  if (searchParams?.appointment && transactionStatuses.includes(searchParams?.status)) {
+    await query("UPDATE appointments SET status=? WHERE id=?", [searchParams.status, Number(searchParams.appointment)]);
     revalidatePath("/admin");
-    redirect("/admin?saved=Appointment approved.");
-  }
-  if (searchParams?.decline) {
-    await query("UPDATE appointments SET status='declined' WHERE id=?", [Number(searchParams.decline)]);
-    revalidatePath("/admin");
-    redirect("/admin?saved=Appointment declined.");
+    redirect("/admin?saved=Appointment transaction updated.");
   }
   if (searchParams?.toggle_counselor) {
     await query("UPDATE counselors SET is_available = 1 - is_available WHERE id=?", [Number(searchParams.toggle_counselor)]);
@@ -85,18 +81,18 @@ export default async function AdminPage({ searchParams }) {
         </main>
         <aside className="admin-records" aria-label="Latest student records">
           <section className="card admin-record-card" id="appointments">
-            <div className="admin-record-heading"><div><div className="eyebrow">Records</div><h2>Appointments</h2></div><span className="badge badge-blue">Latest 20</span></div>
+            <div className="admin-record-heading"><div><div className="eyebrow">Transactions</div><h2>Appointments</h2></div><span className="badge badge-blue">Latest 20</span></div>
             {appointments.length ? <div className="admin-table-scroll">
             <table><tbody>
-              <tr><th>Student</th><th>Counselor</th><th>Date / Time</th><th>Method</th><th>Status</th><th>Action</th></tr>
+              <tr><th>Reference / Student</th><th>Counselor</th><th>Date / Time</th><th>Method</th><th>Status</th><th>Update status</th></tr>
               {appointments.map((a) => (
                 <tr key={a.id}>
-                  <td>{a.student_name}<br /><span className="muted" style={{ fontSize: 12 }}>{a.email}</span></td>
+                  <td><strong style={{ fontSize: 12 }}>{a.transaction_ref || `BK-${a.id}`}</strong><br />{a.student_name}<br /><span className="muted" style={{ fontSize: 12 }}>{a.email}</span></td>
                   <td>{a.counselor_name}</td>
                   <td>{String(a.requested_date).slice(0, 10)} {a.requested_time}</td>
                   <td>{a.method}</td>
-                  <td><span className={`badge ${a.status === "approved" ? "badge-green" : a.status === "pending" ? "badge-yellow" : "badge-red"}`}>{a.status}</span></td>
-                  <td>{a.status === "pending" ? (<><a href={`/admin?approve=${a.id}`} className="btn btn-primary btn-small">Approve</a> <a href={`/admin?decline=${a.id}`} className="btn btn-secondary btn-small">Decline</a></>) : <span className="muted" style={{ fontSize: 12 }}>No action</span>}</td>
+                  <td><span className={`badge ${a.status === "approved" ? "badge-green" : a.status === "pending" ? "badge-yellow" : ["declined", "cancelled"].includes(a.status) ? "badge-red" : "badge-blue"}`}>{a.status}</span></td>
+                  <td><form action="/admin" style={{ display: "flex", gap: 6 }}><input type="hidden" name="appointment" value={a.id} /><select name="status" defaultValue={a.status} style={{ minWidth: 104, padding: "5px 6px", fontSize: 12 }}><option value="pending">Pending</option><option value="approved">Approved</option><option value="declined">Declined</option><option value="completed">Completed</option><option value="cancelled">Cancelled</option></select><button className="btn btn-secondary btn-small" type="submit">Save</button></form></td>
                 </tr>
               ))}
             </tbody></table>
