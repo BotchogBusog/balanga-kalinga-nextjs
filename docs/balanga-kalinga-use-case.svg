@@ -40,7 +40,7 @@
   <g><ellipse cx="600" cy="300" rx="145" ry="38" class="usecase"/><text x="600" y="296" class="use-text">Wellness Check and</text><text x="600" y="313" class="use-text">Mental Health Screening</text></g>
   <g><ellipse cx="600" cy="395" rx="145" ry="38" class="usecase"/><text x="600" y="391" class="use-text">Review Student</text><text x="600" y="408" class="use-text">Wellness Records</text></g>
   <g><ellipse cx="600" cy="490" rx="145" ry="38" class="usecase"/><text x="600" y="486" class="use-text">Counseling Appointment</text><text x="600" y="503" class="use-text">Management</text></g>
-  <g><ellipse cx="600" cy="585" rx="145" ry="38" class="usecase"/><text x="600" y="581" class="use-text">Self-Care Activities and</text><text x="600" y="598" class="use-text">Personal Safety Plan</text></g>
+  <g><ellipse cx="600" cy="585" rx="145" ry="38" class="usecase"/><text x="600" y="581" class="use-text">Mood Check-ins and</text><text x="600" y="598" class="use-text">Progress Tracking</text></g>
   <g><ellipse cx="600" cy="680" rx="145" ry="38" class="usecase"/><text x="600" y="676" class="use-text">Generate Wellness</text><text x="600" y="693" class="use-text">Reports and Trends</text></g>
 
   <!-- Student associations -->
