@@ -5,22 +5,23 @@ import { requireStudent } from "../../lib/auth";
 import { analyzeWellness } from "../../lib/ai";
 
 const QUESTIONS = [
-  { text: "How stressed do you feel about academic deadlines and workload right now?", area: "Work" },
-  { text: "In the last week, how has your sleep been?", area: "Sleep" },
-  { text: "How is your energy level most days?", area: "Energy" },
-  { text: "How would you describe your overall mood lately?", area: "Mood" },
-  { text: "How connected do you feel to friends, family, or classmates?", area: "Connection" },
-  { text: "How often do you feel anxious, nervous, or on edge?", area: "Anxiety" },
-  { text: "How is your motivation for schoolwork and daily tasks?", area: "Motivation" },
-  { text: "How heavy does your current workload feel?", area: "Workload" },
-  { text: "How is your emotional well-being (hopeful vs down) lately?", area: "Emotions" },
-  { text: "How well do you feel you are coping with everything right now?", area: "Coping" },
+  { text: "During the past four weeks, how often have you felt unusually tired without knowing the reason?", area: "Unusual tiredness" },
+  { text: "How often have you experienced feelings of nervousness or anxiety?", area: "Nervousness or anxiety" },
+  { text: "How often have you felt so nervous that it was difficult to calm yourself?", area: "Difficulty calming down" },
+  { text: "How often have you felt hopeless about your situation or the future?", area: "Hopelessness" },
+  { text: "How often have you experienced restlessness or difficulty relaxing?", area: "Restlessness" },
+  { text: "How often have you felt so restless that you had difficulty sitting still?", area: "Difficulty sitting still" },
+  { text: "How often have you experienced feelings of sadness or a persistently low mood?", area: "Low mood" },
+  { text: "How often have you felt that completing your usual daily activities required too much effort?", area: "Daily activities" },
+  { text: "How often have you experienced sadness that was difficult to ease, even when something positive happened?", area: "Persistent sadness" },
+  { text: "How often have you experienced feelings of low self-worth or felt that you had little personal value?", area: "Low self-worth" },
 ];
 const OPTIONS = [
-  { value: 0, label: "Very well / Rarely" },
-  { value: 1, label: "Okay sometimes" },
-  { value: 2, label: "Somewhat difficult" },
-  { value: 3, label: "Very difficult" },
+  { value: 1, label: "None of the time — 1" },
+  { value: 2, label: "A little of the time — 2" },
+  { value: 3, label: "Some of the time — 3" },
+  { value: 4, label: "Most of the time — 4" },
+  { value: 5, label: "All of the time — 5" },
 ];
 function badgeClass(level) {
   if (level === "low" || level === "Doing Well") return "badge-green";
@@ -47,11 +48,11 @@ export default async function WellnessPage({ searchParams }) {
     for (let i = 0; i < QUESTIONS.length; i++) {
       const v = formData.get(`answers_${i}`);
       if (v === null) red("/wellness?error=" + encodeURIComponent("Please answer all questions."));
-      answers.push(Math.min(3, Math.max(0, parseInt(v, 10) || 0)));
+      answers.push(Math.min(5, Math.max(1, parseInt(v, 10) || 1)));
     }
     const values = answers.map((val, i) => ({ question: QUESTIONS[i].area, value: val }));
     const total = answers.reduce((a, b) => a + b, 0);
-    const max = QUESTIONS.length * 3;
+    const max = QUESTIONS.length * 5;
     const analysis = await analyzeWellness(values);
     const overall = analysis.riskLevel;
     const weak = analysis.weakAreas;
@@ -73,7 +74,7 @@ export default async function WellnessPage({ searchParams }) {
   return (
     <>
       <h1>Wellness Check</h1>
-      <p className="muted">10 gentle questions, about 2 minutes. This is not a diagnosis, just a snapshot to help you notice patterns.</p>
+      <p className="muted">The following questions ask about your feelings and experiences over the past four weeks. Please select the answer that best describes how often you experienced each situation.</p>
       {searchParams?.error && <div className="notice notice-error" style={{ marginTop: 10 }}>{searchParams.error}</div>}
       {(searchParams?.saved || result) && <div className="notice notice-success" style={{ marginTop: 10 }}>Wellness check saved.</div>}
       {result && (
@@ -98,11 +99,12 @@ export default async function WellnessPage({ searchParams }) {
       )}
       <div className="grid grid-2" style={{ marginTop: 16 }}>
         <div className="card">
-          <h2>Answer each question honestly</h2>
+          <h2>Response options</h2>
+          <p className="muted" style={{ marginBottom: 14 }}>None of the time — 1 · A little of the time — 2 · Some of the time — 3 · Most of the time — 4 · All of the time — 5</p>
           <form action={submitCheck}>
             {QUESTIONS.map((q, i) => (
               <div key={i} style={{ marginBottom: 14, padding: 12, border: "1px solid #e5e7eb", borderRadius: 10, background: "#fcfcfd" }}>
-                <div style={{ fontWeight: 600, fontSize: 14, marginBottom: 8 }}>{i + 1}. {q.text} <span className="muted" style={{ fontWeight: 400 }}>({q.area})</span></div>
+                <div style={{ fontWeight: 600, fontSize: 14, marginBottom: 8 }}>{i + 1}. {q.text}</div>
                 <div className="option-group">
                   {OPTIONS.map((opt) => (
                     <label key={opt.value}><input type="radio" name={`answers_${i}`} value={opt.value} required /> {opt.label}</label>
@@ -122,12 +124,13 @@ export default async function WellnessPage({ searchParams }) {
                 <tr><th>Date</th><th>Result</th><th>Score</th></tr>
                 {history.map((r) => {
                   let score = 0;
-                  try { score = (JSON.parse(r.answers) || []).reduce((a, x) => a + (x.value || 0), 0); } catch {}
+                  let maxScore = 50;
+                  try { const values = JSON.parse(r.answers) || []; score = values.reduce((a, x) => a + (x.value || 0), 0); if (values.every((x) => x.value <= 3)) maxScore = 30; } catch {}
                   return (
                     <tr key={r.id}>
                       <td>{new Date(r.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</td>
                        <td><span className={`badge ${badgeClass(r.overall_level)}`}>{riskLabel(r.overall_level)}</span></td>
-                      <td>{score}/30</td>
+                       <td>{score}/{maxScore}</td>
                     </tr>
                   );
                 })}
