@@ -64,6 +64,19 @@ export default async function WellnessPage({ searchParams }) {
     red("/wellness?result=" + encodeURIComponent(JSON.stringify({ overall, total, max, summary: analysis.summary, weak, suggested })));
   }
 
+  async function clearHistory() {
+    "use server";
+    const { query: q } = await import("../../lib/db");
+    const { getSessionUserId } = await import("../../lib/auth");
+    const { revalidatePath: rev } = await import("next/cache");
+    const { redirect: red } = await import("next/navigation");
+    const uid = getSessionUserId();
+    if (!uid) red("/login");
+    await q("DELETE FROM wellness_assessments WHERE user_id=?", [uid]);
+    rev("/wellness");
+    red("/wellness?cleared=1");
+  }
+
   const history = await query("SELECT * FROM wellness_assessments WHERE user_id=? ORDER BY created_at DESC LIMIT 10", [user.id]);
   let result = null;
   try { if (searchParams?.result) result = JSON.parse(searchParams.result); } catch {}
@@ -77,6 +90,7 @@ export default async function WellnessPage({ searchParams }) {
       <p className="muted">The following questions ask about your feelings and experiences over the past four weeks. Please select the answer that best describes how often you experienced each situation.</p>
       {searchParams?.error && <div className="notice notice-error" style={{ marginTop: 10 }}>{searchParams.error}</div>}
       {(searchParams?.saved || result) && <div className="notice notice-success" style={{ marginTop: 10 }}>Wellness check saved.</div>}
+      {searchParams?.cleared && <div className="notice notice-success" style={{ marginTop: 10 }}>Your wellness history has been cleared.</div>}
       {result && (
         <div className="card" style={{ marginTop: 16, borderColor: "#c7d7f7", background: "#eef4ff" }}>
           <h2>Your result: <span className={`badge ${badgeClass(result.overall)}`}>{riskLabel(result.overall)}</span> ({result.total}/{result.max})</h2>
@@ -135,8 +149,12 @@ export default async function WellnessPage({ searchParams }) {
                   );
                 })}
               </tbody></table>
-            ) : <p className="muted">No history yet. Take your first check-in on the left.</p>}
-          </div>
+              ) : <p className="muted">No history yet. Take your first check-in on the left.</p>}
+              {history.length > 0 && <form action={clearHistory} style={{ marginTop: 14 }}>
+                <button type="submit" className="btn btn-secondary btn-small" style={{ color: "#b42318", borderColor: "#e4b6b1" }}>Clear all history</button>
+                <p className="muted" style={{ fontSize: 12, marginTop: 6 }}>This permanently removes all of your wellness-check records.</p>
+              </form>}
+            </div>
           <div className="card" style={{ marginTop: 12 }}>
             <h3>What happens after?</h3>
             <p className="muted">You will see areas that may need support and simple actions like breathing exercises, study planners, or reaching out to a counselor. You can also talk to Kalinga AI any time.</p>
