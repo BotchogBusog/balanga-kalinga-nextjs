@@ -12,7 +12,10 @@ export default async function RegisterPage({ searchParams }) {
 
   async function registerAction(formData) {
     "use server";
-    const name = (formData.get("name") || "").toString().trim();
+    const lastName = (formData.get("last_name") || "").toString().trim();
+    const firstName = (formData.get("first_name") || "").toString().trim();
+    const middleInitial = (formData.get("middle_initial") || "").toString().trim();
+    const name = `${firstName}${middleInitial ? ` ${middleInitial.toUpperCase()}.` : ""} ${lastName}`;
     const email = (formData.get("email") || "").toString().trim();
     const student_id = (formData.get("student_id") || "").toString().trim();
     const course = (formData.get("course") || "").toString().trim();
@@ -21,8 +24,9 @@ export default async function RegisterPage({ searchParams }) {
     const password = (formData.get("password") || "").toString();
     const confirm = (formData.get("confirm") || "").toString();
     const fail = (m) => redirect("/register?error=" + encodeURIComponent(m));
-    if (!name || !email || !password) fail("Name, email and password are required.");
-    if (!isLetterField(name)) fail("Name may contain letters, spaces, apostrophes, and hyphens only.");
+    if (!lastName || !firstName || !email || !password) fail("Last name, first name, email and password are required.");
+    if (!isLetterField(lastName) || !isLetterField(firstName)) fail("Names may contain letters, spaces, apostrophes, and hyphens only.");
+    if (middleInitial && !/^\p{L}$/u.test(middleInitial)) fail("Middle initial must be one letter only.");
     if (!isStudentId(student_id)) fail("Student ID may contain numbers and hyphens only.");
     if (!isLetterField(course) || !isLetterField(school)) fail("Course and school may contain letters, spaces, apostrophes, and hyphens only.");
     if (!/^\S+@\S+\.\S+$/.test(email)) fail("Please enter a valid email.");
@@ -48,7 +52,11 @@ export default async function RegisterPage({ searchParams }) {
         <p className="muted">Your data stays private. Takes less than a minute.</p>
         {error && <div className="notice notice-error">{error}</div>}
         <form action={registerAction} style={{ marginTop: 16 }}>
-          <div className="form-group"><label>Full name</label><input type="text" name="name" required maxLength={120} pattern="[A-Za-zÀ-ÖØ-öø-ÿ][A-Za-zÀ-ÖØ-öø-ÿ .'-]*" title="Letters, spaces, apostrophes, and hyphens only" placeholder="Alex Rivera" /></div>
+          <div className="form-row">
+            <div className="form-group"><label>Last Name</label><input type="text" name="last_name" required maxLength={60} pattern="[A-Za-zÀ-ÖØ-öø-ÿ][A-Za-zÀ-ÖØ-öø-ÿ .'-]*" title="Letters, spaces, apostrophes, and hyphens only" placeholder="Rivera" /></div>
+            <div className="form-group"><label>First Name</label><input type="text" name="first_name" required maxLength={60} pattern="[A-Za-zÀ-ÖØ-öø-ÿ][A-Za-zÀ-ÖØ-öø-ÿ .'-]*" title="Letters, spaces, apostrophes, and hyphens only" placeholder="Alex" /></div>
+          </div>
+          <div className="form-group" style={{ maxWidth: 180 }}><label>Middle Initial <span className="muted">(optional)</span></label><input type="text" name="middle_initial" maxLength={1} pattern="[A-Za-zÀ-ÖØ-öø-ÿ]" title="One letter only" placeholder="M" style={{ textTransform: "uppercase" }} /></div>
           <div className="form-row">
             <div className="form-group"><label>Email</label><input type="email" name="email" required maxLength={190} autoComplete="email" placeholder="you@school.edu.ph" /></div>
             <div className="form-group"><label>Student ID (optional)</label><input type="text" name="student_id" inputMode="numeric" pattern="[0-9]+(-[0-9]+)*" title="Numbers and hyphens only" maxLength={40} placeholder="2025-10422" /></div>
