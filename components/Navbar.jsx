@@ -18,9 +18,10 @@ export default function Navbar({ user }) {
         <nav className="nav">
           {user ? (
             isAdmin ? (
-              <>
-                <Link className={active("/admin")} href="/admin">Admin Dashboard</Link>
-                <Link href="/admin-login" style={{ opacity: 0.7 }}>Staff login</Link>
+                <>
+                  <Link className={active("/admin")} href="/admin">Admin Dashboard</Link>
+                  <Link className={active("/admin/reports")} href="/admin/reports">Reports</Link>
+                  <Link href="/admin-login" style={{ opacity: 0.7 }}>Staff login</Link>
                 <Link href="/profile" className={active("/profile")} style={{ fontWeight: 600 }}>{firstName}</Link>
                 <a href="/api/auth/logout" className="btn btn-secondary btn-small">Logout</a>
               </>

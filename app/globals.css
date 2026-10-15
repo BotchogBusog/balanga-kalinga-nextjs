@@ -71,6 +71,13 @@ input:focus, select:focus, textarea:focus { outline: 2px solid #c5dcf2; border-c
 .admin-record-heading h2 { margin: 2px 0 0; }
 .admin-table-scroll { overflow-x: auto; border: 1px solid #e2e8ee; }
 .admin-table-scroll table { min-width: 640px; }
+.report-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
+.report-filter { padding-bottom: 14px; }
+.report-filter .form-group { margin-bottom: 0; }
+.report-filter-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.report-summary { margin-bottom: 16px; }
+.report-table-card { margin-top: 16px; }
+@media print { .site-header, .footer, .report-filter, .report-heading .btn { display: none !important; } body, html { background: #fff; } .container { max-width: none; padding: 0; } .card { break-inside: avoid; box-shadow: none; } .admin-table-scroll { overflow: visible; } }
 .action-list { display: grid; gap: 8px; }
 .mood-options { display: flex; gap: 7px; flex-wrap: wrap; }
 .chat-wrap { display: grid; grid-template-columns: 235px minmax(0, 1fr); border: 1px solid var(--line); border-radius: 5px; overflow: hidden; background: #fff; min-height: 560px; }
