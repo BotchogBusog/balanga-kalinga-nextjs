@@ -77,6 +77,10 @@ input:focus, select:focus, textarea:focus { outline: 2px solid #c5dcf2; border-c
 .report-filter-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
 .report-summary { margin-bottom: 16px; }
 .report-table-card { margin-top: 16px; }
+.counselor-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+.status-update-form { display: flex; align-items: center; gap: 6px; }
+.status-update-form select { min-width: 108px; padding: 5px 6px; font-size: 12px; }
+.counselor-password { max-width: 850px; }
 @media print { .site-header, .footer, .report-filter, .report-heading .btn { display: none !important; } body, html { background: #fff; } .container { max-width: none; padding: 0; } .card { break-inside: avoid; box-shadow: none; } .admin-table-scroll { overflow: visible; } }
 .action-list { display: grid; gap: 8px; }
 .mood-options { display: flex; gap: 7px; flex-wrap: wrap; }
@@ -99,4 +103,4 @@ tr:last-child td { border-bottom: 0; }
 @media (max-width: 1000px) { .admin-workspace { grid-template-columns: 1fr; } }
 @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; gap: 0; } .form-group[style] { max-width: 100% !important; } }
 @media (max-width: 800px) { .header-inner { align-items: flex-start; flex-direction: column; gap: 8px; padding: 12px 16px 8px; } .nav { width: 100%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; } .nav a { padding: 7px 8px; } .container { width: 100%; padding: 20px 16px 32px; overflow: hidden; } .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 12px; } .chat-wrap { grid-template-columns: 1fr; } .chat-sidebar { display: none; } }
-@media (max-width: 520px) { body { font-size: 13px; overflow-x: hidden; } h1 { font-size: 22px; } h2 { font-size: 16px; } .card { min-width: 0; padding: 14px; margin-bottom: 12px; } .form-row { grid-template-columns: 1fr; gap: 0; } .status-row { display: block; } .status-row .badge, .status-row .btn { margin-top: 7px; } .btn { min-height: 42px; } .action-list .btn { width: 100%; } .chat-messages { padding: 12px; max-height: 54vh; } .bubble { max-width: 90%; } .chat-input { align-items: stretch; } .chat-input button { min-width: 66px; } .admin-record-card { padding: 12px; } .admin-table-scroll { max-width: 100%; -webkit-overflow-scrolling: touch; } table { min-width: 540px; } .footer { padding: 16px; overflow-wrap: anywhere; } }
+@media (max-width: 520px) { body { font-size: 13px; overflow-x: hidden; } h1 { font-size: 22px; } h2 { font-size: 16px; } .card { min-width: 0; padding: 14px; margin-bottom: 12px; } .form-row { grid-template-columns: 1fr; gap: 0; } .status-row { display: block; } .status-row .badge, .status-row .btn { margin-top: 7px; } .btn { min-height: 42px; } .action-list .btn { width: 100%; } .chat-messages { padding: 12px; max-height: 54vh; } .bubble { max-width: 90%; } .chat-input { align-items: stretch; } .chat-input button { min-width: 66px; } .admin-record-card { padding: 12px; } .admin-table-scroll { max-width: 100%; -webkit-overflow-scrolling: touch; } .counselor-heading { align-items: flex-start; flex-direction: column; } .status-update-form { min-width: 180px; } table { min-width: 540px; } .footer { padding: 16px; overflow-wrap: anywhere; } }

@@ -5,7 +5,7 @@ import { currentUser, setSessionCookie, verifyPassword } from "../../lib/auth";
 
 export default async function AdminLoginPage({ searchParams }) {
   const me = await currentUser().catch(() => null);
-  if (me) redirect(me.role === "admin" ? "/admin" : "/dashboard");
+  if (me) redirect(me.role === "admin" ? "/admin" : me.role === "counselor" ? "/counselor" : "/dashboard");
   const error = searchParams?.error || null;
 
   async function staffLogin(formData) {
@@ -16,9 +16,9 @@ export default async function AdminLoginPage({ searchParams }) {
     const rows = await query("SELECT * FROM users WHERE email = ? OR student_id = ? LIMIT 1", [login, login]);
     const u = rows[0];
     if (!u || !(await verifyPassword(password, u.password_hash))) redirect("/admin-login?error=" + encodeURIComponent("Invalid credentials."));
-    if (u.role !== "admin") redirect("/admin-login?error=" + encodeURIComponent("This login is for staff only. Please use the student login."));
+    if (!["admin", "counselor"].includes(u.role)) redirect("/admin-login?error=" + encodeURIComponent("This login is for staff only. Please use the student login."));
     await setSessionCookie(u.id);
-    redirect("/admin");
+    redirect(u.role === "admin" ? "/admin" : "/counselor");
   }
 
   return (
@@ -35,7 +35,7 @@ export default async function AdminLoginPage({ searchParams }) {
           <div className="form-group"><label>Password</label><input type="password" name="password" required placeholder="Your staff password" /></div>
           <button type="submit" className="btn btn-primary" style={{ width: "100%", background: "#0f1f3a", borderColor: "#0f1f3a" }}>Sign in to dashboard</button>
         </form>
-        <div className="notice notice-info" style={{ marginTop: 14, fontSize: 12 }}>Demo admin: admin@kalinga.edu.ph / admin123<br />Demo counselor: counselor@balanga.edu.ph / admin123</div>
+        <div className="notice notice-info" style={{ marginTop: 14, fontSize: 12 }}>Administrators and counselors use this staff sign-in page.</div>
         <p style={{ textAlign: "center", marginTop: 14, fontSize: 13 }}><a href="/login">Student login</a> &middot; <a href="/">Back to home</a></p>
       </div>
       <p className="muted" style={{ textAlign: "center", marginTop: 12, fontSize: 12 }}>Separate form for staff. Student accounts cannot access admin tools. AI chats are never visible to staff.</p>

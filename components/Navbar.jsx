@@ -7,12 +7,13 @@ export default function Navbar({ user }) {
   const active = (href) => (path === href ? "active" : "");
   const firstName = user?.name?.split(" ")[0] || "";
   const isAdmin = user?.role === "admin";
+  const isCounselor = user?.role === "counselor";
 
   // Admin uses its own dark top bar rendered on /admin page; keep a slim header here.
   return (
     <header className="site-header">
       <div className="header-inner">
-        <Link href={user ? (isAdmin ? "/admin" : "/dashboard") : "/"} style={{ textDecoration: "none" }}>
+        <Link href={user ? (isAdmin ? "/admin" : isCounselor ? "/counselor" : "/dashboard") : "/"} style={{ textDecoration: "none" }}>
           <div className="brand">Balanga Kalinga <small>Kalinga tayo, care together</small></div>
         </Link>
         <nav className="nav">
@@ -23,6 +24,11 @@ export default function Navbar({ user }) {
                   <Link className={active("/admin/reports")} href="/admin/reports">Reports</Link>
                   <Link href="/admin-login" style={{ opacity: 0.7 }}>Staff login</Link>
                 <Link href="/profile" className={active("/profile")} style={{ fontWeight: 600 }}>{firstName}</Link>
+                <a href="/api/auth/logout" className="btn btn-secondary btn-small">Logout</a>
+              </>
+            ) : isCounselor ? (
+              <>
+                <Link className={active("/counselor")} href="/counselor">My Appointments</Link>
                 <a href="/api/auth/logout" className="btn btn-secondary btn-small">Logout</a>
               </>
             ) : (

@@ -6,7 +6,7 @@ import { isLoginValue } from "../../lib/validation";
 
 export default async function LoginPage({ searchParams }) {
   const me = await currentUser().catch(() => null);
-  if (me) redirect(me.role === "admin" ? "/admin" : "/dashboard");
+  if (me) redirect(me.role === "admin" ? "/admin" : me.role === "counselor" ? "/counselor" : "/dashboard");
   const error = searchParams?.error || null;
 
   async function loginAction(formData) {
@@ -26,7 +26,7 @@ export default async function LoginPage({ searchParams }) {
     if (!u || !(await verifyPassword(password, u.password_hash))) {
       redirect("/login?error=" + encodeURIComponent("Invalid email or student ID, or password."));
     }
-    if (u.role === "admin") {
+    if (u.role === "admin" || u.role === "counselor") {
       redirect("/login?error=" + encodeURIComponent("Staff accounts must use the staff login."));
     }
     await setSessionCookie(u.id);

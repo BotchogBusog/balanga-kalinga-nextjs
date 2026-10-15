@@ -10,13 +10,15 @@ CREATE TABLE users (
   student_id varchar(40) DEFAULT NULL,
   password_hash varchar(255) NOT NULL,
   role varchar(20) NOT NULL DEFAULT 'student',
+  counselor_id int(11) DEFAULT NULL,
   course varchar(120) DEFAULT '',
   year_level varchar(40) DEFAULT '',
   school varchar(120) DEFAULT '',
   created_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
   UNIQUE KEY email (email),
-  UNIQUE KEY student_id (student_id)
+  UNIQUE KEY student_id (student_id),
+  UNIQUE KEY counselor_id (counselor_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE counselors (

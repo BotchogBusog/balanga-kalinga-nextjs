@@ -5,6 +5,7 @@ import { currentUser } from "../lib/auth";
 export default async function HomePage() {
   const user = await currentUser().catch(() => null);
   const isAdmin = user?.role === "admin";
+  const isCounselor = user?.role === "counselor";
   return (
     <>
       <div className="hero">
@@ -14,8 +15,8 @@ export default async function HomePage() {
         <div className="hero-actions">
           {user ? (
             <>
-              <Link href={isAdmin ? "/admin" : "/dashboard"} className="btn btn-primary">Go to dashboard</Link>
-              {!isAdmin && <Link href="/ai-chat" className="btn btn-secondary">Talk to Kalinga AI</Link>}
+              <Link href={isAdmin ? "/admin" : isCounselor ? "/counselor" : "/dashboard"} className="btn btn-primary">Go to dashboard</Link>
+              {!isAdmin && !isCounselor && <Link href="/ai-chat" className="btn btn-secondary">Talk to Kalinga AI</Link>}
             </>
           ) : (
             <>
