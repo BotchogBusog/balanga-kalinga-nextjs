@@ -150,10 +150,10 @@ export default async function WellnessPage({ searchParams }) {
                 })}
               </tbody></table>
               ) : <p className="muted">No history yet. Take your first check-in on the left.</p>}
-              {history.length > 0 && <form action={clearHistory} style={{ marginTop: 14 }}>
-                <button type="submit" className="btn btn-secondary btn-small" style={{ color: "#b42318", borderColor: "#e4b6b1" }}>Clear all history</button>
-                <p className="muted" style={{ fontSize: 12, marginTop: 6 }}>This permanently removes all of your wellness-check records.</p>
-              </form>}
+              <form action={clearHistory} style={{ marginTop: 14 }}>
+                <button type="submit" className="btn btn-secondary btn-small" disabled={!history.length} style={{ color: "#b42318", borderColor: "#e4b6b1", opacity: history.length ? 1 : 0.55, cursor: history.length ? "pointer" : "not-allowed" }}>Clear all history</button>
+                <p className="muted" style={{ fontSize: 12, marginTop: 6 }}>{history.length ? "This permanently removes all of your wellness-check records." : "No wellness history to clear yet."}</p>
+              </form>
             </div>
           <div className="card" style={{ marginTop: 12 }}>
             <h3>What happens after?</h3>
