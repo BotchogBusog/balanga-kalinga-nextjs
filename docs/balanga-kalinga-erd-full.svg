@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2580" height="1450" viewBox="0 0 2580 1450" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="2230" height="1450" viewBox="0 0 2230 1450" role="img" aria-labelledby="title desc">
   <title id="title">Balanga Kalinga entity relationship diagram</title>
-  <desc id="desc">Nine-table MySQL schema for the Balanga Kalinga student wellness and counseling system.</desc>
+  <desc id="desc">Seven-table MySQL schema for the Balanga Kalinga student wellness and counseling system.</desc>
   <style>
     .bg{fill:#fff}
     .box{stroke:#222;stroke-width:2.2}
@@ -15,24 +15,23 @@
     .sub{font:16px Arial,sans-serif;fill:#555;text-anchor:middle}
     .note{font:14px Arial,sans-serif;fill:#444}
   </style>
-  <rect class="bg" width="2580" height="1450"/>
-  <text x="1290" y="52" class="title">Balanga Kalinga — Entity Relationship Diagram</text>
-  <text x="1290" y="80" class="sub">Web-Based Student Wellness Assessment and Counseling Management System · 9 tables</text>
-  <path d="M1285 520 V570 M342 570 H2228.5 M342 570 V640 M695 570 V640 M1040 570 V640 M1385 570 V640 M1770 570 V640 M2228.5 570 V640" class="rel"/>
-  <text x="1299" y="550" class="card">1</text>
-  <text x="356" y="630" class="card">M</text>
-  <text x="709" y="630" class="card">M</text>
-  <text x="1054" y="630" class="card">M</text>
-  <text x="1399" y="630" class="card">M</text>
-  <text x="1784" y="630" class="card">M</text>
-  <text x="2242.5" y="630" class="card">1</text>
-  <path d="M1960 790 H2060" class="rel"/>
-  <text x="1970" y="778" class="card">M</text>
-  <text x="2038" y="778" class="card">1</text>
-  <path d="M1385 830 V1120" class="rel"/>
-  <text x="1399" y="864" class="card">1</text>
-  <text x="1399" y="1106" class="card">M</text>
-  <g transform="translate(184 640)">
+  <rect class="bg" width="2230" height="1450"/>
+  <text x="1115" y="52" class="title">Balanga Kalinga — Entity Relationship Diagram</text>
+  <text x="1115" y="80" class="sub">Web-Based Student Wellness Assessment and Counseling Management System · 7 tables</text>
+  <path d="M1110 520 V570 M339 570 H1880.5 M339 570 V640 M692 570 V640 M1037 570 V640 M1422 570 V640 M1880.5 570 V640" class="rel"/>
+  <text x="1124" y="550" class="card">1</text>
+  <text x="353" y="630" class="card">M</text>
+  <text x="706" y="630" class="card">M</text>
+  <text x="1051" y="630" class="card">M</text>
+  <text x="1436" y="630" class="card">M</text>
+  <text x="1894.5" y="630" class="card">1</text>
+  <path d="M1612 790 H1712" class="rel"/>
+  <text x="1622" y="778" class="card">M</text>
+  <text x="1690" y="778" class="card">1</text>
+  <path d="M1037 830 V1120" class="rel"/>
+  <text x="1051" y="864" class="card">1</text>
+  <text x="1051" y="1106" class="card">M</text>
+  <g transform="translate(181 640)">
     <rect width="316" height="280" fill="#f8d2b1" class="box"/>
     <rect width="316" height="52" fill="#edbd92" class="head"/>
     <text x="158" y="35" class="name">wellness_assessments</text>
@@ -51,7 +50,7 @@
     <text x="18" y="266" class="fld">created_at</text>
     <text x="298" y="266" class="typ">DATETIME</text>
   </g>
-  <g transform="translate(545 640)">
+  <g transform="translate(542 640)">
     <rect width="300" height="220" fill="#f8d2b1" class="box"/>
     <rect width="300" height="52" fill="#edbd92" class="head"/>
     <text x="150" y="35" class="name">moods</text>
@@ -66,24 +65,7 @@
     <text x="18" y="206" class="fld">created_at</text>
     <text x="282" y="206" class="typ">DATETIME</text>
   </g>
-  <g transform="translate(890 640)">
-    <rect width="300" height="250" fill="#f8d2b1" class="box"/>
-    <rect width="300" height="52" fill="#edbd92" class="head"/>
-    <text x="150" y="35" class="name">journal_entries</text>
-    <text x="18" y="86" class="fld key">PK  id</text>
-    <text x="282" y="86" class="typ">INT</text>
-    <text x="18" y="116" class="fld key">FK  user_id</text>
-    <text x="282" y="116" class="typ">INT</text>
-    <text x="18" y="146" class="fld">title</text>
-    <text x="282" y="146" class="typ">VARCHAR(200)</text>
-    <text x="18" y="176" class="fld">content</text>
-    <text x="282" y="176" class="typ">TEXT</text>
-    <text x="18" y="206" class="fld">mood</text>
-    <text x="282" y="206" class="typ">VARCHAR(30)</text>
-    <text x="18" y="236" class="fld">created_at</text>
-    <text x="282" y="236" class="typ">DATETIME</text>
-  </g>
-  <g transform="translate(1235 640)">
+  <g transform="translate(887 640)">
     <rect width="300" height="190" fill="#f8d2b1" class="box"/>
     <rect width="300" height="52" fill="#edbd92" class="head"/>
     <text x="150" y="35" class="name">ai_conversations</text>
@@ -96,7 +78,7 @@
     <text x="18" y="176" class="fld">created_at</text>
     <text x="282" y="176" class="typ">DATETIME</text>
   </g>
-  <g transform="translate(1580 640)">
+  <g transform="translate(1232 640)">
     <rect width="380" height="370" fill="#f8d2b1" class="box"/>
     <rect width="380" height="52" fill="#edbd92" class="head"/>
     <text x="190" y="35" class="name">appointments</text>
@@ -121,7 +103,7 @@
     <text x="18" y="356" class="fld">created_at</text>
     <text x="362" y="356" class="typ">DATETIME</text>
   </g>
-  <g transform="translate(2060 640)">
+  <g transform="translate(1712 640)">
     <rect width="337" height="310" fill="#d9d8ef" class="box"/>
     <rect width="337" height="52" fill="#c4c2e1" class="head"/>
     <text x="168.5" y="35" class="name">counselors</text>
@@ -142,7 +124,7 @@
     <text x="18" y="296" class="fld">phone</text>
     <text x="319" y="296" class="typ">VARCHAR(40)</text>
   </g>
-  <g transform="translate(1122 120)">
+  <g transform="translate(947 120)">
     <rect width="326" height="400" fill="#dcecd2" class="box"/>
     <rect width="326" height="52" fill="#c4ddb5" class="head"/>
     <text x="163" y="35" class="name">users</text>
@@ -169,7 +151,7 @@
     <text x="18" y="386" class="fld">created_at</text>
     <text x="308" y="386" class="typ">DATETIME</text>
   </g>
-  <g transform="translate(1235 1120)">
+  <g transform="translate(887 1120)">
     <rect width="300" height="220" fill="#f8d2b1" class="box"/>
     <rect width="300" height="52" fill="#edbd92" class="head"/>
     <text x="150" y="35" class="name">ai_messages</text>
@@ -184,21 +166,6 @@
     <text x="18" y="206" class="fld">created_at</text>
     <text x="282" y="206" class="typ">DATETIME</text>
   </g>
-  <g transform="translate(184 1120)">
-    <rect width="300" height="220" fill="#e7e7e7" class="box"/>
-    <rect width="300" height="52" fill="#d4d4d4" class="head"/>
-    <text x="150" y="35" class="name">emergency_resources</text>
-    <text x="18" y="86" class="fld key">PK  id</text>
-    <text x="282" y="86" class="typ">INT</text>
-    <text x="18" y="116" class="fld">name</text>
-    <text x="282" y="116" class="typ">VARCHAR(120)</text>
-    <text x="18" y="146" class="fld">phone</text>
-    <text x="282" y="146" class="typ">VARCHAR(40)</text>
-    <text x="18" y="176" class="fld">description</text>
-    <text x="282" y="176" class="typ">TEXT</text>
-    <text x="18" y="206" class="fld">category</text>
-    <text x="282" y="206" class="typ">VARCHAR(30)</text>
-  </g>
-  <text x="184" y="1408" class="note">Legend — PK Primary key · FK Foreign key · UQ Unique · 1 = one record · M = many records. Foreign keys to <tspan font-family="Courier New, monospace">users</tspan> cascade on delete.</text>
-  <text x="184" y="1430" class="note"><tspan font-family="Courier New, monospace">appointments</tspan> also has an index on (counselor_id, requested_date, requested_time, status). Types shown are MySQL 8 / InnoDB, utf8mb4.</text>
+  <text x="181" y="1408" class="note">Legend — PK Primary key · FK Foreign key · UQ Unique · 1 = one record · M = many records. Foreign keys to <tspan font-family="Courier New, monospace">users</tspan> cascade on delete.</text>
+  <text x="181" y="1430" class="note"><tspan font-family="Courier New, monospace">appointments</tspan> also has an index on (counselor_id, requested_date, requested_time, status). Types shown are MySQL 8 / InnoDB, utf8mb4.</text>
 </svg>

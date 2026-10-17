@@ -2,7 +2,6 @@ erDiagram
   users ||--o| counselors : "login for"
   users ||--o{ wellness_assessments : "takes"
   users ||--o{ moods : "records"
-  users ||--o{ journal_entries : "writes"
   users ||--o{ ai_conversations : "starts"
   users ||--o{ appointments : "requests"
   counselors ||--o{ appointments : "handles"
@@ -34,14 +33,6 @@ erDiagram
     int user_id FK
     varchar_30 mood
     text note
-    datetime created_at
-  }
-  journal_entries {
-    int id PK
-    int user_id FK
-    varchar_200 title
-    text content
-    varchar_30 mood
     datetime created_at
   }
   ai_conversations {
@@ -78,11 +69,4 @@ erDiagram
     tinyint_1 is_available
     varchar_190 email
     varchar_40 phone
-  }
-  emergency_resources {
-    int id PK
-    varchar_120 name
-    varchar_40 phone
-    text description
-    varchar_30 category
   }
