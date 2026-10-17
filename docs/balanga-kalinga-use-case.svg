@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="920" viewBox="0 0 1200 920" role="img" aria-labelledby="title desc">
   <title id="title">Balanga Kalinga use-case diagram</title>
   <desc id="desc">A UML use-case diagram for Students, Admin, and Guidance Counselor.</desc>
   <defs>
@@ -13,10 +13,10 @@
       .line { fill: none; stroke: #333; stroke-width: 1.4; }
     </style>
   </defs>
-  <rect class="page" width="1200" height="900"/>
+  <rect class="page" width="1200" height="920"/>
 
   <!-- System boundary and name -->
-  <rect x="355" y="110" width="490" height="670" class="boundary"/>
+  <rect x="355" y="110" width="490" height="740" class="boundary"/>
   <rect x="315" y="55" width="570" height="72" rx="2" class="heading"/>
   <text x="600" y="82" class="heading-text">Balanga Kalinga: Web-Based Student Wellness</text>
   <text x="600" y="104" class="heading-text">Assessment and Counseling Management System</text>
@@ -26,7 +26,7 @@
     <circle cx="0" cy="0" r="16" fill="#111"/><path d="M0 18v54 M-29 39h58 M0 72l-25 35 M0 72l25 35" stroke="#111" stroke-width="5" fill="none"/>
     <text x="0" y="140" class="actor-text">Students</text>
   </g>
-  <g transform="translate(130 605)">
+  <g transform="translate(130 620)">
     <circle cx="0" cy="0" r="16" fill="#111"/><path d="M0 18v54 M-29 39h58 M0 72l-25 35 M0 72l25 35" stroke="#111" stroke-width="5" fill="none"/>
     <text x="0" y="140" class="actor-text">Admin</text>
   </g>
@@ -38,15 +38,16 @@
   <!-- Use cases -->
   <g><ellipse cx="600" cy="205" rx="145" ry="38" class="usecase"/><text x="600" y="201" class="use-text">Student Profile</text><text x="600" y="218" class="use-text">Management</text></g>
   <g><ellipse cx="600" cy="300" rx="145" ry="38" class="usecase"/><text x="600" y="296" class="use-text">Wellness Check and</text><text x="600" y="313" class="use-text">Mental Health Screening</text></g>
-  <g><ellipse cx="600" cy="395" rx="145" ry="38" class="usecase"/><text x="600" y="391" class="use-text">Review Student</text><text x="600" y="408" class="use-text">Wellness Records</text></g>
-  <g><ellipse cx="600" cy="490" rx="145" ry="38" class="usecase"/><text x="600" y="486" class="use-text">Counseling Appointment</text><text x="600" y="503" class="use-text">Management</text></g>
-  <g><ellipse cx="600" cy="585" rx="145" ry="38" class="usecase"/><text x="600" y="581" class="use-text">Mood Check-ins and</text><text x="600" y="598" class="use-text">Progress Tracking</text></g>
-  <g><ellipse cx="600" cy="680" rx="145" ry="38" class="usecase"/><text x="600" y="676" class="use-text">Generate Wellness</text><text x="600" y="693" class="use-text">Reports and Trends</text></g>
+  <g><ellipse cx="600" cy="395" rx="145" ry="38" class="usecase"/><text x="600" y="391" class="use-text">Mood Check-ins and</text><text x="600" y="408" class="use-text">Journaling</text></g>
+  <g><ellipse cx="600" cy="490" rx="145" ry="38" class="usecase"/><text x="600" y="486" class="use-text">Kalinga AI</text><text x="600" y="503" class="use-text">Wellness Chat</text></g>
+  <g><ellipse cx="600" cy="585" rx="145" ry="38" class="usecase"/><text x="600" y="581" class="use-text">Counseling Appointment</text><text x="600" y="598" class="use-text">Transaction Management</text></g>
+  <g><ellipse cx="600" cy="680" rx="145" ry="38" class="usecase"/><text x="600" y="676" class="use-text">Counselor Availability and</text><text x="600" y="693" class="use-text">Appointment Status</text></g>
+  <g><ellipse cx="600" cy="775" rx="145" ry="38" class="usecase"/><text x="600" y="771" class="use-text">Generate Wellness</text><text x="600" y="788" class="use-text">Reports and Trends</text></g>
 
   <!-- Student associations -->
-  <path d="M165 250 L455 205 M165 250 L455 300 M165 250 L455 490 M165 250 L455 585" class="line"/>
+  <path d="M165 250 L455 205 M165 250 L455 300 M165 250 L455 395 M165 250 L455 490 M165 250 L455 585" class="line"/>
   <!-- Admin associations -->
-  <path d="M165 605 L455 205 M165 605 L455 395 M165 605 L455 490 M165 605 L455 680" class="line"/>
+  <path d="M165 620 L455 205 M165 620 L455 585 M165 620 L455 775" class="line"/>
   <!-- Counselor associations -->
-  <path d="M1035 330 L745 300 M1035 330 L745 395 M1035 330 L745 490 M1035 330 L745 585 M1035 330 L745 680" class="line"/>
+  <path d="M1035 330 L745 585 M1035 330 L745 680" class="line"/>
 </svg>

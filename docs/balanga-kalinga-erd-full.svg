@@ -1,44 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1300" viewBox="0 0 2400 1300" role="img" aria-labelledby="title desc">
-  <title id="title">Balanga Kalinga complete entity relationship diagram</title>
-  <desc id="desc">Complete print-friendly ERD showing all database tables and clean non-crossing relationship lines.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1420" viewBox="0 0 2400 1420" role="img" aria-labelledby="title desc">
+  <title id="title">Balanga Kalinga entity relationship diagram</title>
+  <desc id="desc">Print-friendly ERD with the nine current tables and clean non-crossing relationship lines.</desc>
   <style>
     .bg{fill:#fff}
     .box{stroke:#222;stroke-width:2.4}
     .head{stroke:#222;stroke-width:2.4}
-    .name{font:bold 25px Arial,sans-serif;fill:#111;text-anchor:middle}
-    .field{font:22px 'Courier New',monospace;fill:#111}
+    .name{font:bold 24px Arial,sans-serif;fill:#111;text-anchor:middle}
+    .field{font:21px 'Courier New',monospace;fill:#111}
     .pk{font-weight:bold}
     .rel{stroke:#222;stroke-width:2.6;fill:none}
     .card{font:bold 20px Arial,sans-serif;fill:#222}
   </style>
-  <rect class="bg" width="2400" height="1300"/>
+  <rect class="bg" width="2400" height="1420"/>
 
   <!-- Central users table -->
-  <g transform="translate(1050 130)">
-    <rect width="360" height="272" fill="#dcecd2" class="box"/>
+  <g transform="translate(1020 120)">
+    <rect width="360" height="374" fill="#dcecd2" class="box"/>
     <rect width="360" height="52" fill="#c4ddb5" class="head"/>
     <text x="180" y="35" class="name">users</text>
     <text x="18" y="82" class="field pk">PK  id</text>
     <text x="18" y="116" class="field">name</text>
-    <text x="18" y="150" class="field">email, student_id</text>
-    <text x="18" y="184" class="field">password_hash</text>
-    <text x="18" y="218" class="field">role, course</text>
-    <text x="18" y="252" class="field">year_level, school</text>
+    <text x="18" y="150" class="field">email (UNIQUE)</text>
+    <text x="18" y="184" class="field">student_id (UNIQUE)</text>
+    <text x="18" y="218" class="field">password_hash</text>
+    <text x="18" y="252" class="field">role</text>
+    <text x="18" y="286" class="field pk">FK  counselor_id (UNIQUE)</text>
+    <text x="18" y="320" class="field">course, year_level, school</text>
+    <text x="18" y="354" class="field">created_at</text>
   </g>
 
   <!-- One trunk for all user-owned tables -->
-  <path d="M1200 402 V470 M240 470 H2160 M240 470 V560 M560 470 V560 M880 470 V560 M1200 470 V560 M1520 470 V560 M1840 470 V560 M2160 470 V560" class="rel"/>
-  <text x="1214" y="452" class="card">1</text>
-  <text x="254" y="535" class="card">M</text>
-  <text x="574" y="535" class="card">M</text>
-  <text x="894" y="535" class="card">M</text>
-  <text x="1064" y="535" class="card">1</text>
-  <text x="1214" y="535" class="card">M</text>
-  <text x="1854" y="535" class="card">M</text>
-  <text x="2174" y="535" class="card">M</text>
+  <path d="M1200 494 V540 M400 540 H2110 M400 540 V620 M720 540 V620 M1040 540 V620 M1360 540 V620 M1695 540 V620 M2110 540 V620" class="rel"/>
+  <text x="1214" y="522" class="card">1</text>
+  <text x="414" y="610" class="card">M</text>
+  <text x="734" y="610" class="card">M</text>
+  <text x="1054" y="610" class="card">M</text>
+  <text x="1374" y="610" class="card">M</text>
+  <text x="1709" y="610" class="card">M</text>
+  <text x="2124" y="610" class="card">1</text>
 
   <!-- User-owned tables -->
-  <g transform="translate(90 560)">
+  <g transform="translate(250 620)">
     <rect width="300" height="306" fill="#f8d2b1" class="box"/><rect width="300" height="52" fill="#edbd92" class="head"/>
     <text x="150" y="35" class="name">wellness_assessments</text>
     <text x="16" y="82" class="field pk">PK  id</text><text x="16" y="116" class="field pk">FK  user_id</text>
@@ -46,81 +48,66 @@
     <text x="16" y="218" class="field">summary</text><text x="16" y="252" class="field">suggested_actions</text>
     <text x="16" y="286" class="field">created_at</text>
   </g>
-  <g transform="translate(410 560)">
+  <g transform="translate(570 620)">
     <rect width="300" height="238" fill="#f8d2b1" class="box"/><rect width="300" height="52" fill="#edbd92" class="head"/>
     <text x="150" y="35" class="name">moods</text>
     <text x="16" y="82" class="field pk">PK  id</text><text x="16" y="116" class="field pk">FK  user_id</text>
     <text x="16" y="150" class="field">mood</text><text x="16" y="184" class="field">note</text>
     <text x="16" y="218" class="field">created_at</text>
   </g>
-  <g transform="translate(730 560)">
+  <g transform="translate(890 620)">
     <rect width="300" height="272" fill="#f8d2b1" class="box"/><rect width="300" height="52" fill="#edbd92" class="head"/>
     <text x="150" y="35" class="name">journal_entries</text>
     <text x="16" y="82" class="field pk">PK  id</text><text x="16" y="116" class="field pk">FK  user_id</text>
     <text x="16" y="150" class="field">title</text><text x="16" y="184" class="field">content</text>
     <text x="16" y="218" class="field">mood</text><text x="16" y="252" class="field">created_at</text>
   </g>
-  <g transform="translate(1050 560)">
-    <rect width="300" height="238" fill="#f8d2b1" class="box"/><rect width="300" height="52" fill="#edbd92" class="head"/>
-    <text x="150" y="35" class="name">safety_plans</text>
-    <text x="16" y="82" class="field pk">PK  id</text><text x="16" y="116" class="field pk">FK  user_id (UNIQUE)</text>
-    <text x="16" y="150" class="field">warning_signs</text><text x="16" y="184" class="field">coping_steps</text>
-    <text x="16" y="218" class="field">trusted_contacts</text>
-  </g>
-  <g transform="translate(1370 560)">
-    <rect width="300" height="306" fill="#f8d2b1" class="box"/><rect width="300" height="52" fill="#edbd92" class="head"/>
-    <text x="150" y="35" class="name">appointments</text>
-    <text x="16" y="82" class="field pk">PK  id</text><text x="16" y="116" class="field pk">FK  user_id</text>
-    <text x="16" y="150" class="field pk">FK  counselor_id</text><text x="16" y="184" class="field">requested_date, time</text>
-    <text x="16" y="218" class="field">method, status</text><text x="16" y="252" class="field">notes</text>
-    <text x="16" y="286" class="field">created_at</text>
-  </g>
-  <g transform="translate(1690 560)">
+  <g transform="translate(1210 620)">
     <rect width="300" height="204" fill="#f8d2b1" class="box"/><rect width="300" height="52" fill="#edbd92" class="head"/>
     <text x="150" y="35" class="name">ai_conversations</text>
     <text x="16" y="82" class="field pk">PK  id</text><text x="16" y="116" class="field pk">FK  user_id</text>
     <text x="16" y="150" class="field">title</text><text x="16" y="184" class="field">created_at</text>
   </g>
-  <g transform="translate(2010 560)">
-    <rect width="300" height="204" fill="#f8d2b1" class="box"/><rect width="300" height="52" fill="#edbd92" class="head"/>
-    <text x="150" y="35" class="name">activity_logs</text>
-    <text x="16" y="82" class="field pk">PK  id</text><text x="16" y="116" class="field pk">FK  user_id</text>
-    <text x="16" y="150" class="field pk">FK  activity_id</text><text x="16" y="184" class="field">created_at</text>
+  <g transform="translate(1530 620)">
+    <rect width="330" height="340" fill="#f8d2b1" class="box"/><rect width="330" height="52" fill="#edbd92" class="head"/>
+    <text x="165" y="35" class="name">appointments</text>
+    <text x="16" y="82" class="field pk">PK  id</text><text x="16" y="116" class="field">transaction_ref (UNIQUE)</text>
+    <text x="16" y="150" class="field pk">FK  user_id</text><text x="16" y="184" class="field pk">FK  counselor_id</text>
+    <text x="16" y="218" class="field">requested_date, time</text><text x="16" y="252" class="field">method, status</text>
+    <text x="16" y="286" class="field">notes</text><text x="16" y="320" class="field">created_at</text>
+  </g>
+  <g transform="translate(1960 620)">
+    <rect width="300" height="306" fill="#d9d8ef" class="box"/><rect width="300" height="52" fill="#c4c2e1" class="head"/>
+    <text x="150" y="35" class="name">counselors</text>
+    <text x="16" y="82" class="field pk">PK  id</text><text x="16" y="116" class="field">name</text>
+    <text x="16" y="150" class="field">specialization</text><text x="16" y="184" class="field">description</text>
+    <text x="16" y="218" class="field">schedule</text><text x="16" y="252" class="field">email, phone</text>
+    <text x="16" y="286" class="field">is_available</text>
   </g>
 
+  <!-- counselors 1 : M appointments -->
+  <path d="M1860 760 H1960" class="rel"/>
+  <text x="1868" y="748" class="card">M</text>
+  <text x="1936" y="748" class="card">1</text>
+
+  <!-- ai_conversations 1 : M ai_messages -->
+  <path d="M1360 824 V1080" class="rel"/>
+  <text x="1374" y="872" class="card">1</text>
+  <text x="1374" y="1068" class="card">M</text>
+
   <!-- Supporting tables -->
-  <g transform="translate(90 980)">
+  <g transform="translate(1210 1080)">
+    <rect width="300" height="238" fill="#f8d2b1" class="box"/><rect width="300" height="52" fill="#edbd92" class="head"/>
+    <text x="150" y="35" class="name">ai_messages</text>
+    <text x="16" y="82" class="field pk">PK  id</text><text x="16" y="116" class="field pk">FK  conversation_id</text>
+    <text x="16" y="150" class="field">role</text><text x="16" y="184" class="field">content</text>
+    <text x="16" y="218" class="field">created_at</text>
+  </g>
+  <g transform="translate(250 1080)">
     <rect width="300" height="238" fill="#e7e7e7" class="box"/><rect width="300" height="52" fill="#d4d4d4" class="head"/>
     <text x="150" y="35" class="name">emergency_resources</text>
     <text x="16" y="82" class="field pk">PK  id</text><text x="16" y="116" class="field">name</text>
     <text x="16" y="150" class="field">phone</text><text x="16" y="184" class="field">description</text>
     <text x="16" y="218" class="field">category</text>
   </g>
-  <g transform="translate(1050 980)">
-    <rect width="300" height="238" fill="#d9d8ef" class="box"/><rect width="300" height="52" fill="#c4c2e1" class="head"/>
-    <text x="150" y="35" class="name">counselors</text>
-    <text x="16" y="82" class="field pk">PK  id</text><text x="16" y="116" class="field">name</text>
-    <text x="16" y="150" class="field">specialization</text><text x="16" y="184" class="field">schedule</text>
-    <text x="16" y="218" class="field">availability</text>
-  </g>
-  <g transform="translate(1690 980)">
-    <rect width="300" height="238" fill="#d9d8ef" class="box"/><rect width="300" height="52" fill="#c4c2e1" class="head"/>
-    <text x="150" y="35" class="name">ai_messages</text>
-    <text x="16" y="82" class="field pk">PK  id</text><text x="16" y="116" class="field pk">FK  conversation_id</text>
-    <text x="16" y="150" class="field">role</text><text x="16" y="184" class="field">content</text>
-    <text x="16" y="218" class="field">created_at</text>
-  </g>
-  <g transform="translate(2010 980)">
-    <rect width="300" height="238" fill="#d9d8ef" class="box"/><rect width="300" height="52" fill="#c4c2e1" class="head"/>
-    <text x="150" y="35" class="name">self_care_activities</text>
-    <text x="16" y="82" class="field pk">PK  id</text><text x="16" y="116" class="field">category</text>
-    <text x="16" y="150" class="field">title</text><text x="16" y="184" class="field">instructions</text>
-    <text x="16" y="218" class="field">duration_min</text>
-  </g>
-
-  <!-- Support-table vertical links only -->
-  <path d="M1200 866 V980 M1840 764 V980 M2160 764 V980" class="rel"/>
-  <text x="1214" y="925" class="card">M</text><text x="1214" y="972" class="card">1</text>
-  <text x="1854" y="900" class="card">1</text><text x="1854" y="972" class="card">M</text>
-  <text x="2174" y="900" class="card">M</text><text x="2174" y="972" class="card">1</text>
 </svg>
