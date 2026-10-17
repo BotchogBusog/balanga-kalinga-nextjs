@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Balanga Kalinga — Data Dictionary</title>
+<style>
+  @page { size: A4 landscape; margin: 1.2cm; }
+  * { box-sizing: border-box; }
+  body { font-family: Arial, sans-serif; color: #111; margin: 0; font-size: 10pt; }
+  .dictionary-section { break-after: page; page-break-after: always; }
+  .dictionary-section:last-child { break-after: auto; page-break-after: auto; }
+  table { border-collapse: collapse; width: 100%; }
+  .document-header { margin-bottom: 0; }
+  .document-header th { width: 48%; background: #70ad47; color: #fff; border: 1px solid #548235; padding: 10px; text-align: left; font-size: 15pt; letter-spacing: .3px; }
+  .document-header td { background: #e2f0d9; border: 1px solid #a9d18e; padding: 5px 8px; }
+  .system { border: 1px solid #a9d18e; border-top: 0; padding: 7px 8px; line-height: 1.35; }
+  .fields { table-layout: fixed; margin-top: 8px; }
+  .fields th { background: #e2f0d9; border: 1px solid #a9d18e; padding: 5px 3px; text-align: center; vertical-align: bottom; font-size: 8.5pt; }
+  .fields td { border: 1px solid #b7d7a8; padding: 5px 4px; vertical-align: top; word-wrap: break-word; }
+  .fields tbody tr:nth-child(odd) { background: #eff7eb; }
+  .fields th:nth-child(1), .fields td:nth-child(1) { width: 4%; text-align: center; }
+  .fields th:nth-child(2), .fields td:nth-child(2) { width: 7%; text-align: center; }
+  .fields th:nth-child(3), .fields td:nth-child(3) { width: 4%; text-align: center; }
+  .fields th:nth-child(4), .fields td:nth-child(4) { width: 13%; }
+  .fields th:nth-child(5), .fields td:nth-child(5) { width: 10%; }
+  .fields th:nth-child(6), .fields td:nth-child(6) { width: 6%; text-align: center; }
+  .fields th:nth-child(7), .fields td:nth-child(7) { width: 8%; text-align: center; }
+  .fields th:nth-child(8), .fields td:nth-child(8) { width: 13%; }
+  .fields th:nth-child(9), .fields td:nth-child(9) { width: 35%; }
+  .field { font-family: "Courier New", monospace; font-weight: bold; }
+  .purpose, .detail { margin: 8px 0 0; line-height: 1.35; }
+  .detail { color: #333; font-style: italic; }
+</style></head><body>
+<section class="dictionary-section">
+        <table class="document-header" aria-label="Data dictionary header">
+          <tr><th rowspan="2">DATA DICTIONARY</th><td><strong>Reference Number:</strong> DD-01</td></tr>
+          <tr><td><strong>Version Number:</strong> 1.0</td></tr>
+        </table>
+        <div class="system"><strong>System Name:</strong> Balanga Kalinga: A Web-Based Student Wellness Assessment and Counseling Management System<br>
+          <strong>Subject:</strong> users</div>
+        <table class="fields" aria-label="users data dictionary">
+          <thead><tr><th>PK</th><th>FK</th><th>UK</th><th>Field Name</th><th>Data Type</th><th>Length</th><th>Nullable</th><th>Default Value</th><th>Description</th></tr></thead>
+          <tbody><tr>
+          <td>Yes</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">id</td>
+          <td>INT</td>
+          <td>—</td>
+          <td>No</td>
+          <td>AUTO_INCREMENT</td>
+          <td class="description">Unique identifier for this record.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">name</td>
+          <td>VARCHAR</td>
+          <td>120</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">Full name of the account holder or counselor.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td class="field">email</td>
+          <td>VARCHAR</td>
+          <td>190</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">Email address used for account contact or sign-in.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td class="field">student_id</td>
+          <td>VARCHAR</td>
+          <td>40</td>
+          <td>Yes</td>
+          <td>NULL</td>
+          <td class="description">Unique school student identification number, when applicable.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">password_hash</td>
+          <td>VARCHAR</td>
+          <td>255</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">Encrypted password value used to verify sign-in credentials.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">role</td>
+          <td>VARCHAR</td>
+          <td>20</td>
+          <td>No</td>
+          <td>student</td>
+          <td class="description">Account role: student, counselor, or admin.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">course</td>
+          <td>VARCHAR</td>
+          <td>120</td>
+          <td>Yes</td>
+          <td>''</td>
+          <td class="description">Student's academic course or program.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">year_level</td>
+          <td>VARCHAR</td>
+          <td>40</td>
+          <td>Yes</td>
+          <td>''</td>
+          <td class="description">Student's current academic year level.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">school</td>
+          <td>VARCHAR</td>
+          <td>120</td>
+          <td>Yes</td>
+          <td>''</td>
+          <td class="description">Student's school or institution name.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">created_at</td>
+          <td>DATETIME</td>
+          <td>—</td>
+          <td>No</td>
+          <td>CURRENT_TIMESTAMP</td>
+          <td class="description">Date and time when the record was created.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>Yes (logical)</td>
+          <td>Yes</td>
+          <td class="field">counselor_id</td>
+          <td>INT</td>
+          <td>—</td>
+          <td>Yes</td>
+          <td>NULL</td>
+          <td class="description">Logical link from a counselor account to its counselor profile. It is unique; the live database does not enforce it as a physical foreign-key constraint.</td>
+        </tr></tbody>
+        </table>
+        <p class="purpose"><strong>Table Description:</strong> Stores student, counselor, and administrator accounts for registration, login, role-based access, and profile management.</p>
+        
+      </section>
+<section class="dictionary-section">
+        <table class="document-header" aria-label="Data dictionary header">
+          <tr><th rowspan="2">DATA DICTIONARY</th><td><strong>Reference Number:</strong> DD-02</td></tr>
+          <tr><td><strong>Version Number:</strong> 1.0</td></tr>
+        </table>
+        <div class="system"><strong>System Name:</strong> Balanga Kalinga: A Web-Based Student Wellness Assessment and Counseling Management System<br>
+          <strong>Subject:</strong> counselors</div>
+        <table class="fields" aria-label="counselors data dictionary">
+          <thead><tr><th>PK</th><th>FK</th><th>UK</th><th>Field Name</th><th>Data Type</th><th>Length</th><th>Nullable</th><th>Default Value</th><th>Description</th></tr></thead>
+          <tbody><tr>
+          <td>Yes</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">id</td>
+          <td>INT</td>
+          <td>—</td>
+          <td>No</td>
+          <td>AUTO_INCREMENT</td>
+          <td class="description">Unique identifier for this record.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">name</td>
+          <td>VARCHAR</td>
+          <td>120</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">Full name of the account holder or counselor.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">specialization</td>
+          <td>VARCHAR</td>
+          <td>120</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">Counseling area or professional specialization.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">description</td>
+          <td>TEXT</td>
+          <td>—</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">Brief description of the counselor's support area.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">schedule</td>
+          <td>TEXT</td>
+          <td>—</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">Counselor's stated consultation schedule.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">is_available</td>
+          <td>TINYINT</td>
+          <td>—</td>
+          <td>No</td>
+          <td>1</td>
+          <td class="description">Availability flag: 1 means available; 0 means unavailable.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">email</td>
+          <td>VARCHAR</td>
+          <td>190</td>
+          <td>Yes</td>
+          <td>NULL</td>
+          <td class="description">Email address used for account contact or sign-in.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">phone</td>
+          <td>VARCHAR</td>
+          <td>40</td>
+          <td>Yes</td>
+          <td>NULL</td>
+          <td class="description">Counselor contact telephone number.</td>
+        </tr></tbody>
+        </table>
+        <p class="purpose"><strong>Table Description:</strong> Stores counselor professional profiles, schedules, contact details, and availability for appointment booking.</p>
+        
+      </section>
+<section class="dictionary-section">
+        <table class="document-header" aria-label="Data dictionary header">
+          <tr><th rowspan="2">DATA DICTIONARY</th><td><strong>Reference Number:</strong> DD-03</td></tr>
+          <tr><td><strong>Version Number:</strong> 1.0</td></tr>
+        </table>
+        <div class="system"><strong>System Name:</strong> Balanga Kalinga: A Web-Based Student Wellness Assessment and Counseling Management System<br>
+          <strong>Subject:</strong> appointments</div>
+        <table class="fields" aria-label="appointments data dictionary">
+          <thead><tr><th>PK</th><th>FK</th><th>UK</th><th>Field Name</th><th>Data Type</th><th>Length</th><th>Nullable</th><th>Default Value</th><th>Description</th></tr></thead>
+          <tbody><tr>
+          <td>Yes</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">id</td>
+          <td>INT</td>
+          <td>—</td>
+          <td>No</td>
+          <td>AUTO_INCREMENT</td>
+          <td class="description">Unique identifier for this record.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td class="field">transaction_ref</td>
+          <td>VARCHAR</td>
+          <td>50</td>
+          <td>Yes</td>
+          <td>NULL</td>
+          <td class="description">Unique appointment reference generated by the current booking workflow, for example BK-YYYYMMDD-XXXXXXXX.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td class="field">user_id</td>
+          <td>INT</td>
+          <td>—</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">References the user who owns or submitted this record. References users.id.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td class="field">counselor_id</td>
+          <td>INT</td>
+          <td>—</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">Logical link from a counselor account to its counselor profile. It is unique; the live database does not enforce it as a physical foreign-key constraint. References counselors.id.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">requested_date</td>
+          <td>DATE</td>
+          <td>—</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">Requested appointment calendar date.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">requested_time</td>
+          <td>VARCHAR</td>
+          <td>20</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">Requested appointment time.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">method</td>
+          <td>VARCHAR</td>
+          <td>30</td>
+          <td>Yes</td>
+          <td>In-person</td>
+          <td class="description">Preferred counseling method, such as In-person or Phone.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">notes</td>
+          <td>TEXT</td>
+          <td>—</td>
+          <td>Yes</td>
+          <td>NULL</td>
+          <td class="description">Optional details supplied with the appointment request.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">status</td>
+          <td>VARCHAR</td>
+          <td>30</td>
+          <td>Yes</td>
+          <td>pending</td>
+          <td class="description">Current appointment status: pending, approved, declined, cancelled, or completed.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">created_at</td>
+          <td>DATETIME</td>
+          <td>—</td>
+          <td>No</td>
+          <td>CURRENT_TIMESTAMP</td>
+          <td class="description">Date and time when the record was created.</td>
+        </tr></tbody>
+        </table>
+        <p class="purpose"><strong>Table Description:</strong> Stores counseling appointment requests and their unique transaction references. It is a booking feature only and does not process payments.</p>
+        <p class="detail">The system prevents a counselor from being double-booked for the same date and time while an appointment is pending or approved.</p>
+      </section>
+<section class="dictionary-section">
+        <table class="document-header" aria-label="Data dictionary header">
+          <tr><th rowspan="2">DATA DICTIONARY</th><td><strong>Reference Number:</strong> DD-04</td></tr>
+          <tr><td><strong>Version Number:</strong> 1.0</td></tr>
+        </table>
+        <div class="system"><strong>System Name:</strong> Balanga Kalinga: A Web-Based Student Wellness Assessment and Counseling Management System<br>
+          <strong>Subject:</strong> wellness_assessments</div>
+        <table class="fields" aria-label="wellness_assessments data dictionary">
+          <thead><tr><th>PK</th><th>FK</th><th>UK</th><th>Field Name</th><th>Data Type</th><th>Length</th><th>Nullable</th><th>Default Value</th><th>Description</th></tr></thead>
+          <tbody><tr>
+          <td>Yes</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">id</td>
+          <td>INT</td>
+          <td>—</td>
+          <td>No</td>
+          <td>AUTO_INCREMENT</td>
+          <td class="description">Unique identifier for this record.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td class="field">user_id</td>
+          <td>INT</td>
+          <td>—</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">References the user who owns or submitted this record. References users.id.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">answers</td>
+          <td>TEXT</td>
+          <td>—</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">Submitted answers for the 10-question wellness check.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">overall_level</td>
+          <td>VARCHAR</td>
+          <td>40</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">Calculated wellness risk level: low, moderate, or high.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">summary</td>
+          <td>TEXT</td>
+          <td>—</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">Supportive assessment feedback summary.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">suggested_actions</td>
+          <td>TEXT</td>
+          <td>—</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">Suggested wellbeing actions based on the assessment.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">created_at</td>
+          <td>DATETIME</td>
+          <td>—</td>
+          <td>No</td>
+          <td>CURRENT_TIMESTAMP</td>
+          <td class="description">Date and time when the record was created.</td>
+        </tr></tbody>
+        </table>
+        <p class="purpose"><strong>Table Description:</strong> Stores completed 10-question wellness checks and the calculated risk feedback for each student.</p>
+        <p class="detail">When the related user is deleted, this record is also deleted (ON DELETE CASCADE).</p>
+      </section>
+<section class="dictionary-section">
+        <table class="document-header" aria-label="Data dictionary header">
+          <tr><th rowspan="2">DATA DICTIONARY</th><td><strong>Reference Number:</strong> DD-05</td></tr>
+          <tr><td><strong>Version Number:</strong> 1.0</td></tr>
+        </table>
+        <div class="system"><strong>System Name:</strong> Balanga Kalinga: A Web-Based Student Wellness Assessment and Counseling Management System<br>
+          <strong>Subject:</strong> moods</div>
+        <table class="fields" aria-label="moods data dictionary">
+          <thead><tr><th>PK</th><th>FK</th><th>UK</th><th>Field Name</th><th>Data Type</th><th>Length</th><th>Nullable</th><th>Default Value</th><th>Description</th></tr></thead>
+          <tbody><tr>
+          <td>Yes</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">id</td>
+          <td>INT</td>
+          <td>—</td>
+          <td>No</td>
+          <td>AUTO_INCREMENT</td>
+          <td class="description">Unique identifier for this record.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td class="field">user_id</td>
+          <td>INT</td>
+          <td>—</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">References the user who owns or submitted this record. References users.id.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">mood</td>
+          <td>VARCHAR</td>
+          <td>30</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">Selected mood value for the student's check-in.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">note</td>
+          <td>TEXT</td>
+          <td>—</td>
+          <td>Yes</td>
+          <td>NULL</td>
+          <td class="description">Optional note recorded with the mood check-in.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">created_at</td>
+          <td>DATETIME</td>
+          <td>—</td>
+          <td>No</td>
+          <td>CURRENT_TIMESTAMP</td>
+          <td class="description">Date and time when the record was created.</td>
+        </tr></tbody>
+        </table>
+        <p class="purpose"><strong>Table Description:</strong> Stores mood check-ins submitted by students from the dashboard.</p>
+        <p class="detail">When the related user is deleted, this record is also deleted (ON DELETE CASCADE).</p>
+      </section>
+<section class="dictionary-section">
+        <table class="document-header" aria-label="Data dictionary header">
+          <tr><th rowspan="2">DATA DICTIONARY</th><td><strong>Reference Number:</strong> DD-06</td></tr>
+          <tr><td><strong>Version Number:</strong> 1.0</td></tr>
+        </table>
+        <div class="system"><strong>System Name:</strong> Balanga Kalinga: A Web-Based Student Wellness Assessment and Counseling Management System<br>
+          <strong>Subject:</strong> ai_conversations</div>
+        <table class="fields" aria-label="ai_conversations data dictionary">
+          <thead><tr><th>PK</th><th>FK</th><th>UK</th><th>Field Name</th><th>Data Type</th><th>Length</th><th>Nullable</th><th>Default Value</th><th>Description</th></tr></thead>
+          <tbody><tr>
+          <td>Yes</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">id</td>
+          <td>INT</td>
+          <td>—</td>
+          <td>No</td>
+          <td>AUTO_INCREMENT</td>
+          <td class="description">Unique identifier for this record.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td class="field">user_id</td>
+          <td>INT</td>
+          <td>—</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">References the user who owns or submitted this record. References users.id.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">title</td>
+          <td>VARCHAR</td>
+          <td>200</td>
+          <td>Yes</td>
+          <td>Talk with Kalinga AI</td>
+          <td class="description">Conversation title; defaults to Talk with Kalinga AI.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">created_at</td>
+          <td>DATETIME</td>
+          <td>—</td>
+          <td>No</td>
+          <td>CURRENT_TIMESTAMP</td>
+          <td class="description">Date and time when the record was created.</td>
+        </tr></tbody>
+        </table>
+        <p class="purpose"><strong>Table Description:</strong> Stores each AI wellness-companion conversation started by a student.</p>
+        <p class="detail">When the related user is deleted, this record is also deleted (ON DELETE CASCADE).</p>
+      </section>
+<section class="dictionary-section">
+        <table class="document-header" aria-label="Data dictionary header">
+          <tr><th rowspan="2">DATA DICTIONARY</th><td><strong>Reference Number:</strong> DD-07</td></tr>
+          <tr><td><strong>Version Number:</strong> 1.0</td></tr>
+        </table>
+        <div class="system"><strong>System Name:</strong> Balanga Kalinga: A Web-Based Student Wellness Assessment and Counseling Management System<br>
+          <strong>Subject:</strong> ai_messages</div>
+        <table class="fields" aria-label="ai_messages data dictionary">
+          <thead><tr><th>PK</th><th>FK</th><th>UK</th><th>Field Name</th><th>Data Type</th><th>Length</th><th>Nullable</th><th>Default Value</th><th>Description</th></tr></thead>
+          <tbody><tr>
+          <td>Yes</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">id</td>
+          <td>INT</td>
+          <td>—</td>
+          <td>No</td>
+          <td>AUTO_INCREMENT</td>
+          <td class="description">Unique identifier for this record.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td class="field">conversation_id</td>
+          <td>INT</td>
+          <td>—</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">References the AI conversation containing this message. References ai_conversations.id.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">role</td>
+          <td>VARCHAR</td>
+          <td>20</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">Account role: student, counselor, or admin.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">content</td>
+          <td>TEXT</td>
+          <td>—</td>
+          <td>No</td>
+          <td>NULL</td>
+          <td class="description">Text content of the AI or student message.</td>
+        </tr>
+<tr>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="field">created_at</td>
+          <td>DATETIME</td>
+          <td>—</td>
+          <td>No</td>
+          <td>CURRENT_TIMESTAMP</td>
+          <td class="description">Date and time when the record was created.</td>
+        </tr></tbody>
+        </table>
+        <p class="purpose"><strong>Table Description:</strong> Stores individual student and AI messages within an AI conversation.</p>
+        <p class="detail">When the related AI conversation is deleted, this record is also deleted (ON DELETE CASCADE).</p>
+      </section>
+</body></html>
