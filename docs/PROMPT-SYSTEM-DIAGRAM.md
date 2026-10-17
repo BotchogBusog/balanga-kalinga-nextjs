@@ -124,6 +124,11 @@ exactly one diagram prompt. Ask for the output format you need:
 
 ## Prompt 3 — Entity-Relationship Diagram
 
+> **Superseded.** Use the stricter standalone prompt in
+> [`PROMPT-ERD.md`](./PROMPT-ERD.md) instead — it pins the exact 9-entity list
+> and forbids history / log / audit entities. The version below is kept for
+> reference only.
+
 > Using the system facts from Part 0, draw a **crow's-foot ERD** for the 9 tables
 > with primary keys, foreign keys, and cardinality. Relationships:
 > - `users.counselor_id` → `counselors.id` (many-to-one; a counselor login maps
