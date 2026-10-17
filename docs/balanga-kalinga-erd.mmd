@@ -1,0 +1,88 @@
+erDiagram
+  users ||--o| counselors : "login for"
+  users ||--o{ wellness_assessments : "takes"
+  users ||--o{ moods : "records"
+  users ||--o{ journal_entries : "writes"
+  users ||--o{ ai_conversations : "starts"
+  users ||--o{ appointments : "requests"
+  counselors ||--o{ appointments : "handles"
+  ai_conversations ||--o{ ai_messages : "contains"
+  users {
+    int id PK
+    varchar_120 name
+    varchar_190 email UK
+    varchar_40 student_id UK
+    varchar_255 password_hash
+    varchar_20 role
+    varchar_120 course
+    varchar_40 year_level
+    varchar_120 school
+    int counselor_id FK
+    datetime created_at
+  }
+  wellness_assessments {
+    int id PK
+    int user_id FK
+    text answers
+    varchar_40 overall_level
+    text summary
+    text suggested_actions
+    datetime created_at
+  }
+  moods {
+    int id PK
+    int user_id FK
+    varchar_30 mood
+    text note
+    datetime created_at
+  }
+  journal_entries {
+    int id PK
+    int user_id FK
+    varchar_200 title
+    text content
+    varchar_30 mood
+    datetime created_at
+  }
+  ai_conversations {
+    int id PK
+    int user_id FK
+    varchar_200 title
+    datetime created_at
+  }
+  ai_messages {
+    int id PK
+    int conversation_id FK
+    varchar_20 role
+    text content
+    datetime created_at
+  }
+  appointments {
+    int id PK
+    varchar_50 transaction_ref UK
+    int user_id FK
+    int counselor_id FK
+    date requested_date
+    varchar_20 requested_time
+    varchar_30 method
+    text notes
+    varchar_30 status
+    datetime created_at
+  }
+  counselors {
+    int id PK
+    varchar_120 name
+    varchar_120 specialization
+    text description
+    text schedule
+    tinyint_1 is_available
+    varchar_190 email
+    varchar_40 phone
+  }
+  emergency_resources {
+    int id PK
+    varchar_120 name
+    varchar_40 phone
+    text description
+    varchar_30 category
+  }

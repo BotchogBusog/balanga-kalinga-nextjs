@@ -1,48 +1,156 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1180" viewBox="0 0 1800 1180" role="img" aria-labelledby="title desc">
-  <title id="title">Balanga Kalinga simplified entity relationship diagram</title>
-  <desc id="desc">A clear, print-friendly core ERD with non-crossing relationship lines.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="2540" height="1300" viewBox="0 0 2540 1300" role="img" aria-labelledby="title desc">
+  <title id="title">Balanga Kalinga entity relationship diagram (simplified)</title>
+  <desc id="desc">Nine-table MySQL schema for the Balanga Kalinga student wellness and counseling system.</desc>
   <style>
-    .page { fill: #fff; }.title { font: bold 30px Arial, sans-serif; fill: #151515; text-anchor: middle; }.subtitle { font: 16px Arial, sans-serif; fill: #555; text-anchor: middle; }
-    .box { stroke: #222; stroke-width: 1.6; }.head { stroke: #222; stroke-width: 1.6; }.entity { font: bold 18px Arial, sans-serif; fill: #111; text-anchor: middle; }.field { font: 15px 'Courier New', monospace; fill: #111; }.pk { font-weight: bold; }.rel { stroke: #222; stroke-width: 1.8; fill: none; }.card { font: bold 14px Arial, sans-serif; fill: #222; }.note { font: 14px Arial, sans-serif; fill: #444; }
+    .bg{fill:#fff}
+    .box{stroke:#222;stroke-width:2.2}
+    .head{stroke:#222;stroke-width:2.2}
+    .name{font:bold 22px Arial,sans-serif;fill:#111;text-anchor:middle}
+    .fld{font:18px 'Courier New',monospace;fill:#111}
+    .typ{font:17px 'Courier New',monospace;fill:#444;text-anchor:end}
+    .key{font-weight:bold}
+    .rel{stroke:#222;stroke-width:2.4;fill:none}
+    .card{font:bold 19px Arial,sans-serif;fill:#222}
+    .title{font:bold 30px Arial,sans-serif;fill:#151515;text-anchor:middle}
+    .sub{font:16px Arial,sans-serif;fill:#555;text-anchor:middle}
+    .note{font:14px Arial,sans-serif;fill:#444}
   </style>
-  <rect class="page" width="1800" height="1180"/>
-  <text x="900" y="52" class="title">Balanga Kalinga — Simplified Entity Relationship Diagram</text>
-  <text x="900" y="80" class="subtitle">Core student wellness, mood, journal, counseling, and AI companion records</text>
-
-  <!-- Central parent table -->
-  <g transform="translate(690 135)"><rect width="420" height="252" fill="#dcecd2" class="box"/><rect width="420" height="42" fill="#c4ddb5" class="head"/><text x="210" y="28" class="entity">users</text><text x="18" y="72" class="field pk">PK  id</text><text x="18" y="100" class="field">name</text><text x="18" y="128" class="field">email (UNIQUE)</text><text x="18" y="156" class="field">student_id (UNIQUE)</text><text x="18" y="184" class="field">role</text><text x="18" y="212" class="field pk">FK  counselor_id (UNIQUE)</text><text x="18" y="240" class="field">course, year_level</text></g>
-
-  <!-- Clean trunk from users to child entities -->
-  <path d="M900 387 V470 M185 470 H1615 M185 470 V560 M465 470 V560 M745 470 V560 M1025 470 V560 M1305 470 V560 M1615 470 V560" class="rel"/>
-  <text x="915" y="450" class="card">1</text>
-  <text x="199" y="550" class="card">M</text>
-  <text x="479" y="550" class="card">M</text>
-  <text x="759" y="550" class="card">M</text>
-  <text x="1039" y="550" class="card">M</text>
-  <text x="1319" y="550" class="card">M</text>
-  <text x="1629" y="550" class="card">1</text>
-
-  <!-- Child tables: no relationship lines cross -->
-  <g transform="translate(60 560)"><rect width="250" height="224" fill="#f8d2b1" class="box"/><rect width="250" height="42" fill="#edbd92" class="head"/><text x="125" y="28" class="entity">wellness_assessments</text><text x="14" y="72" class="field pk">PK  id</text><text x="14" y="100" class="field pk">FK  user_id</text><text x="14" y="128" class="field">answers</text><text x="14" y="156" class="field">overall_level</text><text x="14" y="184" class="field">summary</text><text x="14" y="212" class="field">created_at</text></g>
-  <g transform="translate(340 560)"><rect width="250" height="196" fill="#f8d2b1" class="box"/><rect width="250" height="42" fill="#edbd92" class="head"/><text x="125" y="28" class="entity">moods</text><text x="14" y="72" class="field pk">PK  id</text><text x="14" y="100" class="field pk">FK  user_id</text><text x="14" y="128" class="field">mood</text><text x="14" y="156" class="field">note</text><text x="14" y="184" class="field">created_at</text></g>
-  <g transform="translate(620 560)"><rect width="250" height="196" fill="#f8d2b1" class="box"/><rect width="250" height="42" fill="#edbd92" class="head"/><text x="125" y="28" class="entity">journal_entries</text><text x="14" y="72" class="field pk">PK  id</text><text x="14" y="100" class="field pk">FK  user_id</text><text x="14" y="128" class="field">title</text><text x="14" y="156" class="field">content</text><text x="14" y="184" class="field">mood</text></g>
-  <g transform="translate(900 560)"><rect width="250" height="168" fill="#f8d2b1" class="box"/><rect width="250" height="42" fill="#edbd92" class="head"/><text x="125" y="28" class="entity">ai_conversations</text><text x="14" y="72" class="field pk">PK  id</text><text x="14" y="100" class="field pk">FK  user_id</text><text x="14" y="128" class="field">title</text><text x="14" y="156" class="field">created_at</text></g>
-  <g transform="translate(1180 560)"><rect width="250" height="224" fill="#f8d2b1" class="box"/><rect width="250" height="42" fill="#edbd92" class="head"/><text x="125" y="28" class="entity">appointments</text><text x="14" y="72" class="field pk">PK  id</text><text x="14" y="100" class="field">transaction_ref (UNIQUE)</text><text x="14" y="128" class="field pk">FK  user_id</text><text x="14" y="156" class="field pk">FK  counselor_id</text><text x="14" y="184" class="field">date, time, status</text><text x="14" y="212" class="field">created_at</text></g>
-  <g transform="translate(1490 560)"><rect width="250" height="168" fill="#d9d8ef" class="box"/><rect width="250" height="42" fill="#c4c2e1" class="head"/><text x="125" y="28" class="entity">counselors</text><text x="14" y="72" class="field pk">PK  id</text><text x="14" y="100" class="field">name</text><text x="14" y="128" class="field">specialization</text><text x="14" y="156" class="field">is_available</text></g>
-
-  <!-- counselors 1 : M appointments -->
-  <path d="M1430 760 H1490" class="rel"/>
-  <text x="1436" y="748" class="card">M</text>
-  <text x="1472" y="748" class="card">1</text>
-
-  <!-- ai_conversations 1 : M ai_messages -->
-  <path d="M1025 728 V930" class="rel"/>
-  <text x="1040" y="782" class="card">1</text>
-  <text x="1040" y="918" class="card">M</text>
-
-  <!-- Supporting tables -->
-  <g transform="translate(900 930)"><rect width="250" height="168" fill="#f8d2b1" class="box"/><rect width="250" height="42" fill="#edbd92" class="head"/><text x="125" y="28" class="entity">ai_messages</text><text x="14" y="72" class="field pk">PK  id</text><text x="14" y="100" class="field pk">FK  conversation_id</text><text x="14" y="128" class="field">role</text><text x="14" y="156" class="field">content</text></g>
-  <g transform="translate(60 930)"><rect width="250" height="196" fill="#e7e7e7" class="box"/><rect width="250" height="42" fill="#d4d4d4" class="head"/><text x="125" y="28" class="entity">emergency_resources</text><text x="14" y="72" class="field pk">PK  id</text><text x="14" y="100" class="field">name</text><text x="14" y="128" class="field">phone</text><text x="14" y="156" class="field">description</text><text x="14" y="184" class="field">category</text></g>
-
-  <text x="45" y="1140" class="note">Legend: PK = Primary Key · FK = Foreign Key · 1 = one record · M = many records. Print in landscape, A3 or larger, at 100% scale.</text>
+  <rect class="bg" width="2540" height="1300"/>
+  <text x="1270" y="52" class="title">Balanga Kalinga — Entity Relationship Diagram (Simplified)</text>
+  <text x="1270" y="80" class="sub">Web-Based Student Wellness Assessment and Counseling Management System · 9 tables</text>
+  <path d="M1274 370 V570 M340 570 H2208 M340 570 V640 M693 570 V640 M1038 570 V640 M1383 570 V640 M1768 570 V640 M2208 570 V640" class="rel"/>
+  <text x="1288" y="550" class="card">1</text>
+  <text x="354" y="630" class="card">M</text>
+  <text x="707" y="630" class="card">M</text>
+  <text x="1052" y="630" class="card">M</text>
+  <text x="1397" y="630" class="card">M</text>
+  <text x="1782" y="630" class="card">M</text>
+  <text x="2222" y="630" class="card">1</text>
+  <path d="M1958 790 H2058" class="rel"/>
+  <text x="1968" y="778" class="card">M</text>
+  <text x="2036" y="778" class="card">1</text>
+  <path d="M1383 800 V1000" class="rel"/>
+  <text x="1397" y="834" class="card">1</text>
+  <text x="1397" y="986" class="card">M</text>
+  <g transform="translate(182 640)">
+    <rect width="316" height="190" fill="#f8d2b1" class="box"/>
+    <rect width="316" height="52" fill="#edbd92" class="head"/>
+    <text x="158" y="35" class="name">wellness_assessments</text>
+    <text x="18" y="86" class="fld key">PK  id</text>
+    <text x="298" y="86" class="typ">INT</text>
+    <text x="18" y="116" class="fld key">FK  user_id</text>
+    <text x="298" y="116" class="typ">INT</text>
+    <text x="18" y="146" class="fld">overall_level</text>
+    <text x="298" y="146" class="typ">VARCHAR(40)</text>
+    <text x="18" y="176" class="fld">created_at</text>
+    <text x="298" y="176" class="typ">DATETIME</text>
+  </g>
+  <g transform="translate(543 640)">
+    <rect width="300" height="190" fill="#f8d2b1" class="box"/>
+    <rect width="300" height="52" fill="#edbd92" class="head"/>
+    <text x="150" y="35" class="name">moods</text>
+    <text x="18" y="86" class="fld key">PK  id</text>
+    <text x="282" y="86" class="typ">INT</text>
+    <text x="18" y="116" class="fld key">FK  user_id</text>
+    <text x="282" y="116" class="typ">INT</text>
+    <text x="18" y="146" class="fld">mood</text>
+    <text x="282" y="146" class="typ">VARCHAR(30)</text>
+    <text x="18" y="176" class="fld">created_at</text>
+    <text x="282" y="176" class="typ">DATETIME</text>
+  </g>
+  <g transform="translate(888 640)">
+    <rect width="300" height="190" fill="#f8d2b1" class="box"/>
+    <rect width="300" height="52" fill="#edbd92" class="head"/>
+    <text x="150" y="35" class="name">journal_entries</text>
+    <text x="18" y="86" class="fld key">PK  id</text>
+    <text x="282" y="86" class="typ">INT</text>
+    <text x="18" y="116" class="fld key">FK  user_id</text>
+    <text x="282" y="116" class="typ">INT</text>
+    <text x="18" y="146" class="fld">title</text>
+    <text x="282" y="146" class="typ">VARCHAR(200)</text>
+    <text x="18" y="176" class="fld">created_at</text>
+    <text x="282" y="176" class="typ">DATETIME</text>
+  </g>
+  <g transform="translate(1233 640)">
+    <rect width="300" height="160" fill="#f8d2b1" class="box"/>
+    <rect width="300" height="52" fill="#edbd92" class="head"/>
+    <text x="150" y="35" class="name">ai_conversations</text>
+    <text x="18" y="86" class="fld key">PK  id</text>
+    <text x="282" y="86" class="typ">INT</text>
+    <text x="18" y="116" class="fld key">FK  user_id</text>
+    <text x="282" y="116" class="typ">INT</text>
+    <text x="18" y="146" class="fld">title</text>
+    <text x="282" y="146" class="typ">VARCHAR(200)</text>
+  </g>
+  <g transform="translate(1578 640)">
+    <rect width="380" height="250" fill="#f8d2b1" class="box"/>
+    <rect width="380" height="52" fill="#edbd92" class="head"/>
+    <text x="190" y="35" class="name">appointments</text>
+    <text x="18" y="86" class="fld key">PK  id</text>
+    <text x="362" y="86" class="typ">INT</text>
+    <text x="18" y="116" class="fld key">UQ  transaction_ref</text>
+    <text x="362" y="116" class="typ">VARCHAR(50)</text>
+    <text x="18" y="146" class="fld key">FK  user_id</text>
+    <text x="362" y="146" class="typ">INT</text>
+    <text x="18" y="176" class="fld key">FK  counselor_id</text>
+    <text x="362" y="176" class="typ">INT</text>
+    <text x="18" y="206" class="fld">status</text>
+    <text x="362" y="206" class="typ">VARCHAR(30)</text>
+    <text x="18" y="236" class="fld">created_at</text>
+    <text x="362" y="236" class="typ">DATETIME</text>
+  </g>
+  <g transform="translate(2058 640)">
+    <rect width="300" height="160" fill="#d9d8ef" class="box"/>
+    <rect width="300" height="52" fill="#c4c2e1" class="head"/>
+    <text x="150" y="35" class="name">counselors</text>
+    <text x="18" y="86" class="fld key">PK  id</text>
+    <text x="282" y="86" class="typ">INT</text>
+    <text x="18" y="116" class="fld">name</text>
+    <text x="282" y="116" class="typ">VARCHAR(120)</text>
+    <text x="18" y="146" class="fld">is_available</text>
+    <text x="282" y="146" class="typ">TINYINT(1)</text>
+  </g>
+  <g transform="translate(1111 120)">
+    <rect width="326" height="250" fill="#dcecd2" class="box"/>
+    <rect width="326" height="52" fill="#c4ddb5" class="head"/>
+    <text x="163" y="35" class="name">users</text>
+    <text x="18" y="86" class="fld key">PK  id</text>
+    <text x="308" y="86" class="typ">INT</text>
+    <text x="18" y="116" class="fld">name</text>
+    <text x="308" y="116" class="typ">VARCHAR(120)</text>
+    <text x="18" y="146" class="fld key">UQ  email</text>
+    <text x="308" y="146" class="typ">VARCHAR(190)</text>
+    <text x="18" y="176" class="fld key">UQ  student_id</text>
+    <text x="308" y="176" class="typ">VARCHAR(40)</text>
+    <text x="18" y="206" class="fld">role</text>
+    <text x="308" y="206" class="typ">VARCHAR(20)</text>
+    <text x="18" y="236" class="fld key">FK UQ  counselor_id</text>
+    <text x="308" y="236" class="typ">INT</text>
+  </g>
+  <g transform="translate(1233 1000)">
+    <rect width="300" height="190" fill="#f8d2b1" class="box"/>
+    <rect width="300" height="52" fill="#edbd92" class="head"/>
+    <text x="150" y="35" class="name">ai_messages</text>
+    <text x="18" y="86" class="fld key">PK  id</text>
+    <text x="282" y="86" class="typ">INT</text>
+    <text x="18" y="116" class="fld key">FK  conversation_id</text>
+    <text x="282" y="116" class="typ">INT</text>
+    <text x="18" y="146" class="fld">role</text>
+    <text x="282" y="146" class="typ">VARCHAR(20)</text>
+    <text x="18" y="176" class="fld">content</text>
+    <text x="282" y="176" class="typ">TEXT</text>
+  </g>
+  <g transform="translate(182 1000)">
+    <rect width="300" height="160" fill="#e7e7e7" class="box"/>
+    <rect width="300" height="52" fill="#d4d4d4" class="head"/>
+    <text x="150" y="35" class="name">emergency_resources</text>
+    <text x="18" y="86" class="fld key">PK  id</text>
+    <text x="282" y="86" class="typ">INT</text>
+    <text x="18" y="116" class="fld">name</text>
+    <text x="282" y="116" class="typ">VARCHAR(120)</text>
+    <text x="18" y="146" class="fld">phone</text>
+    <text x="282" y="146" class="typ">VARCHAR(40)</text>
+  </g>
+  <text x="182" y="1258" class="note">Legend — PK Primary key · FK Foreign key · UQ Unique · 1 = one record · M = many records. Foreign keys to <tspan font-family="Courier New, monospace">users</tspan> cascade on delete.</text>
+  <text x="182" y="1280" class="note"><tspan font-family="Courier New, monospace">appointments</tspan> also has an index on (counselor_id, requested_date, requested_time, status). Types shown are MySQL 8 / InnoDB, utf8mb4.</text>
 </svg>
