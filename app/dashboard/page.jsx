@@ -1,7 +1,5 @@
-// Port of dashboard.php
-import { redirect } from "next/navigation";
-import { revalidatePath } from "next/cache";
-import { query, timeAgo } from "../../lib/db";
+
+import { query } from "../../lib/db";
 import { requireStudent } from "../../lib/auth";
 
 function badgeClass(level) {
@@ -28,27 +26,10 @@ function appointmentBadge(status) {
   return "badge-blue";
 }
 
-export default async function DashboardPage({ searchParams }) {
+export default async function DashboardPage() {
   const user = await requireStudent();
   const uid = user.id;
 
-  async function saveMood(formData) {
-    "use server";
-    const { query: q } = await import("../../lib/db");
-    const { getSessionUserId } = await import("../../lib/auth");
-    const id = getSessionUserId();
-    if (!id) redirect("/login");
-    const mood = (formData.get("mood") || "").toString();
-    const note = (formData.get("note") || "").toString().trim();
-    const allowed = ["great", "good", "okay", "stressed", "low", "overwhelmed"];
-    if (allowed.includes(mood)) {
-      await q("INSERT INTO moods (user_id, mood, note) VALUES (?,?,?)", [id, mood, note]);
-    }
-    revalidatePath("/dashboard");
-    redirect("/dashboard?saved=1");
-  }
-
-  const recentMoods = await query("SELECT * FROM moods WHERE user_id = ? ORDER BY created_at DESC LIMIT 5", [uid]);
   const latestRows = await query("SELECT * FROM wellness_assessments WHERE user_id = ? ORDER BY created_at DESC LIMIT 1", [uid]);
   const latest = latestRows[0] || null;
   const appts = await query("SELECT a.*, c.name as counselor_name FROM appointments a JOIN counselors c ON c.id=a.counselor_id WHERE a.user_id=? ORDER BY a.requested_date DESC LIMIT 3", [uid]);
@@ -59,9 +40,8 @@ export default async function DashboardPage({ searchParams }) {
       <div className="page-heading">
         <div className="eyebrow">Student wellness portal</div>
         <h1 style={{ marginTop: 4 }}>Good to see you, {firstName}</h1>
-        <p className="muted" style={{ marginTop: 5 }}>Review your latest check-in, record how you feel, or connect with the counseling office.</p>
+        <p className="muted" style={{ marginTop: 5 }}>Review your latest check-in or connect with the counseling office.</p>
       </div>
-      {searchParams?.saved && <div className="notice notice-success" style={{ marginTop: 10 }}>Mood saved. Thank you for checking in.</div>}
       <div className="grid grid-2" style={{ marginTop: 18 }}>
         <section className="card card-accent">
           <div className="eyebrow">Recommended first step</div>
@@ -81,30 +61,10 @@ export default async function DashboardPage({ searchParams }) {
       </div>
       <div className="grid grid-2" style={{ marginTop: 2 }}>
         <section className="card">
-          <div className="eyebrow">Check in today</div>
-          <h2 style={{ marginTop: 5 }}>How are you feeling right now?</h2>
-          <form action={saveMood}>
-            <div className="mood-options" style={{ margin: "12px 0 10px" }}>
-              {["great", "good", "okay", "stressed", "low", "overwhelmed"].map((opt) => (
-                <button key={opt} type="submit" name="mood" value={opt} className="btn btn-secondary btn-small">{opt.charAt(0).toUpperCase() + opt.slice(1)}</button>
-              ))}
-            </div>
-            <div className="form-group"><input type="text" name="note" placeholder="Optional note - what is on your mind?" /></div>
-            <p className="muted" style={{ fontSize: 12 }}>Pick a mood and optionally add a short note. You can see trends in your wellness history.</p>
-          </form>
-        </section>
-        <section className="card">
           <div className="eyebrow">Counseling</div>
           <h2 style={{ marginTop: 5 }}>Appointments</h2>
           {appts.length ? <div className="status-row"><div><strong>{appts[0].counselor_name}</strong><span className="muted">{String(appts[0].requested_date).slice(0, 10)} at {appts[0].requested_time}</span></div><span className={`badge ${appointmentBadge(appts[0].status)}`}>{appts[0].status}</span></div> : <p className="muted">No appointment scheduled.</p>}
           <a href="/counseling" className="btn btn-secondary btn-small" style={{ marginTop: 12 }}>{appts.length ? "View counseling" : "Book counseling"}</a>
-        </section>
-      </div>
-      <div className="grid grid-2" style={{ marginTop: 2 }}>
-        <section className="card">
-          <div className="eyebrow">Recent mood entries</div>
-          <h2 style={{ marginTop: 5 }}>Your recent check-ins</h2>
-          {recentMoods.length ? <div>{recentMoods.map((m) => <div key={m.id} className="status-row"><div><strong style={{ textTransform: "capitalize" }}>{m.mood}</strong>{m.note && <span className="muted">{m.note}</span>}</div><span className="muted">{timeAgo(m.created_at)}</span></div>)}</div> : <p className="muted">No mood entries yet.</p>}
         </section>
         <section className="card">
           <div className="eyebrow">Other support</div>

@@ -33,7 +33,6 @@ export default async function AdminPage({ searchParams }) {
   const appointments = await query("SELECT a.*, u.name as student_name, u.email, c.name as counselor_name FROM appointments a JOIN users u ON u.id=a.user_id JOIN counselors c ON c.id=a.counselor_id ORDER BY a.created_at DESC LIMIT 20");
   const counselors = await query("SELECT * FROM counselors");
   const levels = await query("SELECT overall_level, COUNT(*) as c FROM wellness_assessments GROUP BY overall_level");
-  const moods = await query("SELECT mood, COUNT(*) as c FROM moods GROUP BY mood");
   const students = await query("SELECT id,name,email,student_id,course,year_level,created_at FROM users WHERE role='student' ORDER BY created_at DESC LIMIT 20");
 
   return (
@@ -63,10 +62,6 @@ export default async function AdminPage({ searchParams }) {
               {levels.length ? levels.map((l, i) => (
                 <div key={i} className="status-row"><span>{l.overall_level}</span><strong>{Number(l.c)}</strong></div>
               )) : <p className="muted">No data yet.</p>}
-              <h2 style={{ marginTop: 18 }}>Mood counts</h2>
-              {moods.length ? moods.map((m, i) => (
-                <div key={i} className="status-row"><span>{m.mood}</span><strong>{Number(m.c)}</strong></div>
-              )) : <p className="muted">No moods yet.</p>}
             </div>
             <div className="card" id="counselors">
               <h2>Counselors</h2>
