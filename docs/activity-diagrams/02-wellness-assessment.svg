@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2020" viewBox="0 0 1600 2020" role="img" aria-labelledby="title desc">
+<title id="title">Wellness Assessment activity diagram</title>
+<desc id="desc">Activity diagram for the Wellness Assessment feature of the Balanga Kalinga system.</desc>
+<defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 z" fill="#111"/></marker><style>
+      .shape{fill:#fff;stroke:#111;stroke-width:4}.arrow{fill:none;stroke:#111;stroke-width:4;marker-end:url(#arrow)}.line{fill:none;stroke:#111;stroke-width:4}
+      .title{font:bold 31px Arial,sans-serif;fill:#111;text-anchor:middle}.subtitle{font:19px Arial,sans-serif;fill:#444;text-anchor:middle}
+      .label{font:bold 27px Arial,sans-serif;fill:#111;text-anchor:middle}.small{font:22px Arial,sans-serif;fill:#111;text-anchor:middle}.note{font:21px Arial,sans-serif;fill:#111}.caption{font:italic 23px Arial,sans-serif;fill:#111;text-anchor:middle}
+    </style></defs>
+<rect width="1600" height="2020" fill="#fff"/>
+<text x="800" y="55" class="title">Balanga Kalinga — Wellness Assessment</text>
+<text x="800" y="86" class="subtitle">Feature 2 — Complete the 10-question wellness check and view feedback</text>
+<circle cx="800" cy="140" r="24" fill="#111"/>
+<path d="M800 164 V210" class="arrow"/>
+<rect x="570" y="210" width="460" height="78" class="shape"/><text x="800" y="257" class="label">Log In</text>
+<path d="M800 288 V330" class="arrow"/>
+<path d="M800 330 L1010 397.5 L800 465 L590 397.5 Z" class="shape"/><text x="800" y="390.5" class="label">Credentials</text><text x="800" y="420.5" class="label">valid?</text>
+<path d="M1010 397 H1190 V249 H1030" class="arrow"/>
+<text x="1080" y="380" class="note">No</text>
+<path d="M800 465 V500" class="arrow"/>
+<text x="820" y="482" class="note">Yes</text>
+<rect x="500" y="500" width="600" height="80" class="shape"/><text x="800" y="548" class="label">Open Balanga Kalinga Dashboard</text>
+<path d="M800 580 V635" class="arrow"/>
+<rect x="500" y="635" width="600" height="82" class="shape"/><text x="800" y="684" class="label">Open Wellness Assessment</text>
+<path d="M800 717 V770" class="arrow"/>
+<rect x="460" y="770" width="680" height="92" class="shape"/><text x="800" y="824" class="label">Answer 10 Questions (Past Four Weeks)</text>
+<path d="M800 862 V915" class="arrow"/>
+<path d="M800 915 L1010 982.5 L800 1050 L590 982.5 Z" class="shape"/><text x="800" y="975.5" class="label">All questions</text><text x="800" y="1005.5" class="label">answered?</text>
+<path d="M590 982 H320 V816 H460" class="arrow"/>
+<text x="370" y="964" class="note">No</text>
+<path d="M800 1050 V1100" class="arrow"/>
+<text x="820" y="1083" class="note">Yes</text>
+<rect x="450" y="1100" width="700" height="90" class="shape"/><text x="800" y="1138" class="label">Calculate Score and Classify Risk</text><text x="800" y="1168" class="label">Low / Moderate / High</text>
+<path d="M800 1190 V1240" class="arrow"/>
+<path d="M800 1240 L1010 1307.5 L800 1375 L590 1307.5 Z" class="shape"/><text x="800" y="1300.5" class="label">High-risk</text><text x="800" y="1330.5" class="label">result?</text>
+<path d="M590 1307 H250 V1420 H400" class="arrow"/>
+<text x="330" y="1288" class="note">Yes</text>
+<rect x="100" y="1420" width="600" height="82" class="shape"/><text x="400" y="1469" class="label">Show Counselor Contact Information</text>
+<path d="M400 1502 V1540 H800" class="line"/>
+<path d="M1010 1307 H1350 V1540 H800" class="arrow"/>
+<text x="1080" y="1288" class="note">No</text>
+<path d="M800 1540 V1570" class="arrow"/>
+<rect x="500" y="1570" width="600" height="82" class="shape"/><text x="800" y="1619" class="label">Save Assessment and Show Feedback</text>
+<path d="M800 1652 V1710" class="arrow"/>
+<rect x="620" y="1710" width="360" height="78" class="shape"/><text x="800" y="1757" class="label">Log Out</text>
+<path d="M800 1788 V1816" class="arrow"/>
+<circle cx="800" cy="1840" r="24" fill="#111"/>
+<text x="800" y="1980" class="caption">Figure X. Activity Diagram for Wellness Assessment</text></svg>
