@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3200" height="2300" viewBox="0 0 3200 2300" role="img" aria-labelledby="title desc">
+  <title id="title">Balanga Kalinga activity diagram</title>
+  <desc id="desc">A high-level activity diagram covering login, five student features, the counselor dashboard, and administrator management and reports.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L12,6 L0,12 z" fill="#111"/>
+    </marker>
+    <style>
+      .shape{fill:#fff;stroke:#111;stroke-width:4}
+      .arrow{fill:none;stroke:#111;stroke-width:4;marker-end:url(#arrow)}
+      .line{fill:none;stroke:#111;stroke-width:4}
+      .label{font-family:Arial,sans-serif;font-size:29px;font-weight:700;fill:#111;text-anchor:middle}
+      .small{font-family:Arial,sans-serif;font-size:23px;fill:#111;text-anchor:middle}
+      .note{font-family:Arial,sans-serif;font-size:22px;fill:#111}
+      .caption{font-family:Arial,sans-serif;font-size:26px;font-style:italic;fill:#111;text-anchor:middle}
+      .feature{font-family:Arial,sans-serif;font-size:25px;font-weight:700;fill:#111;text-anchor:middle}
+      .num{font-family:Arial,sans-serif;font-size:20px;font-weight:700;fill:#111;text-anchor:middle}
+    </style>
+  </defs>
+
+  <rect width="3200" height="2300" fill="#fff"/>
+  <text x="1600" y="60" class="label" font-size="36">Balanga Kalinga — Activity Diagram</text>
+  <text x="1600" y="94" class="small">Web-Based Student Wellness Assessment and Counseling Management System</text>
+
+  <!-- Start, login, and validation -->
+  <circle cx="1600" cy="150" r="25" fill="#111"/>
+  <path d="M1600 175 V220" class="arrow"/>
+  <rect x="1360" y="220" width="480" height="82" class="shape"/>
+  <text x="1600" y="271" class="label">Register or Log In</text>
+  <path d="M1600 302 V350" class="arrow"/>
+  <path d="M1600 350 L1815 425 L1600 500 L1385 425 Z" class="shape"/>
+  <text x="1600" y="416" class="label">Credentials</text>
+  <text x="1600" y="450" class="label">valid?</text>
+  <path d="M1815 425 H2100 V261 H1840" class="arrow"/>
+  <text x="1915" y="408" class="note">No</text>
+  <path d="M1600 500 V555" class="arrow"/>
+  <text x="1620" y="540" class="note">Yes</text>
+  <rect x="1330" y="555" width="540" height="82" class="shape"/>
+  <text x="1600" y="606" class="label">Open Balanga Kalinga Dashboard</text>
+  <path d="M1600 637 V690" class="arrow"/>
+  <path d="M1600 690 L1825 765 L1600 840 L1375 765 Z" class="shape"/>
+  <text x="1600" y="756" class="label">User role?</text>
+  <text x="1600" y="790" class="small">Student / Counselor / Administrator</text>
+
+  <!-- Student path -->
+  <path d="M1375 765 H460 V900" class="arrow"/>
+  <text x="820" y="746" class="note">Student</text>
+  <rect x="230" y="900" width="460" height="82" class="shape"/>
+  <text x="460" y="951" class="label">Open Student Dashboard</text>
+  <path d="M460 982 V1035" class="arrow"/>
+  <path d="M460 1035 L670 1100 L460 1165 L250 1100 Z" class="shape"/>
+  <text x="460" y="1091" class="label">Select student</text>
+  <text x="460" y="1121" class="label">feature</text>
+
+  <!-- Five active student features -->
+  <path d="M460 1165 V1220 M230 1220 H1440 M230 1220 V1300 M500 1220 V1300 M770 1220 V1300 M1040 1220 V1300 M1310 1220 V1300" class="arrow"/>
+  <rect x="85" y="1300" width="290" height="100" class="shape"/>
+  <text x="230" y="1340" class="num">FEATURE 1</text><text x="230" y="1374" class="feature">Student Profile</text>
+  <rect x="355" y="1300" width="290" height="100" class="shape"/>
+  <text x="500" y="1340" class="num">FEATURE 2</text><text x="500" y="1374" class="feature">Wellness Assessment</text>
+  <rect x="625" y="1300" width="290" height="100" class="shape"/>
+  <text x="770" y="1340" class="num">FEATURE 3</text><text x="770" y="1374" class="feature">Mood Check-In</text>
+  <rect x="895" y="1300" width="290" height="100" class="shape"/>
+  <text x="1040" y="1340" class="num">FEATURE 4</text><text x="1040" y="1374" class="feature">AI Wellness Chat</text>
+  <rect x="1165" y="1300" width="290" height="100" class="shape"/>
+  <text x="1310" y="1340" class="num">FEATURE 5</text><text x="1310" y="1374" class="feature">Counseling Appointment</text>
+
+  <!-- Student feature detail -->
+  <path d="M230 1400 V1460 M500 1400 V1460 M770 1400 V1460 M1040 1400 V1460 M1310 1400 V1460" class="arrow"/>
+  <rect x="85" y="1460" width="290" height="102" class="shape"/>
+  <text x="230" y="1502" class="small">View or update</text><text x="230" y="1534" class="small">profile details</text>
+  <rect x="355" y="1460" width="290" height="102" class="shape"/>
+  <text x="500" y="1502" class="small">Answer 10 questions;</text><text x="500" y="1534" class="small">view risk feedback</text>
+  <rect x="625" y="1460" width="290" height="102" class="shape"/>
+  <text x="770" y="1502" class="small">Select mood and</text><text x="770" y="1534" class="small">optional note</text>
+  <rect x="895" y="1460" width="290" height="102" class="shape"/>
+  <text x="1040" y="1502" class="small">Send mental-health</text><text x="1040" y="1534" class="small">chat message</text>
+  <rect x="1165" y="1460" width="290" height="102" class="shape"/>
+  <text x="1310" y="1502" class="small">Choose counselor,</text><text x="1310" y="1534" class="small">date, and time</text>
+  <path d="M230 1562 V1620 M500 1562 V1620 M770 1562 V1620 M1040 1562 V1620 M1310 1562 V1620" class="arrow"/>
+  <path d="M230 1620 H1310 M770 1620 V1680" class="arrow"/>
+  <rect x="510" y="1680" width="520" height="82" class="shape"/>
+  <text x="770" y="1731" class="label">Save or Retrieve Authorized Records</text>
+
+  <!-- Counselor path -->
+  <path d="M1600 840 V900" class="arrow"/>
+  <text x="1620" y="875" class="note">Counselor</text>
+  <rect x="1370" y="900" width="460" height="82" class="shape"/>
+  <text x="1600" y="951" class="label">Open Counselor Dashboard</text>
+  <path d="M1600 982 V1040" class="arrow"/>
+  <rect x="1370" y="1040" width="460" height="112" class="shape"/>
+  <text x="1600" y="1084" class="num">FEATURE 6 — Counselor Appointment Management</text>
+  <text x="1600" y="1120" class="small">Set availability; view own appointments;</text>
+  <text x="1600" y="1145" class="small">approve, decline, cancel, or complete requests</text>
+  <path d="M1600 1152 V1840" class="line"/>
+
+  <!-- Administrator path -->
+  <path d="M1825 765 H2700 V900" class="arrow"/>
+  <text x="2260" y="746" class="note">Administrator</text>
+  <rect x="2470" y="900" width="460" height="82" class="shape"/>
+  <text x="2700" y="951" class="label">Open Administrator Dashboard</text>
+  <path d="M2700 982 V1040" class="arrow"/>
+  <rect x="2470" y="1040" width="460" height="112" class="shape"/>
+  <text x="2700" y="1084" class="num">FEATURE 7 — Administration and Reports</text>
+  <text x="2700" y="1120" class="small">Manage users and counselors;</text>
+  <text x="2700" y="1145" class="small">view, filter, and print reports</text>
+  <path d="M2700 1152 V1840" class="line"/>
+
+  <!-- End and continuing -->
+  <path d="M770 1762 V1840 H2700" class="line"/>
+  <path d="M1600 1840 V1890" class="arrow"/>
+  <path d="M1600 1890 L1820 1960 L1600 2030 L1380 1960 Z" class="shape"/>
+  <text x="1600" y="1952" class="label">Continue using</text><text x="1600" y="1986" class="label">the system?</text>
+  <path d="M1820 1960 H3070 V765 H1825" class="arrow"/>
+  <text x="2380" y="1942" class="note">Yes</text>
+  <path d="M1600 2030 V2090" class="arrow"/>
+  <text x="1622" y="2068" class="note">No</text>
+  <rect x="1390" y="2090" width="420" height="82" class="shape"/>
+  <text x="1600" y="2141" class="label">Log Out</text>
+  <path d="M1600 2172 V2215" class="arrow"/>
+  <circle cx="1600" cy="2245" r="25" fill="#111"/>
+
+  <text x="1600" y="2290" class="caption">Figure X. Activity Diagram of the Balanga Kalinga System</text>
+</svg>
