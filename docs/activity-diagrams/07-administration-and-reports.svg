@@ -26,20 +26,20 @@
 <rect x="500" y="690" width="600" height="82" class="shape"/><text x="800" y="739" class="label">Open Administrator Dashboard</text>
 <path d="M800 772 V825" class="arrow"/>
 <path d="M800 825 L1010 892.5 L800 960 L590 892.5 Z" class="shape"/><text x="800" y="885.5" class="label">Select</text><text x="800" y="915.5" class="label">function</text>
-<path d="M590 892 H300 V1010 H500" class="arrow"/>
-<text x="340" y="874" class="note">Management</text>
-<rect x="500" y="1010" width="600" height="92" class="shape"/><text x="800" y="1049" class="label">Manage Student Users and</text><text x="800" y="1079" class="label">Counselor Accounts</text>
-<path d="M1010 892 H1300 V1010 H1100" class="arrow"/>
+<path d="M590 892 H250 V1056 H440" class="arrow"/>
+<text x="300" y="874" class="note">Management</text>
+<rect x="440" y="1010" width="600" height="92" class="shape"/><text x="740" y="1049" class="label">Manage Student Users and</text><text x="740" y="1079" class="label">Counselor Accounts</text>
+<path d="M1010 892 H1300 V1056 H1100" class="arrow"/>
 <text x="1110" y="874" class="note">Reports</text>
 <rect x="1100" y="1010" width="360" height="92" class="shape"/><text x="1280" y="1049" class="label">Choose Date</text><text x="1280" y="1079" class="label">Range</text>
 <path d="M1280 1102 V1160" class="arrow"/>
 <rect x="1100" y="1160" width="360" height="92" class="shape"/><text x="1280" y="1199" class="label">View or Print</text><text x="1280" y="1229" class="label">Reports</text>
-<path d="M800 1102 V1320 H1280 M1280 1252 V1320" class="line"/>
+<path d="M740 1102 V1320 H1280 M1280 1252 V1320" class="line"/>
 <path d="M800 1320 V1360" class="arrow"/>
 <rect x="500" y="1360" width="600" height="82" class="shape"/><text x="800" y="1409" class="label">Save Changes or Display Report</text>
 <path d="M800 1442 V1495" class="arrow"/>
 <path d="M800 1495 L1010 1562.5 L800 1630 L590 1562.5 Z" class="shape"/><text x="800" y="1555.5" class="label">Perform another</text><text x="800" y="1585.5" class="label">function?</text>
-<path d="M1010 1562 H1250 V892 H1010" class="arrow"/>
+<path d="M1010 1562 H1560 V731 H1100" class="arrow"/>
 <text x="1090" y="1545" class="note">Yes</text>
 <path d="M800 1630 V1680" class="arrow"/>
 <text x="820" y="1665" class="note">No</text>

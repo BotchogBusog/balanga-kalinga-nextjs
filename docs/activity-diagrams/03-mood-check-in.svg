@@ -22,18 +22,25 @@
 <path d="M800 580 V635" class="arrow"/>
 <rect x="540" y="635" width="520" height="82" class="shape"/><text x="800" y="684" class="label">Open Mood Check-In</text>
 <path d="M800 717 V770" class="arrow"/>
-<rect x="480" y="770" width="640" height="92" class="shape"/><text x="800" y="824" class="label">Select Mood and Enter Optional Note</text>
-<path d="M800 862 V915" class="arrow"/>
-<path d="M800 915 L1010 982.5 L800 1050 L590 982.5 Z" class="shape"/><text x="800" y="975.5" class="label">Mood selected?</text><text x="800" y="1005.5" class="label"></text>
-<path d="M590 982 H350 V816 H480" class="arrow"/>
-<text x="415" y="964" class="note">No</text>
-<path d="M800 1050 V1100" class="arrow"/>
-<text x="820" y="1083" class="note">Yes</text>
-<rect x="540" y="1100" width="520" height="82" class="shape"/><text x="800" y="1149" class="label">Save Mood Check-In</text>
-<path d="M800 1182 V1240" class="arrow"/>
-<rect x="500" y="1240" width="600" height="82" class="shape"/><text x="800" y="1289" class="label">Show Saved Confirmation</text>
-<path d="M800 1322 V1390" class="arrow"/>
-<rect x="620" y="1390" width="360" height="78" class="shape"/><text x="800" y="1437" class="label">Log Out</text>
-<path d="M800 1468 V1816" class="arrow"/>
-<circle cx="800" cy="1840" r="24" fill="#111"/>
+<rect x="480" y="770" width="640" height="82" class="shape"/><text x="800" y="819" class="label">Select Mood from the List</text>
+<path d="M800 852 V905" class="arrow"/>
+<path d="M800 905 L1010 972.5 L800 1040 L590 972.5 Z" class="shape"/><text x="800" y="980.5" class="label">Mood selected?</text>
+<path d="M590 972 H350 V811 H480" class="arrow"/>
+<text x="415" y="954" class="note">No</text>
+<path d="M800 1040 V1090" class="arrow"/>
+<text x="820" y="1073" class="note">Yes</text>
+<path d="M800 1090 L1010 1157.5 L800 1225 L590 1157.5 Z" class="shape"/><text x="800" y="1150.5" class="label">Add a personal</text><text x="800" y="1180.5" class="label">note?</text>
+<path d="M590 1157 H300 V1331 H500" class="arrow"/>
+<text x="400" y="1139" class="note">Yes</text>
+<rect x="500" y="1290" width="600" height="82" class="shape"/><text x="800" y="1339" class="label">Type Short Note</text>
+<path d="M1010 1157 H1180 V1405 H800" class="line"/>
+<text x="1035" y="1139" class="note">No</text>
+<path d="M800 1372 V1430" class="arrow"/>
+<rect x="500" y="1430" width="600" height="82" class="shape"/><text x="800" y="1479" class="label">Save Mood Check-In</text>
+<path d="M800 1512 V1555" class="arrow"/>
+<rect x="540" y="1555" width="520" height="82" class="shape"/><text x="800" y="1604" class="label">Show Saved Confirmation</text>
+<path d="M800 1637 V1685" class="arrow"/>
+<rect x="620" y="1685" width="360" height="78" class="shape"/><text x="800" y="1732" class="label">Log Out</text>
+<path d="M800 1763 V1806" class="arrow"/>
+<circle cx="800" cy="1830" r="24" fill="#111"/>
 <text x="800" y="1980" class="caption">Figure X. Activity Diagram for Mood Check-In</text></svg>

@@ -32,12 +32,12 @@
 <rect x="450" y="1100" width="700" height="90" class="shape"/><text x="800" y="1138" class="label">Calculate Score and Classify Risk</text><text x="800" y="1168" class="label">Low / Moderate / High</text>
 <path d="M800 1190 V1240" class="arrow"/>
 <path d="M800 1240 L1010 1307.5 L800 1375 L590 1307.5 Z" class="shape"/><text x="800" y="1300.5" class="label">High-risk</text><text x="800" y="1330.5" class="label">result?</text>
-<path d="M590 1307 H250 V1420 H400" class="arrow"/>
-<text x="330" y="1288" class="note">Yes</text>
+<path d="M590 1307 H250 V1461 H100" class="arrow"/>
+<text x="330" y="1288" class="note">High</text>
 <rect x="100" y="1420" width="600" height="82" class="shape"/><text x="400" y="1469" class="label">Show Counselor Contact Information</text>
 <path d="M400 1502 V1540 H800" class="line"/>
 <path d="M1010 1307 H1350 V1540 H800" class="arrow"/>
-<text x="1080" y="1288" class="note">No</text>
+<text x="1045" y="1288" class="note">Low / Moderate</text>
 <path d="M800 1540 V1570" class="arrow"/>
 <rect x="500" y="1570" width="600" height="82" class="shape"/><text x="800" y="1619" class="label">Save Assessment and Show Feedback</text>
 <path d="M800 1652 V1710" class="arrow"/>

@@ -36,7 +36,7 @@
 <rect x="460" y="1270" width="680" height="82" class="shape"/><text x="800" y="1319" class="label">Save Conversation and Message Records</text>
 <path d="M800 1352 V1405" class="arrow"/>
 <path d="M800 1405 L1010 1472.5 L800 1540 L590 1472.5 Z" class="shape"/><text x="800" y="1465.5" class="label">Continue</text><text x="800" y="1495.5" class="label">chatting?</text>
-<path d="M1010 1472 H1250 V811 H1100" class="arrow"/>
+<path d="M1010 1472 H1560 V811 H1100" class="arrow"/>
 <text x="1090" y="1455" class="note">Yes</text>
 <path d="M800 1540 V1600" class="arrow"/>
 <text x="820" y="1580" class="note">No</text>

@@ -22,18 +22,25 @@
 <path d="M800 580 V635" class="arrow"/>
 <rect x="560" y="635" width="480" height="82" class="shape"/><text x="800" y="684" class="label">Open Student Profile</text>
 <path d="M800 717 V770" class="arrow"/>
-<rect x="500" y="770" width="600" height="92" class="shape"/><text x="800" y="824" class="label">View or Update Profile Details</text>
-<path d="M800 862 V915" class="arrow"/>
-<path d="M800 915 L1010 982.5 L800 1050 L590 982.5 Z" class="shape"/><text x="800" y="975.5" class="label">Required profile</text><text x="800" y="1005.5" class="label">details valid?</text>
-<path d="M590 982 H365 V816 H500" class="arrow"/>
-<text x="420" y="964" class="note">No</text>
+<rect x="500" y="770" width="600" height="82" class="shape"/><text x="800" y="819" class="label">View Profile Details</text>
+<path d="M800 852 V915" class="arrow"/>
+<path d="M800 915 L1010 982.5 L800 1050 L590 982.5 Z" class="shape"/><text x="800" y="975.5" class="label">Update profile</text><text x="800" y="1005.5" class="label">details?</text>
+<path d="M590 982 H250 V1724 H620" class="arrow"/>
+<text x="400" y="964" class="note">No</text>
 <path d="M800 1050 V1100" class="arrow"/>
 <text x="820" y="1083" class="note">Yes</text>
-<rect x="520" y="1100" width="560" height="82" class="shape"/><text x="800" y="1149" class="label">Save Updated Profile</text>
-<path d="M800 1182 V1240" class="arrow"/>
-<rect x="540" y="1240" width="520" height="82" class="shape"/><text x="800" y="1289" class="label">Show Update Confirmation</text>
-<path d="M800 1322 V1390" class="arrow"/>
-<rect x="620" y="1390" width="360" height="78" class="shape"/><text x="800" y="1437" class="label">Log Out</text>
-<path d="M800 1468 V1816" class="arrow"/>
-<circle cx="800" cy="1840" r="24" fill="#111"/>
+<rect x="500" y="1100" width="600" height="82" class="shape"/><text x="800" y="1149" class="label">Edit Details and New Password</text>
+<path d="M800 1182 V1245" class="arrow"/>
+<path d="M800 1245 L1010 1312.5 L800 1380 L590 1312.5 Z" class="shape"/><text x="800" y="1305.5" class="label">Password blank</text><text x="800" y="1335.5" class="label">or 6+ chars?</text>
+<path d="M1010 1312 H1220 V1141 H1100" class="arrow"/>
+<text x="1040" y="1295" class="note">No</text>
+<path d="M800 1380 V1430" class="arrow"/>
+<text x="820" y="1413" class="note">Yes</text>
+<rect x="520" y="1430" width="560" height="82" class="shape"/><text x="800" y="1479" class="label">Save Updated Profile</text>
+<path d="M800 1512 V1555" class="arrow"/>
+<rect x="540" y="1555" width="520" height="82" class="shape"/><text x="800" y="1604" class="label">Show Update Confirmation</text>
+<path d="M800 1637 V1685" class="arrow"/>
+<rect x="620" y="1685" width="360" height="78" class="shape"/><text x="800" y="1732" class="label">Log Out</text>
+<path d="M800 1763 V1806" class="arrow"/>
+<circle cx="800" cy="1830" r="24" fill="#111"/>
 <text x="800" y="1980" class="caption">Figure X. Activity Diagram for Student Profile</text></svg>
