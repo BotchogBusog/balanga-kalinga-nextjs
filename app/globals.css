@@ -1,105 +1,191 @@
+/* Global stylesheet for the whole app. Each rule is described by the comment above it. */
+
+/* Make padding/border count inside an element's declared width (predictable sizing). */
 * { box-sizing: border-box; }
+/* Design tokens (CSS variables) reused throughout: colours for the navy/blue theme. */
 :root { --navy: #183b63; --blue: #2463a6; --blue-dark: #174b84; --blue-pale: #edf4fb; --ink: #253342; --muted: #657383; --line: #d8e0e8; --paper: #fff; --page: #f4f6f8; --green: #16734a; --amber: #94620b; --red: #b42318; }
+/* Page background. */
 html { background: var(--page); }
+/* Body defaults: font stack, colours, line-height, base size. */
 body { margin: 0; font-family: "Plus Jakarta Sans", Arial, sans-serif; background: var(--page); color: var(--ink); line-height: 1.55; font-size: 14px; }
+/* Form controls inherit the page font (browsers otherwise force their own). */
 input, select, textarea, button { font: inherit; }
+/* Default link colour. */
 a { color: var(--blue); text-decoration: none; }
+/* Links underline on hover. */
 a:hover { text-decoration: underline; }
+/* Site header bar. */
 .site-header { background: var(--paper); border-bottom: 1px solid var(--line); }
+/* Centred header row that spreads brand and nav apart. */
 .header-inner { max-width: 1120px; margin: 0 auto; min-height: 66px; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+/* Brand wordmark. */
 .brand { color: #000; font-weight: 700; font-size: 18px; letter-spacing: -.2px; white-space: nowrap; }
+/* Brand tagline under the wordmark. */
 .brand small { display: block; margin-top: 1px; color: var(--muted); font-size: 10px; font-weight: 500; letter-spacing: .2px; }
+/* Nav container (right aligned, wraps on small screens). */
 .nav { display: flex; align-items: center; justify-content: flex-end; gap: 2px; flex-wrap: wrap; }
+/* Individual nav links. */
 .nav a { color: #3b4b5c; padding: 7px 10px; border-bottom: 2px solid transparent; font-size: 13px; white-space: nowrap; }
+/* Nav link hover state. */
 .nav a:hover { text-decoration: none; color: var(--blue-dark); background: #f5f8fb; }
+/* The currently active nav link (underline + bold). */
 .nav a.active { color: var(--blue-dark); border-bottom-color: var(--blue); font-weight: 600; background: transparent; border-radius: 0; }
+/* Main content container: centred column with sensible min-height. */
 .container { max-width: 1120px; margin: 0 auto; padding: 28px 24px 44px; min-height: calc(100vh - 140px); }
+/* Landing hero block. */
 .hero { max-width: 760px; padding: 20px 0 18px; }
+/* Hero paragraph. */
 .hero p { max-width: 680px; margin-top: 10px; color: #536171; font-size: 15px; }
+/* Row of hero call-to-action buttons. */
 .hero-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+/* Page heading with an underline separator. */
 .page-heading { border-bottom: 1px solid var(--line); padding-bottom: 16px; margin-bottom: 18px; }
+/* Heading levels. */
 h1 { margin: 0; color: var(--navy); font-size: 25px; line-height: 1.25; letter-spacing: -.3px; }
 h2 { margin: 0 0 10px; color: var(--navy); font-size: 17px; line-height: 1.3; }
 h3 { margin: 0 0 6px; color: var(--navy); font-size: 15px; }
+/* Paragraphs have no default margin (spacing is applied where needed). */
 p { margin: 0; }
+/* Muted/small helper text. */
 .muted { color: var(--muted); font-size: 13px; }
+/* Small uppercase labels ("eyebrow" text and stat labels). */
 .eyebrow, .label { color: #6b7887; text-transform: uppercase; letter-spacing: .7px; font-size: 10px; font-weight: 700; }
+/* Card container. */
 .card { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 18px; margin-bottom: 16px; }
+/* Borderless card variant. */
 .card-flat { background: transparent; border: 0; padding: 0; }
+/* Card with a blue left accent bar. */
 .card-accent { border-left: 4px solid var(--blue); border-radius: 3px 6px 6px 3px; }
+/* Grid helpers. */
 .grid { display: grid; gap: 16px; }
+/* Two and three column grids (minmax(0,...) prevents overflow). */
 .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+/* Base button. */
 .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 9px 15px; border: 1px solid #b9c6d3; border-radius: 4px; background: #fff; color: var(--blue-dark); font-size: 13px; font-weight: 600; cursor: pointer; text-align: center; }
+/* Button hover state. */
 .btn:hover { text-decoration: none; border-color: var(--blue); background: #f5f9fd; }
+/* Primary (filled blue) button. */
 .btn-primary { background: var(--blue); border-color: var(--blue); color: #fff; }
+/* Primary button hover. */
 .btn-primary:hover { background: var(--blue-dark); border-color: var(--blue-dark); color: #fff; }
+/* Secondary (outline) button. */
 .btn-secondary { background: #fff; color: var(--blue-dark); }
+/* Small button variant. */
 .btn-small { min-height: 32px; padding: 6px 10px; font-size: 12px; }
+/* Full-width button. */
 .btn-block { width: 100%; }
+/* Notice/alert base. */
 .notice { padding: 11px 13px; border: 1px solid; border-radius: 4px; font-size: 13px; margin-bottom: 14px; }
+/* Notice variants: success (green), error (red), info (blue). */
 .notice-success { background: #edf8f1; border-color: #b9e2c8; color: #17633f; }
 .notice-error { background: #fff1f0; border-color: #f2b8b3; color: #a32118; }
 .notice-info { background: var(--blue-pale); border-color: #c8dced; color: #244c75; }
+/* Form group spacing and label styling. */
 .form-group { margin-bottom: 14px; }
 .form-group label { display: block; margin-bottom: 5px; color: #3c4c5c; font-size: 12px; font-weight: 600; }
+/* All text inputs/selects/textareas share one look. */
 .form-group input, .form-group select, .form-group textarea, input[type="text"], input[type="email"], input[type="password"], input[type="date"], input[type="time"], select, textarea { width: 100%; padding: 10px 11px; border: 1px solid #bdc9d5; border-radius: 4px; background: #fff; color: var(--ink); font-size: 14px; }
+/* Textareas are taller and only resize vertically. */
 .form-group textarea, textarea { min-height: 88px; resize: vertical; }
+/* Focus ring for inputs. */
 input:focus, select:focus, textarea:focus { outline: 2px solid #c5dcf2; border-color: var(--blue); }
+/* Two-column form row. */
 .form-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+/* Large statistic value. */
 .stat .value { color: var(--navy); font-size: 22px; font-weight: 700; line-height: 1.25; }
+/* Badge base. */
 .badge { display: inline-block; padding: 4px 8px; border: 1px solid; border-radius: 3px; font-size: 11px; font-weight: 700; line-height: 1.2; }
+/* Badge colour variants (green/yellow/orange/red/blue). */
 .badge-green { background: #edf8f1; border-color: #b9e2c8; color: var(--green); }
 .badge-yellow { background: #fff8e7; border-color: #ead49b; color: var(--amber); }
 .badge-orange { background: #fff2e8; border-color: #edc29c; color: #9b4c0c; }
 .badge-red { background: #fff1f0; border-color: #f2b8b3; color: var(--red); }
 .badge-blue { background: var(--blue-pale); border-color: #c8dced; color: var(--blue-dark); }
+/* Row used to show a label on the left and a value on the right. */
 .status-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid #e7edf2; }
-.status-row:last-child { border-bottom: 0; }
+.status-row:last-child { border-bottom: 0; }        /* no divider on the last row */
 .status-row strong { display: block; color: var(--navy); font-size: 14px; }
+/* Admin two-pane workspace layout (overview | records). */
 .admin-workspace { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.35fr); gap: 20px; align-items: start; }
-.admin-overview, .admin-records { min-width: 0; }
+.admin-overview, .admin-records { min-width: 0; }   /* allow columns to shrink */
 .admin-page-heading { padding: 4px 0 16px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
 .admin-page-heading h1 { margin: 3px 0 6px; }
+/* Navy-highlighted primary stat card. */
 .admin-stat-primary { background: var(--navy); border-color: var(--navy); }
 .admin-stat-primary .label, .admin-stat-primary .value, .admin-stat-primary .muted { color: #fff; }
 .admin-stat-primary .muted { opacity: .75; }
+/* Wide "checks total" card. */
 .admin-checks { padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; }
 .admin-checks .value { color: var(--navy); font-size: 23px; font-weight: 700; }
 .admin-record-card { margin-bottom: 16px; padding: 16px; }
 .admin-record-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
 .admin-record-heading h2 { margin: 2px 0 0; }
+/* Horizontally scrollable table wrapper for narrow screens. */
 .admin-table-scroll { overflow-x: auto; border: 1px solid #e2e8ee; }
 .admin-table-scroll table { min-width: 640px; }
+/* Reports page heading/filter layout. */
 .report-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
 .report-filter { padding-bottom: 14px; }
 .report-filter .form-group { margin-bottom: 0; }
 .report-filter-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
 .report-summary { margin-bottom: 16px; }
 .report-table-card { margin-top: 16px; }
+/* Counselor heading and inline status form. */
 .counselor-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
 .status-update-form { display: flex; align-items: center; gap: 6px; }
 .status-update-form select { min-width: 108px; padding: 5px 6px; font-size: 12px; }
 .counselor-password { max-width: 850px; }
+/* Print styles: hide chrome and expand content to full width. */
 @media print { .site-header, .footer, .report-filter, .report-heading .btn { display: none !important; } body, html { background: #fff; } .container { max-width: none; padding: 0; } .card { break-inside: avoid; box-shadow: none; } .admin-table-scroll { overflow: visible; } }
+/* Vertical list of action buttons. */
 .action-list { display: grid; gap: 8px; }
+/* Chat layout: sidebar + main column. */
 .chat-wrap { display: grid; grid-template-columns: 235px minmax(0, 1fr); border: 1px solid var(--line); border-radius: 5px; overflow: hidden; background: #fff; min-height: 560px; }
 .chat-sidebar { background: #f8fafc; border-right: 1px solid var(--line); padding: 14px; }
 .chat-main { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+/* Scrollable message area. */
 .chat-messages { flex: 1 1 auto; min-height: 0; padding: 18px; display: flex; flex-direction: column; gap: 10px; background: #fbfcfd; overflow-y: auto; max-height: 560px; }
+/* Chat bubble base, plus user (right/blue) and AI (left/white) variants. */
 .bubble { max-width: 78%; min-width: 0; height: auto; padding: 10px 12px; border: 1px solid #d4dee8; border-radius: 5px; font-size: 13px; white-space: pre-wrap; overflow-wrap: anywhere; }
 .bubble-user { align-self: flex-end; background: var(--blue); border-color: var(--blue); color: #fff; }
 .bubble-ai { align-self: flex-start; background: #fff; }
+/* Chat input row. */
 .chat-input { display: flex; gap: 8px; padding: 11px; border-top: 1px solid var(--line); }
 .chat-input textarea { min-height: 42px; height: 42px; resize: none; }
+/* Data table styling. */
 table { width: 100%; border-collapse: collapse; font-size: 13px; }
 th, td { padding: 10px 9px; border-bottom: 1px solid #e2e8ee; text-align: left; vertical-align: top; }
 th { background: #f5f8fb; color: #536171; font-size: 10px; text-transform: uppercase; letter-spacing: .5px; font-weight: 700; }
-tr:last-child td { border-bottom: 0; }
+tr:last-child td { border-bottom: 0; }              /* no divider on the last row */
+/* Site footer. */
 .footer { border-top: 1px solid var(--line); padding: 18px 24px; color: #778391; background: #fff; font-size: 11px; text-align: center; }
+/* Radio/checkbox option rows in the wellness questionnaire. */
 .option-group label { display: flex; gap: 8px; align-items: flex-start; padding: 9px 10px; border: 1px solid #d5dfe8; border-radius: 3px; margin-bottom: 6px; background: #fff; font-size: 13px; }
 .option-group label:hover { background: #f7fafc; border-color: #a9c1d8; }
+/* Tablet: collapse the admin workspace to one column. */
 @media (max-width: 1000px) { .admin-workspace { grid-template-columns: 1fr; } }
+/* Small screens: single-column form rows; let inline-max-width fields fill the card. */
 @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; gap: 0; } .form-group[style] { max-width: 100% !important; } }
+/* Phones/tablets: stack the header, single-column grids, hide the chat sidebar. */
 @media (max-width: 800px) { .header-inner { align-items: flex-start; flex-direction: column; gap: 8px; padding: 12px 16px 8px; } .nav { width: 100%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; } .nav a { padding: 7px 8px; } .container { width: 100%; padding: 20px 16px 32px; overflow: hidden; } .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 12px; } .chat-wrap { grid-template-columns: 1fr; } .chat-sidebar { display: none; } }
+/* ---- Wellness check modal ---- */
+/* Full-screen dimmed backdrop, centred panel. */
+.modal-overlay { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(15, 23, 42, 0.55); }
+/* Scrollable dialog: fixed header, scrolling body, fixed footer. */
+.modal-panel { display: flex; flex-direction: column; width: min(720px, 100%); max-height: min(90vh, 900px); background: #fff; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 24px 60px rgba(15, 23, 42, 0.35); }
+.modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 18px 20px 14px; border-bottom: 1px solid var(--line); }
+.modal-close { flex: none; width: 34px; height: 34px; border: 0; border-radius: 50%; background: #f1f5f9; color: #334155; font-size: 20px; line-height: 1; cursor: pointer; }
+.modal-close:hover { background: #e2e8f0; }
+.modal-body { flex: 1; overflow-y: auto; padding: 16px 20px; }
+.modal-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 20px; border-top: 1px solid var(--line); }
+/* One question block inside the dialog. */
+.modal-question { margin-bottom: 14px; padding: 12px; border: 1px solid #e5e7eb; border-radius: 6px; background: #fcfcfd; }
+.modal-question-answered { border-color: #b9d3f2; background: #f7fbff; }
+/* Progress bar for the answered count. */
+.progress-track { height: 8px; background: #e5e7eb; border-radius: 999px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--blue); border-radius: 999px; transition: width .2s ease; }
+/* Phones: the dialog takes the whole screen. */
+@media (max-width: 640px) { .modal-overlay { padding: 0; } .modal-panel { width: 100%; height: 100%; max-height: 100vh; border: 0; border-radius: 0; } .modal-foot { flex-direction: column-reverse; align-items: stretch; } .modal-foot .btn { width: 100%; } }
+/* Very small screens: tighten type, spacing and tap targets. */
 @media (max-width: 520px) { body { font-size: 13px; overflow-x: hidden; } h1 { font-size: 22px; } h2 { font-size: 16px; } .card { min-width: 0; padding: 14px; margin-bottom: 12px; } .form-row { grid-template-columns: 1fr; gap: 0; } .status-row { display: block; } .status-row .badge, .status-row .btn { margin-top: 7px; } .btn { min-height: 42px; } .action-list .btn { width: 100%; } .chat-messages { padding: 12px; max-height: 54vh; } .bubble { max-width: 90%; } .chat-input { align-items: stretch; } .chat-input button { min-width: 66px; } .admin-record-card { padding: 12px; } .admin-table-scroll { max-width: 100%; -webkit-overflow-scrolling: touch; } .counselor-heading { align-items: flex-start; flex-direction: column; } .status-update-form { min-width: 180px; } table { min-width: 540px; } .footer { padding: 16px; overflow-wrap: anywhere; } }
